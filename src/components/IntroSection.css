@@ -1,0 +1,75 @@
+.intro-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, var(--bg-white), var(--bg-ivory));
+  text-align: center;
+  padding-top: 80px;
+}
+
+.intro-content {
+  max-width: var(--max-width);
+  padding: 0 var(--spacing-md);
+}
+
+.intro-subtitle {
+  font-family: var(--font-title-kr);
+  font-size: 1rem;
+  color: var(--text-gray);
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: 0.05em;
+}
+
+.intro-title {
+  font-family: var(--font-title-en);
+  font-size: 3rem;
+  margin: var(--spacing-md) 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.intro-title .name {
+  font-family: var(--font-title-kr);
+  color: var(--text-dark);
+}
+
+.intro-title .heart {
+  font-size: 2.5rem;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.intro-date {
+  font-size: 1.1rem;
+  color: var(--text-gray);
+  margin: var(--spacing-md) 0;
+}
+
+.intro-divider {
+  font-size: 2rem;
+  margin-top: var(--spacing-lg);
+  opacity: 0.7;
+}
+
+@media (max-width: 480px) {
+  .intro-title {
+    font-size: 2.5rem;
+  }
+  
+  .intro-title .heart {
+    font-size: 2rem;
+  }
+}
+

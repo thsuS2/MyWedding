@@ -1,0 +1,111 @@
+.main-section {
+  background-color: var(--bg-ivory);
+  padding: var(--spacing-xl) 0;
+}
+
+.main-image-wrapper {
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  justify-content: center;
+}
+
+.placeholder-image {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, var(--point-pink) 0%, var(--point-green) 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.placeholder-image span {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.main-content {
+  text-align: center;
+}
+
+.main-title {
+  margin-bottom: var(--spacing-md);
+  color: var(--text-dark);
+}
+
+.main-message {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-gray);
+  margin-bottom: var(--spacing-lg);
+}
+
+.parents-info {
+  background: white;
+  padding: var(--spacing-md);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.parent-group {
+  margin: var(--spacing-md) 0;
+}
+
+.parent-group p {
+  font-size: 0.95rem;
+  color: var(--text-gray);
+  margin-bottom: 0.5rem;
+}
+
+.couple-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-top: 0.5rem;
+}
+
+.divider {
+  font-size: 1.5rem;
+  margin: var(--spacing-sm) 0;
+}
+
+.wedding-info {
+  background: white;
+  padding: var(--spacing-md);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+
+.wedding-info h3 {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  color: var(--text-dark);
+}
+
+.wedding-info p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-gray);
+  margin-bottom: 0.5rem;
+}
+
+.wedding-info strong {
+  color: var(--text-dark);
+}
+
+@media (max-width: 480px) {
+  .main-message {
+    font-size: 1rem;
+  }
+  
+  .couple-name {
+    font-size: 1.2rem;
+  }
+}
+

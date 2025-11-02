@@ -1,0 +1,75 @@
+.footer {
+  background: linear-gradient(to bottom, var(--bg-ivory), var(--bg-white));
+  padding: var(--spacing-xl) 0;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.btn-kakao {
+  background: #FEE500;
+  color: #000000;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.btn-kakao:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.footer-message {
+  padding: var(--spacing-md) 0;
+}
+
+.footer-text {
+  color: var(--text-gray);
+  line-height: 1.8;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.footer-signature {
+  font-family: var(--font-title-en);
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin: var(--spacing-sm) 0;
+}
+
+.footer-copyright {
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--bg-ivory);
+  width: 100%;
+  max-width: var(--max-width);
+}
+
+.footer-copyright p {
+  color: var(--text-light);
+  font-size: 0.85rem;
+  margin: 0.25rem 0;
+}
+
+@media (max-width: 480px) {
+  .btn-kakao {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+  }
+  
+  .footer-text {
+    font-size: 0.95rem;
+  }
+  
+  .footer-signature {
+    font-size: 1.25rem;
+  }
+}
+
