@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/MyWedding/', // GitHub Pages 배포시 리포지토리명과 일치해야 함
+  base: '/', // Vercel 배포시 루트 경로 사용
   
   build: {
     // 청크 크기 경고 제한 증가

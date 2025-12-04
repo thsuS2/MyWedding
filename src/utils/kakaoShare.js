@@ -5,8 +5,10 @@
  * 1. Kakao Developers에서 앱 생성 (https://developers.kakao.com/)
  * 2. JavaScript 키 발급
  * 3. 플랫폼 설정에서 Web 플랫폼 추가 (사이트 도메인 등록)
- * 4. 아래 KAKAO_APP_KEY를 실제 키로 교체
+ * 4. .env 파일에 VITE_KAKAO_APP_KEY 설정
  */
+
+import { KAKAO_SHARE } from '../constants/wedding';
 
 // 환경 변수에서 Kakao 앱 키 가져오기
 // .env 파일에 VITE_KAKAO_APP_KEY 설정 필요
@@ -43,9 +45,9 @@ export const shareKakao = () => {
     window.Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
-        title: '지수 🫶 유신 결혼합니다',
-        description: '2025년 00월 00일 오후 0시\n봄날의 정원 속, 우리의 약속',
-        imageUrl: 'https://yourdomain.github.io/MyWedding/wedding-thumbnail.jpg',
+        title: KAKAO_SHARE.title,
+        description: KAKAO_SHARE.description,
+        imageUrl: KAKAO_SHARE.imageUrl,
         link: {
           mobileWebUrl: window.location.href,
           webUrl: window.location.href,
