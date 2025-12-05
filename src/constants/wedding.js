@@ -13,8 +13,8 @@ export const WEDDING_DATE = {
   year: 2026,
   month: 5,
   day: 30,
-  time: '오후', // 실제 시간 입력 필요 (예: '오후 2시')
-  weekday: '토요일', // 실제 요일 계산 필요
+  time: '오후 5시 30분',
+  weekday: '토요일',
 };
 
 // 날짜 포맷팅 함수
@@ -34,34 +34,34 @@ export const getFormattedDateWithWeekday = () => {
 export const COUPLE = {
   bride: {
     name: '지수',
-    fullName: '김지수', // 실제 성함으로 교체 필요
+    fullName: '박지수',
     parents: {
-      father: '김○○', // 실제 성함으로 교체 필요
-      mother: '이○○', // 실제 성함으로 교체 필요
+      father: '박태규',
+      mother: '김성옥',
     },
-    position: '장녀',
+    position: '딸',
   },
   groom: {
     name: '유신',
-    fullName: '박유신', // 실제 성함으로 교체 필요
+    fullName: '김유신',
     parents: {
-      father: '박○○', // 실제 성함으로 교체 필요
-      mother: '최○○', // 실제 성함으로 교체 필요
+      father: '김남수',
+      mother: '유영래',
     },
-    position: '장남',
+    position: '아들',
   },
 };
 
 // 예식장 정보
 export const VENUE = {
-  name: '○○웨딩홀', // 실제 예식장명으로 교체 필요
-  floor: '○층', // 실제 층수로 교체 필요
-  hall: '○○홀', // 실제 홀명으로 교체 필요
-  address: '서울시 ○○구 ○○동 123-45', // 실제 주소로 교체 필요
+  name: '보타닉파크웨딩',
+  floor: 'B2F',
+  hall: '카라홀',
+  address: '서울특별시 강서구 마곡중앙5로 6 보타닉푸르지오시티 B2F',
   transportation: {
-    subway: '○○역 3번 출구 도보 5분', // 실제 정보로 교체 필요
-    bus: '○○번, ○○번', // 실제 정보로 교체 필요
-    parking: '3시간 무료 (건물 내 주차장 이용)', // 실제 정보로 교체 필요
+    subway: '마곡나루역 1번 출구 도보 3분', // 실제 정보 확인 필요
+    bus: '마곡나루역 하차', // 실제 정보 확인 필요
+    parking: '건물 내 주차장 이용', // 실제 정보 확인 필요
   },
 };
 
