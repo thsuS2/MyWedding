@@ -4,13 +4,15 @@ import './GallerySection.css';
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   
-  // 임시 플레이스홀더 이미지 배열 (9개)
-  const images = Array.from({ length: 9 }, (_, i) => ({
-    id: i + 1,
-    title: `사진 ${i + 1}`,
-    // 실제 이미지 URL로 교체 예정
-    url: `https://via.placeholder.com/600x800/FADADD/FFFFFF?text=Photo+${i + 1}`
-  }));
+  // 갤러리 이미지 배열 (14개)
+  const images = Array.from({ length: 14 }, (_, i) => {
+    const num = String(i + 1).padStart(3, '0');
+    return {
+      id: i + 1,
+      title: `사진 ${i + 1}`,
+      url: `/images/gallery-${num}.jpeg`
+    };
+  });
 
   const openModal = (index) => {
     setSelectedImage(index);
@@ -51,9 +53,12 @@ const GallerySection = () => {
               className="gallery-item"
               onClick={() => openModal(index)}
             >
-              <div className="gallery-placeholder">
-                <span>{image.title}</span>
-              </div>
+              <img 
+                src={image.url} 
+                alt={image.title}
+                className="gallery-image"
+                loading="lazy"
+              />
             </div>
           ))}
         </div>
@@ -86,9 +91,11 @@ const GallerySection = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="modal-image-wrapper">
-              <div className="modal-placeholder">
-                <span>{images[selectedImage].title}</span>
-              </div>
+              <img 
+                src={images[selectedImage].url} 
+                alt={images[selectedImage].title}
+                className="modal-image"
+              />
             </div>
             <div className="modal-counter">
               {selectedImage + 1} / {images.length}

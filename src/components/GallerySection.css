@@ -36,20 +36,15 @@
   z-index: 1;
 }
 
-.gallery-placeholder {
+.gallery-image {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, var(--point-pink) 0%, var(--point-green) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.gallery-placeholder span {
-  color: white;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-align: center;
+.gallery-item:hover .gallery-image {
+  transform: scale(1.1);
 }
 
 /* 전체화면 모달 */
@@ -108,22 +103,12 @@
   justify-content: center;
 }
 
-.modal-placeholder {
-  width: 600px;
+.modal-image {
   max-width: 90vw;
-  aspect-ratio: 3/4;
-  background: linear-gradient(135deg, var(--point-pink) 0%, var(--point-green) 100%);
+  max-height: 85vh;
+  object-fit: contain;
   border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   box-shadow: var(--shadow-lg);
-}
-
-.modal-placeholder span {
-  color: white;
-  font-size: 2rem;
-  font-weight: 600;
 }
 
 .modal-counter {
@@ -196,12 +181,9 @@
     font-size: 1.5rem;
   }
   
-  .modal-placeholder {
-    width: 90vw;
-  }
-  
-  .modal-placeholder span {
-    font-size: 1.5rem;
+  .modal-image {
+    max-width: 95vw;
+    max-height: 80vh;
   }
 }
 

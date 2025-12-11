@@ -9,23 +9,13 @@
   justify-content: center;
 }
 
-.placeholder-image {
+.main-image {
   width: 100%;
   max-width: 400px;
   aspect-ratio: 3/4;
-  background: linear-gradient(135deg, var(--point-pink) 0%, var(--point-green) 100%);
+  object-fit: cover;
   border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   box-shadow: var(--shadow-md);
-  overflow: hidden;
-}
-
-.placeholder-image span {
-  color: white;
-  font-size: 1.5rem;
-  font-weight: 600;
 }
 
 .main-couple-names {

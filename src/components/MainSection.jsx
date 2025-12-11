@@ -11,9 +11,11 @@ const MainSection = () => {
       <div className="container">
         {/* Main 사진 */}
         <div className="main-image-wrapper fade-in">
-          <div className="placeholder-image">
-            <span>커플 사진</span>
-          </div>
+          <img 
+            src="/images/main.png" 
+            alt="김유신 & 박지수"
+            className="main-image"
+          />
         </div>
         
         {/* 신랑이름 | 신부이름 */}
