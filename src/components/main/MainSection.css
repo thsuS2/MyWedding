@@ -1,0 +1,396 @@
+.main-section {
+  background-color: var(--bg-ivory);
+  padding: var(--spacing-xl) 0;
+}
+
+.main-image-wrapper {
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  justify-content: center;
+}
+
+.main-image {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+}
+
+.main-couple-names {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.groom-name,
+.bride-name {
+  display: inline-block;
+}
+
+.name-separator {
+  margin: 0 15px;
+  color: var(--point-pink);
+  font-weight: 300;
+}
+
+.main-venue {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-gray);
+  margin-bottom: var(--spacing-md);
+}
+
+.main-divider {
+  text-align: center;
+  margin: var(--spacing-lg) 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divider-leaf {
+  max-width: 150px;
+  height: auto;
+  opacity: 0.7;
+}
+
+.main-quote {
+  text-align: center;
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md);
+}
+
+.quote-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+  font-style: italic;
+  white-space: pre-line;
+  font-weight: 500;
+}
+
+.main-invitation {
+  text-align: center;
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.invitation-content {
+  flex: 1;
+  max-width: 400px;
+}
+
+.invitation-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-gray);
+  white-space: pre-line;
+}
+
+.main-parents {
+  text-align: center;
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  justify-content: center;
+}
+
+.parent-name {
+  display: grid;
+  grid-template-columns: 1.3fr 0.6fr 0.4fr;
+  font-size: 1.15rem;
+  color: var(--text-dark);
+  white-space: pre-line;
+}
+
+.parent-position {
+  font-size: 1.05rem;
+  color: var(--text-gray);
+  white-space: pre-line;
+}
+
+.parent-contact-links {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  margin-top: var(--spacing-xs);
+}
+
+.contact-link {
+  color: var(--point-pink);
+  text-decoration: none;
+  padding: 8px 12px;
+  border: 1px solid var(--point-pink);
+  border-radius: 50%;
+  transition: all 0.2s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+.contact-link:hover {
+  background-color: var(--point-pink);
+  color: white;
+}
+
+.contact-link:active {
+  transform: scale(0.95);
+}
+
+.contact-parents-btn {
+  margin-top: var(--spacing-md);
+  padding: 12px 24px;
+  background-color: var(--point-pink);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-parents-btn:hover {
+  background-color: var(--point-pink-dark, #d47a8f);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.contact-parents-btn:active {
+  transform: translateY(0);
+}
+
+/* 혼주 연락 모달 스타일 */
+.parents-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.parents-modal-content {
+  background: white;
+  border-radius: 20px;
+  max-width: 400px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.parents-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--text-gray);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.parents-modal-close:hover {
+  background: var(--bg-ivory);
+  color: var(--text-dark);
+}
+
+.parents-modal-title {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  padding: 20px 20px 15px;
+  font-weight: 600;
+  background-color: var(--bg-ivory);
+}
+
+
+.parents-side-section {
+  padding: 20px 30px;
+}
+
+.parents-side-section:last-child {
+  border-bottom: none;
+}
+
+.parents-side-title {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.parents-contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.05); */
+}
+
+.parents-contact-item:last-child {
+  border-bottom: none;
+}
+
+.parents-contact-name {
+  font-size: 1rem;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+.parents-contact-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.parents-contact-btn {
+  padding: 8px;
+  background-color: white;
+  color: var(--point-pink);
+  border: 1px solid var(--point-pink);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+.parents-contact-btn:hover {
+  background-color: var(--point-pink);
+  color: white;
+}
+
+.parents-contact-btn:active {
+  transform: scale(0.95);
+}
+
+.main-calendar {
+  margin: var(--spacing-lg) 0;
+}
+
+.main-dday {
+  margin: var(--spacing-lg) 0;
+}
+
+@media (max-width: 480px) {
+  .main-couple-names {
+    font-size: 1.2rem;
+  }
+
+  .name-separator {
+    margin: 0 10px;
+  }
+
+  .quote-text {
+    font-size: 1rem;
+  }
+
+  .invitation-text {
+    font-size: 0.95rem;
+  }
+
+  .divider-leaf {
+    max-width: 150px;
+  }
+
+  .main-invitation {
+    gap: var(--spacing-sm);
+  }
+
+  .parent-contact-links {
+    gap: 8px;
+  }
+
+  .contact-link {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+  }
+
+  .contact-parents-btn {
+    font-size: 0.95rem;
+    padding: 10px 20px;
+  }
+
+  .parents-modal-content {
+    max-width: 90%;
+    padding: 0;
+  }
+
+  .parents-modal-title {
+    font-size: 1.3rem;
+    margin: 25px 15px 15px;
+  }
+
+  .parents-side-section {
+    padding: 15px;
+  }
+
+  .parents-contact-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .parents-contact-buttons {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .parents-contact-btn {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+  }
+}
+

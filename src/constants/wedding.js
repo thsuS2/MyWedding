@@ -27,7 +27,7 @@ export const getFormattedDateTime = () => {
 };
 
 export const getFormattedDateWithWeekday = () => {
-  return `${getFormattedDate()} (${WEDDING_DATE.weekday}) ${WEDDING_DATE.time}`;
+  return `${getFormattedDate()} ${WEDDING_DATE.weekday} ${WEDDING_DATE.time}`;
 };
 
 // 커플 정보
@@ -35,18 +35,24 @@ export const COUPLE = {
   bride: {
     name: '지수',
     fullName: '박지수',
+    phone: '010-6471-5887', 
     parents: {
       father: '박태규',
       mother: '김성옥',
+      fatherPhone: '010-3726-5886', 
+      motherPhone: '010-8803-6324', 
     },
     position: '딸',
   },
   groom: {
     name: '유신',
     fullName: '김유신',
+    phone: '010-5056-0336', 
     parents: {
       father: '김남수',
       mother: '유영래',
+      fatherPhone: '010-0000-0000', // 실제 전화번호로 교체 필요
+      motherPhone: '010-0000-0000', // 실제 전화번호로 교체 필요
     },
     position: '아들',
   },
@@ -55,28 +61,29 @@ export const COUPLE = {
 // 예식장 정보
 export const VENUE = {
   name: '보타닉파크웨딩',
-  floor: 'B2F',
+  floor: '로비층',
   hall: '카라홀',
-  address: '서울특별시 강서구 마곡중앙5로 6 보타닉푸르지오시티 B2F',
+  address: '서울시 강서구 마곡중앙5로 6',
+  addressDetail: '보타닉 푸르지오시티 로비층',
   transportation: {
-    subway: '마곡나루역 1번 출구 도보 3분', // 실제 정보 확인 필요
-    bus: '마곡나루역 하차', // 실제 정보 확인 필요
-    parking: '건물 내 주차장 이용', // 실제 정보 확인 필요
+    subway: '9호선 · 공항철도 마곡나루역 1, 2번 출구 \n진입통로 연결',
+    bus: '마곡나루역 정류장 하차\n | 간선버스 N64 \n | 지선버스 6642, 6645, 6648 \n | 마을버스 강서05-1, 강서07',
+    parking: '건물 내 주차장 이용',
   },
 };
 
 // 계좌번호 정보
 export const ACCOUNTS = [
   {
-    name: '신랑',
-    bank: '○○은행', // 실제 은행명으로 교체 필요
-    number: '1234-5678-9012', // 실제 계좌번호로 교체 필요
+    name: '신랑 김유신',
+    bank: '기업은행', // 실제 은행명으로 교체 필요
+    number: '050-108445-02-012', // 실제 계좌번호로 교체 필요
     holder: COUPLE.groom.fullName,
   },
   {
-    name: '신부',
-    bank: '○○은행', // 실제 은행명으로 교체 필요
-    number: '9876-5432-1098', // 실제 계좌번호로 교체 필요
+    name: '신부 박지수',
+    bank: '기업은행', // 실제 은행명으로 교체 필요
+    number: '692-001160-01-013', // 실제 계좌번호로 교체 필요
     holder: COUPLE.bride.fullName,
   },
 ];
@@ -85,7 +92,9 @@ export const ACCOUNTS = [
 export const KAKAO_SHARE = {
   title: `${COUPLE.bride.name} 🫶 ${COUPLE.groom.name} 결혼합니다`,
   description: `${getFormattedDateTime()}\n봄날의 정원 속, 우리의 약속`,
-  imageUrl: 'https://yourdomain.github.io/MyWedding/wedding-thumbnail.jpg', // 실제 배포 URL로 교체 필요
+  imageUrl: typeof window !== 'undefined' 
+    ? `${window.location.origin}/images/main.png`
+    : '/images/main.png',
 };
 
 // 메타 정보
@@ -96,7 +105,9 @@ export const META = {
   author: `${COUPLE.bride.name} & ${COUPLE.groom.name}`,
   ogTitle: `${COUPLE.bride.name} 🫶 ${COUPLE.groom.name} 결혼합니다`,
   ogDescription: `${getFormattedDate()} - 봄날의 정원 속, 우리의 약속`,
-  ogImage: '/wedding-thumbnail.jpg',
-  ogUrl: 'https://yourdomain.github.io/MyWedding/', // 실제 배포 URL로 교체 필요
+  ogImage: '/images/main.png',
+  ogUrl: typeof window !== 'undefined' 
+    ? window.location.href
+    : 'https://yourdomain.github.io/MyWedding/', // 배포 후 자동으로 업데이트됨
 };
 
