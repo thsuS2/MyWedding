@@ -6,7 +6,7 @@ import Calendar from './components/Calendar';
 import DDayCounter from './components/DDayCounter';
 import { PiPhoneFill, PiChatCircleFill , PiHeartFill} from 'react-icons/pi';
 import leafImage from '../../assets/images/leaf.png';
-import bouquetImage from '../../assets/images/부케 꽃.png';
+import bouquetImage from '../../assets/images/flowers.png';
 
 const MainSection = () => {
   const [isParentsModalOpen, setIsParentsModalOpen] = useState(false);

@@ -33,3 +33,5 @@ dist-ssr
 .Letter
 .SETUP_GUIDE.md
 .to-do.md
+.vercel
+.env*.local

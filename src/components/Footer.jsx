@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { initKakao, shareKakao } from '../utils/kakaoShare';
 import './Footer.css';
 import { PiDeviceMobileFill, PiFlower, PiHeartFill } from 'react-icons/pi';
-import FlowerImage from '../assets/images/장미 부케.png';
+import FlowerImage from '../assets/images/rose-flower.png';
 
 const Footer = () => {
   useEffect(() => {

@@ -181,7 +181,7 @@ Vercel은 기본적으로 자동 배포가 활성화되어 있습니다:
 
 **배포 URL 예시:**
 ```
-https://my-wedding.vercel.app
+https://jisooyusinwedding.vercel.app/
 ```
 
 ---

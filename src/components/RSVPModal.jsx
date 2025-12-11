@@ -3,7 +3,7 @@ import { COUPLE, VENUE, getFormattedDateWithWeekday } from '../constants/wedding
 import { supabase, isSupabaseAvailable } from '../lib/supabase';
 import './RSVPModal.css';
 import { PiFlower, PiHeartFill, PiCheckCircleFill } from 'react-icons/pi';
-import bouquetImage from '../assets/images/부케 꽃.png';
+import bouquetImage from '../assets/images/flowers.png';
 
 const RSVPModal = ({ isOpen, onClose, onShowToday }) => {
   const [showForm, setShowForm] = useState(false);

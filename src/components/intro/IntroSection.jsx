@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './IntroSection.css';
 import { COUPLE } from '../../constants/wedding';
-import flowerFrameImage from '../../assets/images/꽃 액자.png';
+import flowerFrameImage from '../../assets/images/flower-frame.png';
 
 const IntroSection = () => {
   const [showImage, setShowImage] = useState(false);
