@@ -59,10 +59,24 @@
   color: var(--text-dark);
 }
 
+.rsvp-header-bouquet {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  margin-bottom: 15px;
+}
+
 .rsvp-modal-header {
   text-align: center;
-  padding: 30px 20px 20px;
+  padding: 0 20px 20px;
   border-bottom: 1px solid var(--bg-ivory);
+  position: relative;
+}
+
+.rsvp-bouquet-decoration {
+  max-width: 100px;
+  height: auto;
+  opacity: 0.6;
 }
 
 .rsvp-modal-header h2 {
@@ -111,23 +125,50 @@
   margin-right: 8px;
 }
 
-.rsvp-form {
+.rsvp-check-button-wrapper {
   padding: 20px;
+  text-align: center;
+}
+
+.rsvp-check-button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, var(--point-pink) 0%, var(--point-green) 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(250, 218, 221, 0.3);
+}
+
+.rsvp-check-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(250, 218, 221, 0.4);
+}
+
+.rsvp-form {
+  padding: 0px 20px 20px;
 }
 
 .rsvp-form-group {
-  margin-bottom: 20px;
+  margin: 20px 25px 0px;
 }
 
 .rsvp-form-group label {
-  display: block;
+  flex: 1;
+  justify-content: left;
+  align-items: center;
+  display: flex;
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-dark);
-  margin-bottom: 8px;
 }
 
 .rsvp-form-group input[type="text"],
+.rsvp-form-group input[type="number"],
 .rsvp-form-group select {
   width: 100%;
   padding: 12px;
@@ -139,10 +180,28 @@
 }
 
 .rsvp-form-group input[type="text"]:focus,
+.rsvp-form-group input[type="number"]:focus,
 .rsvp-form-group select:focus {
   outline: none;
   border-color: var(--point-pink);
   box-shadow: 0 0 0 3px rgba(250, 218, 221, 0.2);
+}
+
+.companion-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.companion-input {
+  flex: 1;
+}
+
+.companion-unit {
+  font-size: 1rem;
+  color: var(--text-gray);
+  font-weight: 500;
+  min-width: 30px;
 }
 
 .rsvp-radio-group {
@@ -153,26 +212,87 @@
 .rsvp-radio-label {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   cursor: pointer;
-  padding: 10px 15px;
+  padding: 12px 15px;
   border: 2px solid #e0e0e0;
   border-radius: 8px;
   flex: 1;
   transition: all 0.2s;
   font-weight: normal;
   margin-bottom: 0;
+  position: relative;
 }
 
 .rsvp-radio-label input[type="radio"] {
-  margin: 0;
+  position: absolute;
+  opacity: 0;
   cursor: pointer;
+  width: 0;
+  height: 0;
+}
+
+.radio-custom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.radio-heart-icon {
+  color: var(--point-pink);
+}
+
+.radio-text {
+  flex: 1;
+  font-weight: 500;
+  color: var(--text-dark);
 }
 
 .rsvp-radio-label:has(input:checked) {
   border-color: var(--point-pink);
   background: rgba(250, 218, 221, 0.1);
-  color: var(--text-dark);
+}
+
+
+.rsvp-radio-label:hover {
+  border-color: var(--point-pink);
+  background: rgba(250, 218, 221, 0.05);
+}
+
+.rsvp-radio-label:hover .radio-custom {
+  border-color: var(--point-pink);
+}
+
+/* 식사 여부 라디오 버튼 - 연두색 테마 */
+.rsvp-meal-group {
+  margin-top: 0;
+}
+
+.rsvp-meal-label:has(input:checked) {
+  border-color: var(--point-green);
+  background: rgba(182, 200, 169, 0.1);
+}
+
+.rsvp-meal-label:has(input:checked) .radio-meal-custom {
+  border-color: var(--point-green);
+  background: rgba(182, 200, 169, 0.2);
+}
+
+.radio-meal-icon {
+  color: var(--point-green);
+}
+
+.rsvp-meal-label:hover {
+  border-color: var(--point-green);
+  background: rgba(182, 200, 169, 0.05);
+}
+
+.rsvp-meal-label:hover .radio-meal-custom {
+  border-color: var(--point-green);
 }
 
 .rsvp-checkbox-label {
@@ -202,7 +322,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .rsvp-submit-btn:hover:not(:disabled) {
@@ -232,6 +352,10 @@
   .rsvp-radio-group {
     flex-direction: column;
     gap: 10px;
+  }
+
+  .rsvp-bouquet-decoration {
+    max-width: 100px;
   }
 }
 

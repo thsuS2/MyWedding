@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import Navigation from './components/Navigation';
 import PetalAnimation from './components/PetalAnimation';
-import IntroSection from './components/IntroSection';
-import MainSection from './components/MainSection';
-import GallerySection from './components/GallerySection';
-import MapSection from './components/MapSection';
-import MessageBoard from './components/MessageBoard';
+import IntroSection from './components/intro/IntroSection';
+import MainSection from './components/main/MainSection';
+import GallerySection from './components/gallary/GallerySection';
+import MapSection from './components/map/MapSection';
+import MessageBoard from './components/message/MessageBoard';
 import Footer from './components/Footer';
 import RSVPModal from './components/RSVPModal';
 import './styles/globals.css';

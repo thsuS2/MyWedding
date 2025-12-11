@@ -2,13 +2,16 @@ import { useState, useEffect } from 'react';
 import { COUPLE, VENUE, getFormattedDateWithWeekday } from '../constants/wedding';
 import { supabase, isSupabaseAvailable } from '../lib/supabase';
 import './RSVPModal.css';
+import { PiFlower, PiHeartFill, PiCheckCircleFill } from 'react-icons/pi';
+import bouquetImage from '../assets/images/부케 꽃.png';
 
 const RSVPModal = ({ isOpen, onClose, onShowToday }) => {
+  const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     side: '신랑측',
     name: '',
     companion: '',
-    meal: '미정',
+    meal: '예정',
   });
   const [submitting, setSubmitting] = useState(false);
   const [dontShowToday, setDontShowToday] = useState(false);
@@ -16,8 +19,12 @@ const RSVPModal = ({ isOpen, onClose, onShowToday }) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      // 모달이 열릴 때마다 폼 상태 초기화
+      setShowForm(false);
     } else {
       document.body.style.overflow = 'unset';
+      // 모달이 닫힐 때 폼 상태 초기화
+      setShowForm(false);
     }
     return () => {
       document.body.style.overflow = 'unset';
@@ -49,15 +56,14 @@ const RSVPModal = ({ isOpen, onClose, onShowToday }) => {
         if (error) throw error;
       }
 
-      // 오늘 하루 보지 않기 처리
-      if (dontShowToday) {
-        const today = new Date().toDateString();
-        localStorage.setItem('rsvp_dont_show', today);
-        onShowToday();
-      }
+      // 폼 작성 시 자동으로 오늘 하루 보지 않기 처리
+      const today = new Date().toDateString();
+      localStorage.setItem('rsvp_dont_show', today);
+      onShowToday();
 
-      alert('참석의사가 전달되었습니다! 💐');
-      setFormData({ side: '신랑측', name: '', companion: '', meal: '미정' });
+      alert('참석의사가 전달되었습니다!');
+      setFormData({ side: '신랑측', name: '', companion: '', meal: '예정' });
+      setShowForm(false);
       onClose();
     } catch (err) {
       console.error('RSVP 저장 실패:', err);
@@ -74,47 +80,97 @@ const RSVPModal = ({ isOpen, onClose, onShowToday }) => {
       <div className="rsvp-modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="rsvp-modal-close" onClick={onClose}>✕</button>
         
-        <div className="rsvp-modal-header">
-          <h2>💐 참석의사 전달하기</h2>
-          <p className="rsvp-modal-intro">
-            귀한 시간 내어 참석해 주시는 분들께<br/>
-            정성스럽게 준비하겠습니다.
-          </p>
+        {/* 부케 장식 - 항상 표시 */}
+        <div className="rsvp-header-bouquet">
+          <img 
+            src={bouquetImage} 
+            alt="부케 장식" 
+            className="rsvp-bouquet-decoration"
+          />
         </div>
 
-        <div className="rsvp-modal-info">
-          <div className="rsvp-couple-info">
-            <p className="rsvp-couple-names">
-              {COUPLE.groom.fullName} · {COUPLE.bride.fullName}
-            </p>
-          </div>
-          <div className="rsvp-date-info">
-            <p><strong>일정:</strong> {getFormattedDateWithWeekday()}</p>
-            <p><strong>위치:</strong> {VENUE.name} {VENUE.hall}</p>
-          </div>
-        </div>
+        {/* Header 부분 - 폼이 표시되지 않을 때만 보임 */}
+        {!showForm && (
+          <>
+            <div className="rsvp-modal-header">
+              <h2>
+                참석여부 체크하기
+              </h2>
+              <p className="rsvp-modal-intro">
+                귀한 시간 내어 참석해 주시는 분들께<br/>
+                정성스럽게 준비하겠습니다.
+              </p>
+            </div>
 
-        <form onSubmit={handleSubmit} className="rsvp-form">
+            <div className="rsvp-modal-info">
+              <div className="rsvp-couple-info">
+                <p className="rsvp-couple-names">
+                  {COUPLE.groom.fullName} · {COUPLE.bride.fullName}
+                </p>
+              </div>
+              <div className="rsvp-date-info">
+                <p><strong>일정:</strong> {getFormattedDateWithWeekday()}</p>
+                <p><strong>위치:</strong> {VENUE.name} {VENUE.hall}</p>
+              </div>
+            </div>
+
           <div className="rsvp-form-group">
-            <label>구분 *</label>
+            <label className="rsvp-checkbox-label">
+              <input
+                type="checkbox"
+                checked={dontShowToday}
+                onChange={(e) => setDontShowToday(e.target.checked)}
+              />
+              <span>오늘 하루 보지 않기</span>
+            </label>
+          </div>
+
+            {/* 참석여부 체크하기 버튼 */}
+            <div className="rsvp-check-button-wrapper">
+              <button 
+                onClick={() => setShowForm(true)}
+                className="rsvp-check-button"
+              >
+                참석여부 체크하기
+              </button>
+            </div>
+          </>
+        )}
+
+        {/* 폼 - showForm이 true일 때만 표시 */}
+        {showForm && (
+          <form onSubmit={handleSubmit} className="rsvp-form">
+          <div className="rsvp-form-group">
             <div className="rsvp-radio-group">
               <label className="rsvp-radio-label">
                 <input
                   type="radio"
+                  name="side"
                   value="신랑측"
                   checked={formData.side === '신랑측'}
                   onChange={(e) => setFormData({ ...formData, side: e.target.value })}
                 />
-                <span>신랑측</span>
+                <span className="radio-custom">
+                  {formData.side === '신랑측' && (
+                    <PiHeartFill size={20} className="radio-heart-icon" />
+                  )}
+                </span>
+                <span className="radio-text">신랑측</span>
               </label>
               <label className="rsvp-radio-label">
                 <input
                   type="radio"
+                  name="side"
                   value="신부측"
                   checked={formData.side === '신부측'}
                   onChange={(e) => setFormData({ ...formData, side: e.target.value })}
                 />
-                <span>신부측</span>
+                <span className="radio-custom">
+                  {formData.side === '신부측' && (
+                    <PiHeartFill size={20} className="radio-heart-icon" />
+                  )}
+                </span>
+                <span className="radio-text">신부측</span>
               </label>
             </div>
           </div>
@@ -133,48 +189,65 @@ const RSVPModal = ({ isOpen, onClose, onShowToday }) => {
 
           <div className="rsvp-form-group">
             <label htmlFor="companion">동행인</label>
-            <input
-              id="companion"
-              type="text"
-              value={formData.companion}
-              onChange={(e) => setFormData({ ...formData, companion: e.target.value })}
-              placeholder="동행인 수 또는 이름 (선택사항)"
-            />
-          </div>
-
-          <div className="rsvp-form-group">
-            <label htmlFor="meal">식사 여부 *</label>
-            <select
-              id="meal"
-              value={formData.meal}
-              onChange={(e) => setFormData({ ...formData, meal: e.target.value })}
-              required
-            >
-              <option value="예정">예정</option>
-              <option value="안함">안함</option>
-              <option value="미정">미정</option>
-            </select>
-          </div>
-
-          <div className="rsvp-form-group">
-            <label className="rsvp-checkbox-label">
+            <div className="companion-input-wrapper">
               <input
-                type="checkbox"
-                checked={dontShowToday}
-                onChange={(e) => setDontShowToday(e.target.checked)}
+                id="companion"
+                type="number"
+                min="0"
+                value={formData.companion}
+                onChange={(e) => setFormData({ ...formData, companion: e.target.value })}
+                placeholder="0"
+                className="companion-input"
               />
-              <span>오늘 하루 보지 않기</span>
-            </label>
+              <span className="companion-unit">명</span>
+            </div>
           </div>
 
-          <button 
-            type="submit" 
-            className="rsvp-submit-btn"
-            disabled={submitting}
-          >
-            {submitting ? '전달 중...' : '참석의사 전달하기'}
-          </button>
-        </form>
+          <div className="rsvp-form-group">
+            <label>식사 여부 *</label>
+            <div className="rsvp-radio-group rsvp-meal-group">
+              <label className="rsvp-radio-label rsvp-meal-label">
+                <input
+                  type="radio"
+                  name="meal"
+                  value="예정"
+                  checked={formData.meal === '예정'}
+                  onChange={(e) => setFormData({ ...formData, meal: e.target.value })}
+                />
+                <span className="radio-custom radio-meal-custom">
+                  {formData.meal === '예정' && (
+                    <PiCheckCircleFill size={20} className="radio-meal-icon" />
+                  )}
+                </span>
+                <span className="radio-text">예정</span>
+              </label>
+              <label className="rsvp-radio-label rsvp-meal-label">
+                <input
+                  type="radio"
+                  name="meal"
+                  value="미정"
+                  checked={formData.meal === '미정'}
+                  onChange={(e) => setFormData({ ...formData, meal: e.target.value })}
+                />
+                <span className="radio-custom radio-meal-custom">
+                  {formData.meal === '미정' && (
+                    <PiCheckCircleFill size={20} className="radio-meal-icon" />
+                  )}
+                </span>
+                <span className="radio-text">미정</span>
+              </label>
+            </div>
+          </div>
+
+            <button 
+              type="submit" 
+              className="rsvp-submit-btn"
+              disabled={submitting}
+            >
+              {submitting ? '전달 중...' : '참석의사 전달하기'}
+            </button>
+          </form>
+        )}
       </div>
     </div>
   );

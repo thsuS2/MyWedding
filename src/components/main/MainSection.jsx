@@ -4,7 +4,7 @@ import * as WEDDING from '../../constants/wedding';
 const { COUPLE, VENUE } = WEDDING;
 import Calendar from './components/Calendar';
 import DDayCounter from './components/DDayCounter';
-import { PiFlower, PiPhone, PiChatCircle } from 'react-icons/pi';
+import { PiPhoneFill, PiChatCircleFill , PiHeartFill} from 'react-icons/pi';
 import leafImage from '../../assets/images/leaf.png';
 import bouquetImage from '../../assets/images/부케 꽃.png';
 
@@ -43,9 +43,9 @@ const MainSection = () => {
         
         {/* 신랑이름 | 신부이름 */}
         <div className="main-couple-names fade-in">
-          <span className="groom-name">❀  {COUPLE.groom.fullName}</span>
-          <span className="name-separator">|</span>
-          <span className="bride-name">{COUPLE.bride.fullName}  ❀</span>
+          <span className="bride-name">{COUPLE.bride.fullName}</span>
+            <PiHeartFill size={25} color={'pink'}/>
+          <span className="groom-name">{COUPLE.groom.fullName}</span>
         </div>
 
         {/* 장소 */}
@@ -94,14 +94,14 @@ const MainSection = () => {
                 className="contact-link"
                 aria-label="전화"
               >
-                <PiPhone size={18} />
+                <PiPhoneFill size={18} />
               </a>
               <a 
                 href={`sms:${formatPhoneForLink(COUPLE.groom.phone)}`}
                 className="contact-link"
                 aria-label="문자"
               >
-                <PiChatCircle size={18} />
+                <PiChatCircleFill size={18} />
               </a>
             </div>
           </div>
@@ -118,14 +118,14 @@ const MainSection = () => {
                 className="contact-link"
                 aria-label="전화"
               >
-                <PiPhone size={18} />
+                <PiPhoneFill size={18} />
               </a>
               <a 
                 href={`sms:${formatPhoneForLink(COUPLE.bride.phone)}`}
                 className="contact-link"
                 aria-label="문자"
               >
-                <PiChatCircle size={18} />
+                <PiChatCircleFill size={18} />
               </a>
             </div>
           </div>
@@ -183,14 +183,14 @@ const MainSection = () => {
                     className="parents-contact-btn"
                     aria-label="전화"
                   >
-                    <PiPhone size={18} />
+                    <PiPhoneFill size={18} />
                   </a>
                   <a 
                     href={`sms:${formatPhoneForLink(COUPLE.groom.parents.motherPhone)}`}
                     className="parents-contact-btn"
                     aria-label="문자"
                   >
-                    <PiChatCircle size={18} />
+                    <PiChatCircleFill size={18} />
                   </a>
                 </div>
               </div>
@@ -205,14 +205,14 @@ const MainSection = () => {
                     className="parents-contact-btn"
                     aria-label="전화"
                   >
-                    <PiPhone size={18} />
+                    <PiPhoneFill size={18} />
                   </a>
                   <a 
                     href={`sms:${formatPhoneForLink(COUPLE.groom.parents.fatherPhone)}`}
                     className="parents-contact-btn"
                     aria-label="문자"
                   >
-                    <PiChatCircle size={18} />
+                    <PiChatCircleFill size={18} />
                   </a>
                 </div>
               </div>
@@ -232,14 +232,14 @@ const MainSection = () => {
                     className="parents-contact-btn"
                     aria-label="전화"
                   >
-                    <PiPhone size={18} />
+                    <PiPhoneFill size={18} />
                   </a>
                   <a 
                     href={`sms:${formatPhoneForLink(COUPLE.bride.parents.motherPhone)}`}
                     className="parents-contact-btn"
                     aria-label="문자"
                   >
-                    <PiChatCircle size={18} />
+                    <PiChatCircleFill size={18} />
                   </a>
                 </div>
               </div>
@@ -254,14 +254,14 @@ const MainSection = () => {
                     className="parents-contact-btn"
                     aria-label="전화"
                   >
-                    <PiPhone size={18} />
+                    <PiPhoneFill size={18} />
                   </a>
                   <a 
                     href={`sms:${formatPhoneForLink(COUPLE.bride.parents.fatherPhone)}`}
                     className="parents-contact-btn"
                     aria-label="문자"
                   >
-                    <PiChatCircle size={18} />
+                    <PiChatCircleFill size={18} />
                   </a>
                 </div>
               </div>

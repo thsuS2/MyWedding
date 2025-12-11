@@ -54,10 +54,29 @@ const PetalAnimation = () => {
         ctx.rotate(this.rotation);
         ctx.globalAlpha = this.opacity;
 
-        // 꽃잎 모양 그리기 (타원형)
+        // 꽃잎 모양 그리기 (위쪽 둥글고 아래쪽 뽀족한 형태)
         ctx.fillStyle = '#FADADD';
         ctx.beginPath();
-        ctx.ellipse(0, 0, this.size, this.size * 1.5, 0, 0, Math.PI * 2);
+        
+        const width = this.size;
+        const height = this.size * 1.5;
+        
+        // 위쪽 중앙에서 시작
+        ctx.moveTo(0, -height);
+        
+        // 왼쪽 위 곡선
+        ctx.quadraticCurveTo(-width * 1.2, -height * 0.6, -width * 0.6, height * 0.2);
+        
+        // 왼쪽 아래 곡선 (뽀족한 끝으로)
+        ctx.quadraticCurveTo(-width * 0.6, height * 1.6, 0, height);
+        
+        // 오른쪽 아래 곡선 (뽀족한 끝에서)
+        ctx.quadraticCurveTo(width * 0.6, height * 0.6, width * 1.2, height * 0.2);
+        
+        // 오른쪽 위 곡선
+        ctx.quadraticCurveTo(width * 1.2, -height * 0.6, 0, -height);
+        
+        ctx.closePath();
         ctx.fill();
 
         ctx.restore();

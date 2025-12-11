@@ -19,22 +19,20 @@
 }
 
 .main-couple-names {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   margin-bottom: var(--spacing-md);
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--text-dark);
+  gap: 10px;
 }
 
 .groom-name,
 .bride-name {
   display: inline-block;
-}
-
-.name-separator {
-  margin: 0 15px;
-  color: var(--point-pink);
-  font-weight: 300;
 }
 
 .main-venue {
@@ -133,7 +131,6 @@
 .contact-link {
   color: var(--point-pink);
   text-decoration: none;
-  padding: 8px 12px;
   border: 1px solid var(--point-pink);
   border-radius: 50%;
   transition: all 0.2s;
@@ -390,7 +387,7 @@
   .parents-contact-btn {
     width: 32px;
     height: 32px;
-    padding: 6px;
+    /* padding: 6px; */
   }
 }
 
