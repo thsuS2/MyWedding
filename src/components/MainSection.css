@@ -28,84 +28,92 @@
   font-weight: 600;
 }
 
-.main-content {
+.main-couple-names {
   text-align: center;
-}
-
-.main-title {
   margin-bottom: var(--spacing-md);
+  font-size: 1.4rem;
+  font-weight: 600;
   color: var(--text-dark);
 }
 
-.main-message {
+.groom-name,
+.bride-name {
+  display: inline-block;
+}
+
+.name-separator {
+  margin: 0 15px;
+  color: var(--point-pink);
+  font-weight: 300;
+}
+
+.main-venue {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-gray);
+  margin-bottom: var(--spacing-md);
+}
+
+.main-divider {
+  text-align: center;
+  margin: var(--spacing-lg) 0;
+}
+
+.divider-icon {
+  font-size: 2rem;
+}
+
+.main-quote {
+  text-align: center;
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md);
+}
+
+.quote-text {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: var(--text-gray);
-  margin-bottom: var(--spacing-lg);
-}
-
-.parents-info {
-  background: white;
-  padding: var(--spacing-md);
-  border-radius: 16px;
-  box-shadow: var(--shadow-sm);
-  margin-bottom: var(--spacing-lg);
-}
-
-.parent-group {
-  margin: var(--spacing-md) 0;
-}
-
-.parent-group p {
-  font-size: 0.95rem;
-  color: var(--text-gray);
-  margin-bottom: 0.5rem;
-}
-
-.couple-name {
-  font-size: 1.3rem;
-  font-weight: 700;
   color: var(--text-dark);
-  margin-top: 0.5rem;
+  font-style: italic;
+  white-space: pre-line;
+  font-weight: 500;
 }
 
-.divider {
-  font-size: 1.5rem;
-  margin: var(--spacing-sm) 0;
-}
-
-.wedding-info {
-  background: white;
-  padding: var(--spacing-md);
-  border-radius: 16px;
-  box-shadow: var(--shadow-sm);
-  text-align: left;
-}
-
-.wedding-info h3 {
+.main-invitation {
   text-align: center;
-  margin-bottom: var(--spacing-md);
-  color: var(--text-dark);
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md);
 }
 
-.wedding-info p {
+.invitation-text {
   font-size: 1rem;
   line-height: 1.8;
   color: var(--text-gray);
-  margin-bottom: 0.5rem;
+  white-space: pre-line;
 }
 
-.wedding-info strong {
-  color: var(--text-dark);
+.main-calendar {
+  margin: var(--spacing-lg) 0;
+}
+
+.main-dday {
+  margin: var(--spacing-lg) 0;
 }
 
 @media (max-width: 480px) {
-  .main-message {
+  .main-couple-names {
+    font-size: 1.2rem;
+  }
+
+  .name-separator {
+    margin: 0 10px;
+  }
+
+  .quote-text {
     font-size: 1rem;
   }
-  
-  .couple-name {
-    font-size: 1.2rem;
+
+  .invitation-text {
+    font-size: 0.95rem;
   }
 }
 

@@ -130,6 +130,29 @@
   transform: translateY(-2px);
 }
 
+.rsvp-button-section {
+  margin-top: var(--spacing-lg);
+  text-align: center;
+}
+
+.btn-rsvp {
+  background: linear-gradient(135deg, var(--point-pink) 0%, var(--point-green) 100%);
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-rsvp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(250, 218, 221, 0.4);
+}
+
 @media (max-width: 480px) {
   .account-item {
     flex-direction: column;
@@ -138,6 +161,12 @@
   
   .btn-copy {
     width: 100%;
+  }
+
+  .btn-rsvp {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1rem;
   }
 }
 

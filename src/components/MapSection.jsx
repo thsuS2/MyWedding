@@ -3,7 +3,7 @@ import './MapSection.css';
 import { VENUE, ACCOUNTS } from '../constants/wedding';
 import { copyAccount } from '../utils/clipboard';
 
-const MapSection = () => {
+const MapSection = ({ onOpenRSVP }) => {
   const [copiedAccount, setCopiedAccount] = useState('');
 
   const handleCopyAccount = async (account) => {
@@ -77,6 +77,13 @@ const MapSection = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* 참석의사 전달하기 버튼 */}
+        <div className="rsvp-button-section fade-in">
+          <button onClick={onOpenRSVP} className="btn-rsvp">
+            💐 참석의사 전달하기
+          </button>
         </div>
       </div>
     </section>
