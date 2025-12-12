@@ -18,7 +18,16 @@
 
 ```env
 VITE_KAKAO_APP_KEY=your_javascript_key_here
+VITE_KAKAO_MAP_API_KEY=your_kakao_map_api_key
 ```
+
+### 2-1. 카카오맵 API 키 발급 (선택사항)
+
+카카오맵을 화면에 표시하려면:
+
+1. 생성한 앱 클릭
+2. "앱 키" 섹션에서 **REST API 키** 또는 **JavaScript 키** 복사
+3. `.env` 파일에 `VITE_KAKAO_MAP_API_KEY` 추가
 
 ### 3. 플랫폼 등록
 
@@ -98,7 +107,19 @@ WITH CHECK (true);
 
 ---
 
-## 🌐 GitHub Pages 배포 설정
+## 🌐 Vercel 배포 설정 (권장)
+
+자세한 배포 가이드는 [VERCEL_DEPLOY.md](./VERCEL_DEPLOY.md) 참고
+
+### 간단 요약
+1. [vercel.com](https://vercel.com) 접속 및 GitHub 연동
+2. "Add New Project" → GitHub 리포지토리 선택
+3. 환경 변수 설정 (Settings → Environment Variables)
+4. 자동 배포 완료
+
+---
+
+## 🌐 GitHub Pages 배포 설정 (레거시)
 
 ### 1. GitHub 리포지토리 생성
 
@@ -145,6 +166,9 @@ npm run deploy
 # Kakao SDK
 VITE_KAKAO_APP_KEY=1234567890abcdef1234567890abcdef
 
+# Kakao Map API (선택사항)
+VITE_KAKAO_MAP_API_KEY=your_kakao_map_api_key
+
 # Supabase
 VITE_SUPABASE_URL=https://xxxxxxxxxxx.supabase.co
 VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
@@ -156,24 +180,17 @@ VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 ## 📝 실제 데이터 교체 체크리스트
 
-### IntroSection.jsx
+### wedding.js (중앙 관리)
 - [ ] 결혼식 날짜 및 시간
-
-### MainSection.jsx
-- [ ] 부모님 성함
-- [ ] 예식장 이름, 주소
-- [ ] 커플 사진 교체
-
-### GallerySection.jsx
-- [ ] 9개 갤러리 사진 교체
-- [ ] `src/assets/images/` 폴더에 이미지 추가
-
-### MapSection.jsx
-- [ ] 예식장 정확한 주소
-- [ ] 지도 링크 (카카오맵/네이버지도 검색어)
-- [ ] 교통 정보 (지하철, 버스, 주차)
+- [ ] 커플 이름 및 전화번호
+- [ ] 부모님 성함 및 전화번호
+- [ ] 예식장 정보 (이름, 주소, 교통 정보)
 - [ ] 계좌번호 (신랑/신부)
-- [ ] 예금주 이름
+
+### 이미지 교체
+- [ ] 메인 이미지: `public/images/main.png`
+- [ ] 갤러리 이미지: `public/images/gallery-001.jpeg ~ gallery-014.jpeg` (14개)
+- [ ] 장식 이미지: `src/assets/images/` 폴더 (선택사항)
 
 ### index.html
 - [ ] og:image 썸네일 이미지 경로

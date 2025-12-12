@@ -27,23 +27,47 @@
 - Canvas API 기반 꽃잎 애니메이션
 - 봄바람처럼 부드러운 모션
 
-### 3. 🖼️ 갤러리 (3x3 그리드)
+### 3. 📸 인트로 섹션
+- 배경 이미지 페이드인 효과
+- 꽃 액자 장식 이미지
+- 커플 이름 표시
+
+### 4. 💐 메인 섹션
+- 커플 이름 및 장소 정보
+- 결혼 관련 문구 인용
+- 초대 글
+- 달력 (캘린더) 표시
+- D-Day 카운터 (정확한 시간 기준)
+- 혼주에게 연락하기 기능
+  - 신랑/신부 직접 연락 (전화/문자)
+  - 혼주 연락 모달 (신랑측/신부측 각각)
+
+### 5. 🖼️ 갤러리 (14개 이미지)
 - 이미지 클릭 시 전체화면 모달
 - 좌우 화살표/키보드로 네비게이션
 - Lazy Loading으로 성능 최적화
+- 부케 장식 이미지
 
-### 4. 💌 실시간 축하 메시지
+### 6. 🗺️ 오시는 길
+- 카카오맵 API 연동 (실제 지도 표시)
+- 지도 바로가기 (카카오맵/네이버지도)
+- 계좌번호 원클릭 복사
+- 참석의사 전달하기 버튼
+
+### 7. 💌 실시간 축하 메시지
 - Supabase 연동으로 실시간 메시지 표시
 - 관계별 필터 (가족/친구/동료/기타)
 - 즉시 반영되는 축하 메시지
 
-### 5. 📱 카카오톡 공유
+### 8. 📱 카카오톡 공유
 - Kakao SDK 연동
 - 모바일 친화적 공유 기능
 
-### 6. 🗺️ 오시는 길
-- 지도 바로가기 (카카오맵/네이버지도)
-- 계좌번호 원클릭 복사
+### 9. 💐 참석의사 전달하기 (RSVP)
+- 페이지 입장 시 자동 팝업
+- 구분(신랑/신부측), 성함, 동행인, 식사 여부 입력
+- "오늘 하루 보지 않기" 기능
+- Supabase에 데이터 저장
 
 ---
 
@@ -54,8 +78,9 @@
 | **Frontend** | React 19, Vite |
 | **Database** | Supabase (PostgreSQL) |
 | **Animation** | Canvas API, CSS Keyframes |
-| **API** | Kakao SDK |
-| **Deployment** | GitHub Pages, GitHub Actions |
+| **Icons** | React Icons (Phosphor Icons, Simple Icons) |
+| **API** | Kakao SDK, Kakao Map API |
+| **Deployment** | Vercel (자동 배포) |
 
 ---
 
@@ -77,6 +102,9 @@ npm install
 # Kakao SDK
 VITE_KAKAO_APP_KEY=your_kakao_javascript_key
 
+# Kakao Map API
+VITE_KAKAO_MAP_API_KEY=your_kakao_map_api_key
+
 # Supabase
 VITE_SUPABASE_URL=your_supabase_project_url
 VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
@@ -95,32 +123,51 @@ npm run dev
 npm run build
 ```
 
-### 5. GitHub Pages 배포
+### 5. Vercel 배포
 
-```bash
-npm run deploy
-```
+Vercel에 프로젝트를 연결하면 자동으로 배포됩니다.
 
-또는 GitHub Actions로 자동 배포 (main 브랜치 push 시)
+자세한 배포 가이드는 [VERCEL_DEPLOY.md](./VERCEL_DEPLOY.md) 참고
 
 ---
 
 ## 📁 프로젝트 구조
 
 ```
-/Users/park/workspace/MyWedding/
+/Users/jisoo/Soo/Wedding/
 ├── public/                # 정적 파일
+│   └── images/            # 이미지 파일
+│       ├── main.png       # 메인 이미지
+│       └── gallery-*.jpeg # 갤러리 이미지 (14개)
 ├── src/
+│   ├── assets/            # 에셋 파일
+│   │   └── images/        # 장식 이미지
+│   │       ├── flower-frame.png
+│   │       ├── flowers.png
+│   │       ├── leaf.png
+│   │       └── map.png
 │   ├── components/        # React 컴포넌트
 │   │   ├── Navigation.jsx
 │   │   ├── PetalAnimation.jsx
-│   │   ├── IntroSection.jsx
-│   │   ├── MainSection.jsx
-│   │   ├── GallerySection.jsx
-│   │   ├── MapSection.jsx
-│   │   ├── MessageBoard.jsx
+│   │   ├── RSVPModal.jsx  # 참석의사 전달하기
 │   │   ├── Footer.jsx
-│   │   └── LazyImage.jsx
+│   │   ├── intro/         # 인트로 섹션
+│   │   │   └── IntroSection.jsx
+│   │   ├── main/          # 메인 섹션
+│   │   │   ├── MainSection.jsx
+│   │   │   └── components/
+│   │   │       ├── Calendar.jsx
+│   │   │       └── DDayCounter.jsx
+│   │   ├── gallary/       # 갤러리 섹션
+│   │   │   ├── GallerySection.jsx
+│   │   │   └── components/
+│   │   │       └── LazyImage.jsx
+│   │   ├── map/           # 오시는 길 섹션
+│   │   │   └── MapSection.jsx
+│   │   └── message/       # 축하 메시지 섹션
+│   │       └── MessageBoard.jsx
+│   ├── constants/         # 상수 파일
+│   │   └── wedding.js     # 결혼식 정보
 │   ├── hooks/             # Custom Hooks
 │   │   └── useSupabase.js
 │   ├── lib/               # 라이브러리 설정
@@ -132,10 +179,12 @@ npm run deploy
 │   │   └── globals.css
 │   ├── App.jsx
 │   └── main.jsx
-├── .github/workflows/     # GitHub Actions
-│   └── deploy.yml
 ├── .Work/                 # 작업 일지
 ├── SETUP_GUIDE.md         # 설정 가이드
+├── VERCEL_DEPLOY.md       # Vercel 배포 가이드
+├── SUPABASE_COMPLETE_SETUP.md  # Supabase 완전 설정 가이드
+├── KAKAO_SETUP.md         # Kakao SDK 설정 가이드
+├── RSVP_SETUP.md          # RSVP 설정 가이드
 ├── package.json
 └── vite.config.js
 ```
@@ -146,18 +195,19 @@ npm run deploy
 
 ### 실제 데이터로 교체하기
 
-1. **날짜 및 장소 정보**
-   - `src/components/IntroSection.jsx`
-   - `src/components/MainSection.jsx`
-   - `src/components/MapSection.jsx`
+모든 결혼식 정보는 `src/constants/wedding.js` 파일에서 중앙 관리됩니다.
+
+1. **결혼식 정보**
+   - 날짜 및 시간
+   - 커플 정보 (이름, 전화번호)
+   - 부모님 정보 (성함, 전화번호)
+   - 예식장 정보 (이름, 주소, 교통 정보)
+   - 계좌번호
 
 2. **이미지 교체**
-   - 커플 사진: `public/main-couple.jpg`
-   - 갤러리: `public/gallery-1.jpg ~ gallery-9.jpg`
-   - 썸네일: `public/wedding-thumbnail.jpg`
-
-3. **계좌번호**
-   - `src/components/MapSection.jsx`
+   - 메인 이미지: `public/images/main.png`
+   - 갤러리: `public/images/gallery-001.jpeg ~ gallery-014.jpeg` (14개)
+   - 장식 이미지: `src/assets/images/` 폴더
 
 자세한 체크리스트는 [SETUP_GUIDE.md](./SETUP_GUIDE.md) 참고
 
@@ -165,15 +215,17 @@ npm run deploy
 
 ## 🔐 보안 주의사항
 
-### GitHub Secrets 설정 (GitHub Actions 사용 시)
+### Vercel 환경 변수 설정
 
-1. GitHub 리포지토리 → Settings → Secrets and variables → Actions
-2. 다음 secrets 추가:
+1. Vercel 대시보드 → 프로젝트 선택
+2. Settings → Environment Variables
+3. 다음 환경 변수 추가:
    - `VITE_KAKAO_APP_KEY`
+   - `VITE_KAKAO_MAP_API_KEY`
    - `VITE_SUPABASE_URL`
    - `VITE_SUPABASE_ANON_KEY`
 
-⚠️ **중요**: `.env` 파일은 절대 GitHub에 커밋하지 마세요!
+⚠️ **참고**: 현재 프로젝트는 `.env` 파일을 Git에 포함하여 다른 환경에서도 쉽게 작업할 수 있도록 설정되어 있습니다.
 
 ---
 
@@ -189,10 +241,11 @@ npm run deploy
 
 ## 🎯 성능 최적화
 
-- ⚡ Lazy Loading (이미지)
+- ⚡ Lazy Loading (이미지) - IntersectionObserver 사용
 - ⚡ Code Splitting (React.lazy - 필요시)
 - ⚡ Canvas Animation Optimization
 - ⚡ Supabase Realtime Channels
+- ⚡ 이미지 최적화 (LazyImage 컴포넌트)
 
 ---
 
@@ -216,8 +269,9 @@ Made with 💕 by 지수 & 유신
 
 ## 🎉 결혼식 정보
 
-**일시:** 2025년 00월 00일 오후 0시  
-**장소:** ○○웨딩홀 ○층 ○○홀
+**일시:** 2026년 5월 30일 (토요일) 오후 5시 30분  
+**장소:** 보타닉파크웨딩 카라홀  
+**주소:** 서울시 강서구 마곡중앙5로 6 보타닉 푸르지오시티 로비층
 
 ---
 

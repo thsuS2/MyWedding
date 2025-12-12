@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { COUPLE, VENUE, getFormattedDateWithWeekday } from '../constants/wedding';
+import { COUPLE, VENUE, WEDDING_DATE } from '../constants/wedding';
 import { supabase, isSupabaseAvailable } from '../lib/supabase';
 import './RSVPModal.css';
 import { PiFlower, PiHeartFill, PiCheckCircleFill } from 'react-icons/pi';
@@ -109,7 +109,7 @@ const RSVPModal = ({ isOpen, onClose, onShowToday }) => {
                 </p>
               </div>
               <div className="rsvp-date-info">
-                <p><strong>일정:</strong> {getFormattedDateWithWeekday()}</p>
+                <p><strong>일정:</strong> {WEDDING_DATE.year}년 {WEDDING_DATE.month}월 {WEDDING_DATE.day}일 ({WEDDING_DATE.weekday.substring(0,1)}) {WEDDING_DATE.time}</p>
                 <p><strong>위치:</strong> {VENUE.name} {VENUE.hall}</p>
               </div>
             </div>
