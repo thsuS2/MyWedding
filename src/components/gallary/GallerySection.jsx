@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './GallerySection.css';
-import { PiFlower, PiChevronDown, PiChevronUp } from 'react-icons/pi';
+import { PiFlower, PiArrowDown, PiArrowUp } from 'react-icons/pi';
 import LazyImage from './components/LazyImage';
 import bouquetImage from '../../assets/images/flower-rose.png';
 import { GALLERY_IMAGES, getImageUrl } from '../../constants/gallery';
@@ -106,13 +106,13 @@ const GallerySection = () => {
             >
               {showAll ? (
                 <>
-                  <PiChevronUp size={20} />
+                  <PiArrowUp size={20} />
                   <span>접기</span>
                 </>
               ) : (
                 <>
                   <span>더보기</span>
-                  <PiChevronDown size={20} />
+                  <PiArrowDown size={20} />
                 </>
               )}
             </button>

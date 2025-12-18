@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './Toast.css';
-import { PiCheckCircleFill, PiXCircleFill, PiInfoCircleFill, PiWarningFill } from 'react-icons/pi';
+import { PiCheckCircleFill, PiXCircleFill, PiInfo, PiWarningFill } from 'react-icons/pi';
 
 /**
  * Toast 메시지 타입
@@ -32,7 +32,7 @@ const Toast = ({ message, type = 'info', duration = 3000, onClose }) => {
   const icons = {
     success: <PiCheckCircleFill size={20} />,
     error: <PiXCircleFill size={20} />,
-    info: <PiInfoCircleFill size={20} />,
+    info: <PiInfo size={20} />,
     warning: <PiWarningFill size={20} />,
   };
 
