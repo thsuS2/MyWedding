@@ -2,11 +2,13 @@ import { useState, useEffect, useRef } from 'react';
 import './MapSection.css';
 import { VENUE, ACCOUNTS } from '../../constants/wedding';
 import { copyAccount } from '../../utils/clipboard';
+import { useToastContext } from '../../contexts/ToastContext';
 import { PiMapPinFill, PiGiftFill, PiFlower } from 'react-icons/pi';
 import { SiKakao, SiNaver } from 'react-icons/si';
 import mapImage from '../../assets/images/map.png';
 
 const MapSection = ({ onOpenRSVP }) => {
+  const { showError } = useToastContext();
   const [copiedAccount, setCopiedAccount] = useState('');
   const [mapLoaded, setMapLoaded] = useState(false);
   const mapContainer = useRef(null);
@@ -18,7 +20,7 @@ const MapSection = ({ onOpenRSVP }) => {
       setCopiedAccount(account.name);
       setTimeout(() => setCopiedAccount(''), 2000);
     } else {
-      alert('계좌번호 복사에 실패했습니다. 다시 시도해주세요.');
+      showError('계좌번호 복사에 실패했습니다. 다시 시도해주세요.');
     }
   };
 
@@ -34,24 +36,51 @@ const MapSection = ({ onOpenRSVP }) => {
     const initMap = () => {
       if (!mapContainer.current) return;
 
-      // 카카오맵 API 키 (환경 변수 또는 직접 입력)
-      const KAKAO_MAP_API_KEY = import.meta.env.VITE_KAKAO_MAP_API_KEY || 'YOUR_KAKAO_MAP_API_KEY';
+      // 카카오맵 API 키 (환경 변수)
+      const KAKAO_MAP_API_KEY = import.meta.env.VITE_KAKAO_MAP_API_KEY;
+
+      // API 키가 없으면 지도를 로드하지 않음
+      if (!KAKAO_MAP_API_KEY || KAKAO_MAP_API_KEY === 'YOUR_KAKAO_MAP_API_KEY') {
+        console.warn('⚠️ 카카오맵 API 키가 설정되지 않았습니다. 환경 변수를 확인해주세요.');
+        setMapLoaded(false);
+        return;
+      }
 
       // 카카오맵 스크립트가 로드되었는지 확인
       if (typeof window.kakao === 'undefined' || !window.kakao.maps) {
         // 스크립트 동적 로드
-        console.log('카카오맵 스크립트 직접 로드');
+        const existingScript = document.querySelector('script[src*="dapi.kakao.com/v2/maps/sdk.js"]');
+        if (existingScript) {
+          // 이미 스크립트가 있으면 로드 완료를 기다림
+          const checkKakao = setInterval(() => {
+            if (window.kakao && window.kakao.maps) {
+              clearInterval(checkKakao);
+              window.kakao.maps.load(() => {
+                createMap();
+              });
+            }
+          }, 100);
+          return;
+        }
+
         const script = document.createElement('script');
         script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_MAP_API_KEY}&autoload=false`;
         script.async = true;
         script.onload = () => {
-          window.kakao.maps.load(() => {
-            createMap();
-          });
+          if (window.kakao && window.kakao.maps) {
+            window.kakao.maps.load(() => {
+              createMap();
+            });
+          } else {
+            console.error('카카오맵 SDK 로드 실패');
+            setMapLoaded(false);
+            showError('지도를 불러오는데 실패했습니다.');
+          }
         };
         script.onerror = () => {
-          console.error('카카오맵 스크립트 로드 실패');
+          console.error('카카오맵 스크립트 로드 실패 - API 키를 확인해주세요.');
           setMapLoaded(false);
+          showError('지도를 불러오는데 실패했습니다. API 키를 확인해주세요.');
         };
         document.head.appendChild(script);
         return;
@@ -107,9 +136,11 @@ const MapSection = ({ onOpenRSVP }) => {
             });
             setMapLoaded(true);
             console.warn('주소 검색 실패, 기본 위치로 표시');
+            showError('주소를 찾을 수 없어 기본 위치로 표시합니다.');
           } catch (error) {
             console.error('카카오맵 생성 실패:', error);
             setMapLoaded(false);
+            showError('지도를 생성하는데 실패했습니다.');
           }
         }
       });

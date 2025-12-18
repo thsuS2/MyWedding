@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { COUPLE, VENUE, WEDDING_DATE } from '../constants/wedding';
 import { supabase, isSupabaseAvailable } from '../lib/supabase';
+import { useToastContext } from '../contexts/ToastContext';
 import './RSVPModal.css';
 import { PiFlower, PiHeartFill, PiCheckCircleFill } from 'react-icons/pi';
 import bouquetImage from '../assets/images/flowers.png';
 
 const RSVPModal = ({ isOpen, onClose, onShowToday }) => {
+  const { showError, showSuccess } = useToastContext();
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     side: '신랑측',
@@ -35,7 +37,7 @@ const RSVPModal = ({ isOpen, onClose, onShowToday }) => {
     e.preventDefault();
     
     if (!formData.name.trim()) {
-      alert('성함을 입력해주세요.');
+      showError('성함을 입력해주세요.');
       return;
     }
 
@@ -61,13 +63,13 @@ const RSVPModal = ({ isOpen, onClose, onShowToday }) => {
       localStorage.setItem('rsvp_dont_show', today);
       onShowToday();
 
-      alert('참석의사가 전달되었습니다!');
+      showSuccess('참석의사가 전달되었습니다!');
       setFormData({ side: '신랑측', name: '', companion: '', meal: '예정' });
       setShowForm(false);
       onClose();
     } catch (err) {
       console.error('RSVP 저장 실패:', err);
-      alert('참석의사 전달에 실패했습니다. 다시 시도해주세요.');
+      showError('참석의사 전달에 실패했습니다. 다시 시도해주세요.');
     } finally {
       setSubmitting(false);
     }

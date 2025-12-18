@@ -1,21 +1,31 @@
 import { useState } from 'react';
 import './GallerySection.css';
-import { PiFlower } from 'react-icons/pi';
+import { PiFlower, PiChevronDown, PiChevronUp } from 'react-icons/pi';
 import LazyImage from './components/LazyImage';
 import bouquetImage from '../../assets/images/flower-rose.png';
+import { GALLERY_IMAGES, getImageUrl } from '../../constants/gallery';
+
+const INITIAL_DISPLAY_COUNT = 9; // 최초 표시할 이미지 개수
 
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [showAll, setShowAll] = useState(false);
   
-  // 갤러리 이미지 배열 (14개)
-  const images = Array.from({ length: 14 }, (_, i) => {
-    const num = String(i + 1).padStart(3, '0');
-    return {
-      id: i + 1,
-      title: `사진 ${i + 1}`,
-      url: `/images/gallery-${num}.jpeg`
-    };
-  });
+  // 갤러리 이미지 배열 (동적으로 생성)
+  const images = GALLERY_IMAGES.map((filename, index) => ({
+    id: index + 1,
+    title: `사진 ${index + 1}`,
+    url: getImageUrl(filename),
+    filename: filename,
+  }));
+
+  // 표시할 이미지 목록
+  const displayedImages = showAll 
+    ? images 
+    : images.slice(0, INITIAL_DISPLAY_COUNT);
+  
+  // 더보기 버튼 표시 여부 (이미지가 9개보다 많을 때만)
+  const hasMoreImages = images.length > INITIAL_DISPLAY_COUNT;
 
   const openModal = (index) => {
     setSelectedImage(index);
@@ -62,25 +72,57 @@ const GallerySection = () => {
         <p className="gallery-subtitle fade-in">우리의 소중한 순간들</p>
         
         <div className="gallery-grid fade-in">
-          {images.map((image, index) => (
-            <div 
-              key={image.id} 
-              className="gallery-item"
-              onClick={() => openModal(index)}
-            >
-              <LazyImage 
-                src={image.url} 
-                alt={image.title}
-                className="gallery-image"
-                placeholder={
-                  <div className="gallery-image-placeholder">
-                    <span>로딩 중...</span>
-                  </div>
-                }
-              />
-            </div>
-          ))}
+          {displayedImages.map((image, index) => {
+            // 전체 images 배열에서의 실제 인덱스 찾기
+            const actualIndex = images.findIndex(img => img.id === image.id);
+            return (
+              <div 
+                key={image.id} 
+                className="gallery-item"
+                onClick={() => openModal(actualIndex)}
+              >
+                <LazyImage 
+                  src={image.url} 
+                  alt={image.title}
+                  className="gallery-image"
+                  placeholder={
+                    <div className="gallery-image-placeholder">
+                      <span>로딩 중...</span>
+                    </div>
+                  }
+                />
+              </div>
+            );
+          })}
         </div>
+
+        {/* 더보기/접기 버튼 */}
+        {hasMoreImages && (
+          <div className="gallery-toggle-wrapper fade-in">
+            <button 
+              className="gallery-toggle-btn"
+              onClick={() => setShowAll(!showAll)}
+              aria-label={showAll ? '접기' : '더보기'}
+            >
+              {showAll ? (
+                <>
+                  <PiChevronUp size={20} />
+                  <span>접기</span>
+                </>
+              ) : (
+                <>
+                  <span>더보기</span>
+                  <PiChevronDown size={20} />
+                </>
+              )}
+            </button>
+            <p className="gallery-count-text">
+              {showAll 
+                ? `전체 ${images.length}장` 
+                : `${INITIAL_DISPLAY_COUNT}장 / 전체 ${images.length}장`}
+            </p>
+          </div>
+        )}
       </div>
 
       {/* 전체화면 모달 */}

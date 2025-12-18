@@ -1,11 +1,5 @@
 /**
  * 결혼식 정보 상수
- * 
- * 실제 데이터로 교체 필요:
- * - 부모님 성함
- * - 예식장 정보
- * - 계좌번호
- * - 교통 정보
  */
 
 // 결혼식 기본 정보
@@ -51,8 +45,8 @@ export const COUPLE = {
     parents: {
       father: '김남수',
       mother: '유영래',
-      fatherPhone: '010-0000-0000', // 실제 전화번호로 교체 필요
-      motherPhone: '010-0000-0000', // 실제 전화번호로 교체 필요
+      fatherPhone: '010-3780-1816', 
+      motherPhone: '010-9302-0332', 
     },
     position: '아들',
   },
@@ -76,14 +70,14 @@ export const VENUE = {
 export const ACCOUNTS = [
   {
     name: '신랑 김유신',
-    bank: '기업은행', // 실제 은행명으로 교체 필요
-    number: '050-108445-02-012', // 실제 계좌번호로 교체 필요
+    bank: '기업은행',
+    number: '050-108445-02-012',
     holder: COUPLE.groom.fullName,
   },
   {
     name: '신부 박지수',
-    bank: '기업은행', // 실제 은행명으로 교체 필요
-    number: '692-001160-01-013', // 실제 계좌번호로 교체 필요
+    bank: '기업은행',
+    number: '692-001160-01-013',
     holder: COUPLE.bride.fullName,
   },
 ];
@@ -108,6 +102,6 @@ export const META = {
   ogImage: '/images/main.png',
   ogUrl: typeof window !== 'undefined' 
     ? window.location.href
-    : 'https://yourdomain.github.io/MyWedding/', // 배포 후 자동으로 업데이트됨
+    : 'https://jisooyusinwedding.vercel.app/',
 };
 

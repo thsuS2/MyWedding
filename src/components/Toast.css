@@ -1,0 +1,121 @@
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100px);
+  background: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 280px;
+  max-width: 90%;
+  z-index: 10000;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.toast-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.toast-hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-100px);
+  pointer-events: none;
+}
+
+.toast-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast-message {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  word-break: keep-all;
+}
+
+.toast-close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.toast-close:hover {
+  color: #333;
+}
+
+/* 타입별 스타일 */
+.toast-success {
+  border-left: 4px solid #10b981;
+}
+
+.toast-success .toast-icon {
+  color: #10b981;
+}
+
+.toast-error {
+  border-left: 4px solid #ef4444;
+}
+
+.toast-error .toast-icon {
+  color: #ef4444;
+}
+
+.toast-info {
+  border-left: 4px solid #3b82f6;
+}
+
+.toast-info .toast-icon {
+  color: #3b82f6;
+}
+
+.toast-warning {
+  border-left: 4px solid #f59e0b;
+}
+
+.toast-warning .toast-icon {
+  color: #f59e0b;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 768px) {
+  .toast {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    transform: translateY(-100px);
+    min-width: auto;
+    max-width: none;
+  }
+
+  .toast-visible {
+    transform: translateY(0);
+  }
+
+  .toast-hidden {
+    transform: translateY(-100px);
+  }
+}
+

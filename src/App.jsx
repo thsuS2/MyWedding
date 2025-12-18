@@ -8,11 +8,14 @@ import MapSection from './components/map/MapSection';
 import MessageBoard from './components/message/MessageBoard';
 import Footer from './components/Footer';
 import RSVPModal from './components/RSVPModal';
+import Toast from './components/Toast';
+import { ToastProvider, useToastContext } from './contexts/ToastContext';
 import './styles/globals.css';
 
-function App() {
+function AppContent() {
   const [showRSVPModal, setShowRSVPModal] = useState(false);
   const [dontShowToday, setDontShowToday] = useState(false);
+  const { toasts, removeToast } = useToastContext();
 
   useEffect(() => {
     // 오늘 하루 보지 않기 체크
@@ -56,7 +59,26 @@ function App() {
         onClose={handleCloseRSVP}
         onShowToday={handleShowToday}
       />
+      
+      {/* Toast 메시지 */}
+      {toasts.map(toast => (
+        <Toast
+          key={toast.id}
+          message={toast.message}
+          type={toast.type}
+          duration={toast.duration}
+          onClose={() => removeToast(toast.id)}
+        />
+      ))}
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ToastProvider>
+      <AppContent />
+    </ToastProvider>
   );
 }
 

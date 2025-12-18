@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useMessages } from '../../hooks/useSupabase';
+import { useToastContext } from '../../contexts/ToastContext';
 import './MessageBoard.css';
 import { PiEnvelopeFill, PiWarningFill, PiFlower } from 'react-icons/pi';
 
 const MessageBoard = () => {
   const { messages, loading, error, addMessage } = useMessages();
+  const { showError, showSuccess } = useToastContext();
   const [formData, setFormData] = useState({
     name: '',
     relationship: '친구',
@@ -19,7 +21,7 @@ const MessageBoard = () => {
     e.preventDefault();
     
     if (!formData.name.trim() || !formData.message.trim()) {
-      alert('이름과 메시지를 모두 입력해주세요.');
+      showError('이름과 메시지를 모두 입력해주세요.');
       return;
     }
 
@@ -33,10 +35,10 @@ const MessageBoard = () => {
       });
       
       setFormData({ name: '', relationship: '친구', message: '' });
-      alert('축하 메시지가 등록되었습니다!');
+      showSuccess('축하 메시지가 등록되었습니다!');
     } catch (err) {
       console.error('메시지 등록 실패:', err);
-      alert('메시지 등록에 실패했습니다. 다시 시도해주세요.');
+      showError('메시지 등록에 실패했습니다. 다시 시도해주세요.');
     } finally {
       setSubmitting(false);
     }
