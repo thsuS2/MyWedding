@@ -1,5 +1,5 @@
 .footer {
-  background: linear-gradient(to bottom, var(--bg-ivory), var(--bg-white));
+  background-color: var(--bg-ivory);
   padding: var(--spacing-xl) 0;
   text-align: center;
   position: relative;

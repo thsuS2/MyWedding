@@ -64,12 +64,11 @@ html {
 body {
   font-family: var(--font-body);
   color: var(--text-dark);
-  /* background-color: var(--bg-white); */
+  background-color: var(--bg-ivory);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  /* background-color: black; */
 }
 
 /* 타이포그래피 */
