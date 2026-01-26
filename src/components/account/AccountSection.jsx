@@ -3,7 +3,7 @@ import './AccountSection.css';
 import { ACCOUNTS } from '../../constants/wedding';
 import { copyAccount } from '../../utils/clipboard';
 import { useToastContext } from '../../contexts/ToastContext';
-import { PiGiftFill, PiFlower } from 'react-icons/pi';
+import { PiGiftFill, PiHeartFill } from 'react-icons/pi';
 
 const AccountSection = () => {
   const { showError } = useToastContext();
@@ -43,7 +43,7 @@ const AccountSection = () => {
               >
                 {copiedAccount === account.name ? (
                   <>
-                    복사됨 <PiFlower size={16} style={{ verticalAlign: 'middle', marginLeft: '4px' }} />
+                    복사됨 <PiHeartFill size={16} style={{ verticalAlign: 'middle', marginLeft: '4px' }} />
                   </>
                 ) : '복사하기'}
               </button>
