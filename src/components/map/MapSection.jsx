@@ -190,7 +190,7 @@ const MapSection = ({ onOpenRSVP }) => {
         {/* 네비게이션 설명 */}
         <div className="navigation-info fade-in">
           <p className="navigation-text text-body-gray">
-            네이버지도, 카카오네비에서 "{VENUE.name}" 검색
+            네이버지도 또는 카카오네비에서 "{VENUE.name}" 검색
           </p>
         </div>
         

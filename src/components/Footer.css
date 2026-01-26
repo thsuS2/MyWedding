@@ -12,12 +12,10 @@
 }
 
 .footer-middle-image {
-  max-width: 400px;
-  width: 100%;
+  max-width: 150px;
   height: auto;
-  border-radius: 16px;
-  box-shadow: var(--shadow-md);
-  object-fit: cover;
+  opacity: 0.6;
+  transform: rotate(-45deg);
 }
 
 .footer-content {
