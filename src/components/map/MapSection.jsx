@@ -183,14 +183,32 @@ const MapSection = ({ onOpenRSVP }) => {
         
         {/* 주소 정보 */}
         <div className="address-info fade-in">
-          <h3 className="text-heading-small">{VENUE.name}</h3>
-          <p className="text-body-gray">{VENUE.address}</p>
-          <p className="text-body-gray">{VENUE.addressDetail}</p>
-          <p className="address-detail text-body-gray">
-            <strong>지하철:</strong> {VENUE.transportation.subway}<br/>
-            <strong>버스:</strong> {VENUE.transportation.bus}<br/>
-            <strong>주차:</strong> {VENUE.transportation.parking}
-          </p>
+          <div className="venue-header">
+            <h3 className="venue-name text-heading-medium">{VENUE.name}</h3>
+            <p className="venue-location text-body-gray">
+              {VENUE.address.split(' ').slice(0, 2).join(' ')}
+            </p>
+          </div>
+          
+          <div className="transportation-info">
+            <div className="transport-item">
+              <p className="transport-label text-heading-small">지하철</p>
+              <p className="transport-detail text-body-gray">{VENUE.transportation.subway}</p>
+            </div>
+            <div className="transport-item">
+              <p className="transport-label text-heading-small">버스</p>
+              <p className="transport-detail text-body-gray">{VENUE.transportation.bus}</p>
+            </div>
+            <div className="transport-item">
+              <p className="transport-label text-heading-small">주차</p>
+              <p className="transport-detail text-body-gray">{VENUE.transportation.parking}</p>
+            </div>
+          </div>
+          
+          <div className="venue-address-detail">
+            <p className="text-body-gray">{VENUE.address}</p>
+            <p className="text-body-gray">{VENUE.addressDetail}</p>
+          </div>
         </div>
         
         {/* 참석의사 전달하기 버튼 */}

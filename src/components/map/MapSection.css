@@ -76,22 +76,53 @@
   border-radius: 16px;
   box-shadow: var(--shadow-sm);
   margin-bottom: var(--spacing-lg);
+}
+
+.venue-header {
   text-align: center;
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--bg-ivory);
 }
 
-.address-info h3 {
-  margin-bottom: var(--spacing-sm);
+.venue-name {
+  margin-bottom: var(--spacing-xs);
 }
 
-.address-info p {
-  margin-bottom: 0.5rem;
+.venue-location {
+  margin: 0;
 }
 
-.address-detail {
-  margin-top: var(--spacing-md);
+.transportation-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.transport-item {
   text-align: left;
+}
+
+.transport-label {
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-dark);
+}
+
+.transport-detail {
+  margin: 0;
   line-height: 1.8;
   white-space: pre-line;
+}
+
+.venue-address-detail {
+  text-align: center;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--bg-ivory);
+}
+
+.venue-address-detail p {
+  margin-bottom: 0.25rem;
 }
 
 .rsvp-button-section {
