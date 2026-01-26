@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useMessages } from '../../hooks/useSupabase';
 import { useToastContext } from '../../contexts/ToastContext';
 import './MessageBoard.css';
-import { PiEnvelopeFill, PiWarningFill, PiFlower } from 'react-icons/pi';
+import { PiEnvelopeFill, PiWarningFill, PiHeartFill } from 'react-icons/pi';
 
 const MessageBoard = () => {
   const { messages, loading, error, addMessage } = useMessages();
@@ -133,7 +133,7 @@ const MessageBoard = () => {
                   ? (
                     <>
                       아직 작성된 메시지가 없습니다.<br/>
-                      첫 번째 축하 메시지를 남겨주세요! <PiFlower size={16} style={{ verticalAlign: 'middle', marginLeft: '4px' }} />
+                      첫 번째 축하 메시지를 남겨주세요! <PiHeartFill size={16} style={{ verticalAlign: 'middle', marginLeft: '4px' }} />
                     </>
                   )
                   : `${activeFilter} 관계로 작성된 메시지가 없습니다.`

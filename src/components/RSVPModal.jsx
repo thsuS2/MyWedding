@@ -3,7 +3,7 @@ import { COUPLE, VENUE, WEDDING_DATE } from '../constants/wedding';
 import { supabase, isSupabaseAvailable } from '../lib/supabase';
 import { useToastContext } from '../contexts/ToastContext';
 import './RSVPModal.css';
-import { PiFlower, PiHeartFill, PiCheckCircleFill } from 'react-icons/pi';
+import { PiHeartFill, PiCheckCircleFill } from 'react-icons/pi';
 import bouquetImage from '../assets/images/flowers.png';
 
 const RSVPModal = ({ isOpen, onClose }) => {

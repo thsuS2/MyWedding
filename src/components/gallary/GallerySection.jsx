@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './GallerySection.css';
-import { PiFlower, PiArrowDown, PiArrowUp } from 'react-icons/pi';
+import { PiArrowDown, PiArrowUp } from 'react-icons/pi';
 import LazyImage from './components/LazyImage';
 import bouquetImage from '../../assets/images/flower-rose.png';
 import { GALLERY_IMAGES, getImageUrl } from '../../constants/gallery';

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import './MapSection.css';
 import { VENUE } from '../../constants/wedding';
 import { useToastContext } from '../../contexts/ToastContext';
-import { PiMapPinFill } from 'react-icons/pi';
+import { PiMapPinFill, PiHeartFill } from 'react-icons/pi';
 import { SiKakao, SiNaver } from 'react-icons/si';
 import mapImage from '../../assets/images/map.png';
 
@@ -198,7 +198,7 @@ const MapSection = ({ onOpenRSVP }) => {
         {/* 참석의사 전달하기 버튼 */}
         <div className="rsvp-button-section fade-in">
           <button onClick={onOpenRSVP} className="btn-rsvp text-button-large">
-            <PiFlower size={20} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+            <PiHeartFill size={20} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
             참석의사 전달하기
           </button>
         </div>
