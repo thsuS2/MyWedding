@@ -5,11 +5,9 @@ import LazyImage from './components/LazyImage';
 import bouquetImage from '../../assets/images/flower-rose.png';
 import { GALLERY_IMAGES, getImageUrl } from '../../constants/gallery';
 
-const INITIAL_DISPLAY_COUNT = 9; // 최초 표시할 이미지 개수
-
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [showAll, setShowAll] = useState(false);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   
   // 갤러리 이미지 배열 (동적으로 생성)
   const images = GALLERY_IMAGES.map((filename, index) => ({
@@ -19,13 +17,11 @@ const GallerySection = () => {
     filename: filename,
   }));
 
-  // 표시할 이미지 목록
-  const displayedImages = showAll 
-    ? images 
-    : images.slice(0, INITIAL_DISPLAY_COUNT);
+  // 큰 슬라이드용 이미지 (첫 번째 이미지)
+  const mainImage = images[currentSlideIndex] || images[0];
   
-  // 더보기 버튼 표시 여부 (이미지가 9개보다 많을 때만)
-  const hasMoreImages = images.length > INITIAL_DISPLAY_COUNT;
+  // 작은 그리드용 이미지 (나머지 이미지들, 5개씩 표시)
+  const gridImages = images;
 
   const openModal = (index) => {
     setSelectedImage(index);
@@ -45,6 +41,17 @@ const GallerySection = () => {
     setSelectedImage(newIndex);
   };
 
+  const navigateSlide = (direction) => {
+    let newIndex = currentSlideIndex + direction;
+    if (newIndex < 0) newIndex = images.length - 1;
+    if (newIndex >= images.length) newIndex = 0;
+    setCurrentSlideIndex(newIndex);
+  };
+
+  const handleGridImageClick = (index) => {
+    setCurrentSlideIndex(index);
+  };
+
   const handleKeyDown = (e) => {
     if (selectedImage === null) return;
     
@@ -57,72 +64,67 @@ const GallerySection = () => {
     <section id="gallery" className="gallery-section" onKeyDown={handleKeyDown}>
       <div className="container">
         <div className="gallery-title text-heading-large fade-in">
-          <img 
-              src={bouquetImage} 
-              alt="부케 장식" 
-              className="bouquet-decoration bouquet-left"
-            />
-            <img 
-              src={bouquetImage} 
-              alt="부케 장식" 
-              className="bouquet-decoration bouquet-right"
-            />
           Gallery
         </div>
         <p className="gallery-subtitle text-body-gray fade-in">우리의 소중한 순간들</p>
         
-        <div className="gallery-grid fade-in">
-          {displayedImages.map((image, index) => {
-            // 전체 images 배열에서의 실제 인덱스 찾기
-            const actualIndex = images.findIndex(img => img.id === image.id);
-            return (
-              <div 
-                key={image.id} 
-                className="gallery-item"
-                onClick={() => openModal(actualIndex)}
-              >
-                <LazyImage 
-                  src={image.url} 
-                  alt={image.title}
-                  className="gallery-image"
-                  placeholder={
-                    <div className="gallery-image-placeholder">
-                      <span>로딩 중...</span>
-                    </div>
-                  }
-                />
-              </div>
-            );
-          })}
+        {/* 큰 슬라이드 */}
+        <div className="gallery-slide fade-in">
+          <button 
+            className="slide-nav slide-prev"
+            onClick={() => navigateSlide(-1)}
+            aria-label="이전 이미지"
+          >
+            ‹
+          </button>
+          <div 
+            className="gallery-main-image"
+            onClick={() => openModal(currentSlideIndex)}
+          >
+            <LazyImage 
+              src={mainImage.url} 
+              alt={mainImage.title}
+              className="gallery-slide-image"
+              placeholder={
+                <div className="gallery-image-placeholder">
+                  <span>로딩 중...</span>
+                </div>
+              }
+            />
+          </div>
+          <button 
+            className="slide-nav slide-next"
+            onClick={() => navigateSlide(1)}
+            aria-label="다음 이미지"
+          >
+            ›
+          </button>
+          <div className="slide-counter text-caption">
+            {currentSlideIndex + 1} / {images.length}
+          </div>
         </div>
 
-        {/* 더보기/접기 버튼 */}
-        {hasMoreImages && (
-          <div className="gallery-toggle-wrapper fade-in">
-            <button 
-              className="gallery-toggle-btn text-button"
-              onClick={() => setShowAll(!showAll)}
-              aria-label={showAll ? '접기' : '더보기'}
+        {/* 작은 그리드 (5개씩) */}
+        <div className="gallery-grid fade-in">
+          {gridImages.map((image, index) => (
+            <div 
+              key={image.id} 
+              className={`gallery-item ${index === currentSlideIndex ? 'active' : ''}`}
+              onClick={() => handleGridImageClick(index)}
             >
-              {showAll ? (
-                <>
-                  <PiArrowUp size={20} />
-                  <span>접기</span>
-                </>
-              ) : (
-                <>
-                  <span>더보기</span>
-                  <PiArrowDown size={20} />
-                </>
-              )}
-            </button>
-            <p className="gallery-count-text text-caption">
-              {showAll 
-                ? `전체 ${images.length}장` 
-                : `${INITIAL_DISPLAY_COUNT}장 / 전체 ${images.length}장`}
-            </p>
-          </div>
-        )}
+              <LazyImage 
+                src={image.url} 
+                alt={image.title}
+                className="gallery-image"
+                placeholder={
+                  <div className="gallery-image-placeholder">
+                    <span>로딩 중...</span>
+                  </div>
+                }
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* 전체화면 모달 */}

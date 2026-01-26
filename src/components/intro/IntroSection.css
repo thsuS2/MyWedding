@@ -69,6 +69,16 @@
   height: 100vh;
   z-index: 2;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.flower-frame.hidden {
+  opacity: 0;
+}
+
+.flower-frame.fade-in {
+  opacity: 1;
 }
 
 /* 배경 오버레이 - 텍스트 가독성 향상 */
@@ -95,13 +105,35 @@
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-md);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+
+.intro-text.show {
   opacity: 1;
-  transition: opacity 0.8s ease-in;
+  transform: translateY(0);
 }
 
 .intro-text.fade-out {
   opacity: 0;
+  transform: translateY(-20px);
   pointer-events: none;
+}
+
+.intro-text.fade-in-final {
+  opacity: 1;
+  transform: translateY(0);
+  animation: textFinalFadeIn 1s ease-in-out;
+}
+
+@keyframes textFinalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .intro-subtitle {

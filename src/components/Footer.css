@@ -5,24 +5,26 @@
   position: relative;
 }
 
-.footer-bouquet-decoration {
+.footer-image {
   display: flex;
   justify-content: center;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
 }
 
-.footer-bouquet {
-  max-width: 150px;
+.footer-middle-image {
+  max-width: 400px;
+  width: 100%;
   height: auto;
-  opacity: 0.6;
-  transform: rotate(-45deg);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  object-fit: cover;
 }
 
 .footer-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
 }
 
 .btn-kakao {
@@ -77,8 +79,8 @@
     font-size: 1.25rem;
   }
 
-  .footer-bouquet {
-    max-width: 120px;
+  .footer-middle-image {
+    max-width: 100%;
   }
 }
 

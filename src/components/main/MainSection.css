@@ -3,19 +3,21 @@
   padding: var(--spacing-xl) 0;
 }
 
-.main-image-wrapper {
+.main-date-time {
+  text-align: center;
   margin-bottom: var(--spacing-lg);
-  display: flex;
-  justify-content: center;
+  color: var(--text-dark);
 }
 
-.main-image {
-  width: 100%;
-  max-width: 400px;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  border-radius: 16px;
-  box-shadow: var(--shadow-md);
+.main-invitation {
+  text-align: center;
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md);
+}
+
+.invitation-text {
+  white-space: pre-line;
+  line-height: 1.8;
 }
 
 .main-couple-names {
@@ -23,145 +25,60 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-bottom: var(--spacing-md);
-  gap: 10px;
+  margin: var(--spacing-lg) 0;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
 }
 
-.groom-name,
-.bride-name {
-  display: inline-block;
+.couple-name-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.couple-parents {
+  margin-bottom: 0.25rem;
+}
+
+.couple-name {
+  margin: 0;
 }
 
 .couple-separator {
   color: var(--text-gray);
-  margin: 0 0.5rem;
+  font-size: 1.5rem;
+  margin: 0 var(--spacing-xs);
 }
 
-.main-venue {
+.main-contact-button {
   text-align: center;
-  margin-bottom: var(--spacing-md);
+  margin-top: var(--spacing-lg);
 }
 
-.main-divider {
-  text-align: center;
-  margin: var(--spacing-lg) 0;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.divider-leaf {
-  max-width: 150px;
-  height: auto;
-  opacity: 0.7;
-}
-
-.main-quote {
-  text-align: center;
-  margin: var(--spacing-lg) 0;
-  padding: var(--spacing-md);
-}
-
-.quote-text {
-  white-space: pre-line;
-}
-
-.main-invitation {
-  text-align: center;
-  margin: var(--spacing-lg) 0;
-  padding: var(--spacing-md);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-md);
-}
-
-.invitation-content {
-  flex: 1;
-  max-width: 400px;
-}
-
-.invitation-text {
-  white-space: pre-line;
-}
-
-.main-parents {
-  text-align: center;
-  margin: var(--spacing-lg) 0;
-  padding: var(--spacing-md);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-sm);
-  justify-content: center;
-}
-
-.parent-name {
-  display: grid;
-  grid-template-columns: 1.3fr 0.6fr 0.4fr;
-  white-space: pre-line;
-}
-
-.parent-position {
-  white-space: pre-line;
-}
-
-.parent-contact-links {
-  display: flex;
-  gap: var(--spacing-sm);
-  justify-content: center;
-  margin-top: var(--spacing-xs);
-}
-
-.contact-link {
-  color: var(--point-pink);
-  text-decoration: none;
-  border: 1px solid var(--point-pink);
-  border-radius: 50%;
-  transition: all 0.2s;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-}
-
-.contact-link:hover {
+.btn-contact {
   background-color: var(--point-pink);
   color: white;
-}
-
-.contact-link:active {
-  transform: scale(0.95);
-}
-
-.contact-parents-btn {
-  margin-top: var(--spacing-md);
-  padding: 12px 24px;
-  background-color: var(--point-pink);
+  padding: 1rem 2rem;
   border: none;
-  border-radius: 25px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
 }
 
-.contact-parents-btn:hover {
-  background-color: var(--point-pink-dark, #d47a8f);
+.btn-contact:hover {
+  background-color: var(--point-pink-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg);
 }
 
-.contact-parents-btn:active {
+.btn-contact:active {
   transform: translateY(0);
 }
 
-/* 혼주 연락 모달 스타일 */
-.parents-modal-overlay {
+/* 연락하기 모달 스타일 */
+.contact-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -176,7 +93,7 @@
   backdrop-filter: blur(4px);
 }
 
-.parents-modal-content {
+.contact-modal-content {
   background: white;
   border-radius: 20px;
   max-width: 400px;
@@ -199,7 +116,7 @@
   }
 }
 
-.parents-modal-close {
+.contact-modal-close {
   position: absolute;
   top: 15px;
   right: 15px;
@@ -218,51 +135,56 @@
   z-index: 10;
 }
 
-.parents-modal-close:hover {
+.contact-modal-close:hover {
   background: var(--bg-ivory);
   color: var(--text-dark);
 }
 
-.parents-modal-title {
+.contact-modal-title {
   text-align: center;
   padding: 20px 20px 15px;
-  background-color: var(--bg-ivory);
 }
 
-
-.parents-side-section {
-  padding: 20px 30px;
+.contact-couple-section {
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--bg-ivory);
 }
 
-.parents-side-section:last-child {
+.contact-parents-section {
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--bg-ivory);
+}
+
+.contact-parents-section:last-child {
   border-bottom: none;
 }
 
-.parents-side-title {
-  margin-bottom: 10px;
+.contact-section-title {
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-dark);
 }
 
-.parents-contact-item {
+.contact-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 0;
-  /* border-bottom: 1px solid rgba(0, 0, 0, 0.05); */
 }
 
-.parents-contact-item:last-child {
-  border-bottom: none;
+.contact-info {
+  flex: 1;
 }
 
-.parents-contact-name {
+.contact-name {
+  margin: 0;
 }
 
-.parents-contact-buttons {
+.contact-buttons {
   display: flex;
   gap: 8px;
 }
 
-.parents-contact-btn {
+.contact-btn {
   padding: 8px;
   background-color: white;
   color: var(--point-pink);
@@ -274,96 +196,67 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
 }
 
-.parents-contact-btn:hover {
+.contact-btn:hover {
   background-color: var(--point-pink);
   color: white;
 }
 
-.parents-contact-btn:active {
+.contact-btn:active {
   transform: scale(0.95);
-}
-
-.main-calendar {
-  margin: var(--spacing-lg) 0;
-}
-
-.main-dday {
-  margin: var(--spacing-lg) 0;
 }
 
 @media (max-width: 480px) {
   .main-couple-names {
-    font-size: 1.2rem;
+    flex-direction: column;
+    gap: var(--spacing-sm);
   }
 
-  .name-separator {
-    margin: 0 10px;
-  }
-
-  .quote-text {
-    font-size: 1rem;
+  .couple-separator {
+    display: none;
   }
 
   .invitation-text {
     font-size: 0.95rem;
   }
 
-  .divider-leaf {
-    max-width: 150px;
+  .btn-contact {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
   }
 
-  .main-invitation {
-    gap: var(--spacing-sm);
-  }
-
-  .parent-contact-links {
-    gap: 8px;
-  }
-
-  .contact-link {
-    width: 32px;
-    height: 32px;
-    padding: 6px;
-  }
-
-  .contact-parents-btn {
-    font-size: 0.95rem;
-    padding: 10px 20px;
-  }
-
-  .parents-modal-content {
+  .contact-modal-content {
     max-width: 90%;
     padding: 0;
   }
 
-  .parents-modal-title {
+  .contact-modal-title {
     font-size: 1.3rem;
     margin: 25px 15px 15px;
   }
 
-  .parents-side-section {
+  .contact-couple-section,
+  .contact-parents-section {
     padding: 15px;
   }
 
-  .parents-contact-item {
+  .contact-item {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
   }
 
-  .parents-contact-buttons {
+  .contact-buttons {
     width: 100%;
     justify-content: flex-end;
   }
 
-  .parents-contact-btn {
-    width: 32px;
-    height: 32px;
-    /* padding: 6px; */
+  .contact-btn {
+    width: 36px;
+    height: 36px;
   }
 }
 

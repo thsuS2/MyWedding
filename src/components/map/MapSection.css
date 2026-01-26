@@ -70,7 +70,33 @@
   max-width: 200px;
 }
 
-.address-info {
+.venue-location-info {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.venue-name {
+  margin-bottom: var(--spacing-xs);
+}
+
+.venue-address {
+  margin: 0;
+}
+
+.navigation-info {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-sm);
+  background: white;
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.navigation-text {
+  margin: 0;
+}
+
+.transportation-section {
   background: white;
   padding: var(--spacing-md);
   border-radius: 16px;
@@ -78,30 +104,13 @@
   margin-bottom: var(--spacing-lg);
 }
 
-.venue-header {
-  text-align: center;
-  margin-bottom: var(--spacing-md);
-  padding-bottom: var(--spacing-md);
-  border-bottom: 1px solid var(--bg-ivory);
-}
-
-.venue-name {
-  margin-bottom: var(--spacing-xs);
-}
-
-.venue-location {
-  margin: 0;
-}
-
-.transportation-info {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-md);
-}
-
 .transport-item {
   text-align: left;
+  margin-bottom: var(--spacing-md);
+}
+
+.transport-item:last-child {
+  margin-bottom: 0;
 }
 
 .transport-label {
@@ -115,14 +124,23 @@
   white-space: pre-line;
 }
 
-.venue-address-detail {
-  text-align: center;
-  padding-top: var(--spacing-md);
-  border-top: 1px solid var(--bg-ivory);
+.transport-divider {
+  height: 1px;
+  background: var(--bg-ivory);
+  margin: var(--spacing-md) 0;
 }
 
-.venue-address-detail p {
-  margin-bottom: 0.25rem;
+.map-middle-image {
+  text-align: center;
+  margin: var(--spacing-lg) 0;
+}
+
+.venue-image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  object-fit: cover;
 }
 
 .rsvp-button-section {

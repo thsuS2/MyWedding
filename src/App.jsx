@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navigation from './components/Navigation';
 import PetalAnimation from './components/PetalAnimation';
 import IntroSection from './components/intro/IntroSection';
 import MainSection from './components/main/MainSection';
+import DateSection from './components/date/DateSection';
 import MapSection from './components/map/MapSection';
 import GallerySection from './components/gallary/GallerySection';
 import MessageBoard from './components/message/MessageBoard';
@@ -11,11 +12,17 @@ import Footer from './components/Footer';
 import RSVPModal from './components/RSVPModal';
 import Toast from './components/Toast';
 import { ToastProvider, useToastContext } from './contexts/ToastContext';
+import { initScrollAnimation } from './utils/scrollAnimation';
 import './styles/globals.css';
 
 function AppContent() {
   const [showRSVPModal, setShowRSVPModal] = useState(false);
   const { toasts, removeToast } = useToastContext();
+
+  useEffect(() => {
+    // 스크롤 애니메이션 초기화
+    initScrollAnimation();
+  }, []);
 
   const handleCloseRSVP = () => {
     setShowRSVPModal(false);
@@ -31,6 +38,7 @@ function AppContent() {
       <Navigation />
       <IntroSection />
       <MainSection />
+      <DateSection />
       <MapSection onOpenRSVP={handleOpenRSVP} />
       <GallerySection />
       <MessageBoard />

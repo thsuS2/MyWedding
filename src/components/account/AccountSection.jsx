@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import './AccountSection.css';
-import { ACCOUNTS } from '../../constants/wedding';
+import { ACCOUNTS, COUPLE } from '../../constants/wedding';
 import { copyAccount } from '../../utils/clipboard';
 import { useToastContext } from '../../contexts/ToastContext';
 
 const AccountSection = () => {
   const { showError } = useToastContext();
   const [copiedAccount, setCopiedAccount] = useState('');
+  const [activeSide, setActiveSide] = useState('신랑측'); // '신랑측' 또는 '신부측'
 
   const handleCopyAccount = async (account) => {
     const success = await copyAccount(account);
@@ -18,6 +19,15 @@ const AccountSection = () => {
     }
   };
 
+  // 신랑측/신부측 계좌 필터링
+  const filteredAccounts = ACCOUNTS.filter(account => {
+    if (activeSide === '신랑측') {
+      return account.name.includes('신랑');
+    } else {
+      return account.name.includes('신부');
+    }
+  });
+
   return (
     <section id="account" className="account-section">
       <div className="container">
@@ -25,8 +35,24 @@ const AccountSection = () => {
           마음 전하실 곳
         </h2>
         
+        {/* 토글 버튼 */}
+        <div className="account-toggle fade-in">
+          <button
+            className={`toggle-btn ${activeSide === '신랑측' ? 'active' : ''}`}
+            onClick={() => setActiveSide('신랑측')}
+          >
+            신랑측
+          </button>
+          <button
+            className={`toggle-btn ${activeSide === '신부측' ? 'active' : ''}`}
+            onClick={() => setActiveSide('신부측')}
+          >
+            신부측
+          </button>
+        </div>
+        
         <div className="account-list fade-in">
-          {ACCOUNTS.map((account) => (
+          {filteredAccounts.map((account) => (
             <div key={account.name} className="account-item">
               <div className="account-info">
                 <p className="account-label text-heading-small">{account.name}</p>

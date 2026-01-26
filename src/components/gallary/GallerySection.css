@@ -32,9 +32,78 @@
   right: 30px;
 }
 
+/* 큰 슬라이드 */
+.gallery-slide {
+  position: relative;
+  margin-bottom: var(--spacing-lg);
+  width: 100%;
+  height: 400px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.gallery-main-image {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.gallery-slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--text-dark);
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-nav:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slide-prev {
+  left: 1rem;
+}
+
+.slide-next {
+  right: 1rem;
+}
+
+.slide-counter {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+/* 작은 그리드 (5개씩) */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 0.5rem;
   margin-bottom: var(--spacing-md);
 }
@@ -44,12 +113,18 @@
   cursor: pointer;
   overflow: hidden;
   border-radius: 8px;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
 
 .gallery-item:hover {
   transform: scale(1.05);
   z-index: 1;
+}
+
+.gallery-item.active {
+  border-color: var(--point-pink);
+  box-shadow: 0 0 0 2px var(--point-pink-light);
 }
 
 .gallery-image {
@@ -216,7 +291,26 @@
 
 /* 모바일 최적화 */
 @media (max-width: 480px) {
+  .gallery-slide {
+    height: 300px;
+  }
+
+  .slide-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
+  .slide-prev {
+    left: 0.5rem;
+  }
+
+  .slide-next {
+    right: 0.5rem;
+  }
+
   .gallery-grid {
+    grid-template-columns: repeat(5, 1fr);
     gap: 0.25rem;
   }
   

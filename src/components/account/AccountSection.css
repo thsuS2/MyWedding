@@ -8,6 +8,37 @@
   margin-bottom: var(--spacing-lg);
 }
 
+.account-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+.toggle-btn {
+  padding: 0.75rem 2rem;
+  background: white;
+  color: var(--text-gray);
+  border: 2px solid var(--bg-ivory);
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.toggle-btn:hover {
+  border-color: var(--point-pink);
+  color: var(--point-pink);
+}
+
+.toggle-btn.active {
+  background: var(--point-pink);
+  color: white;
+  border-color: var(--point-pink);
+}
+
 .account-list {
   display: flex;
   flex-direction: column;

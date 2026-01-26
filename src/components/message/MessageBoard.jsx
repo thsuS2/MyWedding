@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useMessages } from '../../hooks/useSupabase';
 import { useToastContext } from '../../contexts/ToastContext';
 import './MessageBoard.css';
@@ -7,6 +7,7 @@ import { PiWarningFill } from 'react-icons/pi';
 const MessageBoard = () => {
   const { messages, loading, error, addMessage } = useMessages();
   const { showError, showSuccess } = useToastContext();
+  const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     relationship: '친구',
@@ -16,6 +17,17 @@ const MessageBoard = () => {
   const [activeFilter, setActiveFilter] = useState('전체');
   
   const relationships = ['전체', '가족', '친구', '동료', '기타'];
+
+  useEffect(() => {
+    if (isFormModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isFormModalOpen]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,6 +47,7 @@ const MessageBoard = () => {
       });
       
       setFormData({ name: '', relationship: '친구', message: '' });
+      setIsFormModalOpen(false);
       showSuccess('축하 메시지가 등록되었습니다!');
     } catch (err) {
       console.error('메시지 등록 실패:', err);
@@ -62,49 +75,6 @@ const MessageBoard = () => {
             메시지를 불러오는 중 오류가 발생했습니다.
           </div>
         )}
-        
-        {/* 메시지 작성 폼 */}
-        <form onSubmit={handleSubmit} className="message-form fade-in">
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder="이름"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="form-input"
-            />
-          </div>
-          
-          <div className="form-group">
-            <select
-              value={formData.relationship}
-              onChange={(e) => setFormData({ ...formData, relationship: e.target.value })}
-              className="form-select"
-            >
-              {relationships.filter(r => r !== '전체').map(rel => (
-                <option key={rel} value={rel}>{rel}</option>
-              ))}
-            </select>
-          </div>
-          
-          <div className="form-group">
-            <textarea
-              placeholder="축하 메시지를 남겨주세요"
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="form-textarea"
-              rows="4"
-            />
-          </div>
-          
-          <button 
-            type="submit" 
-            className="btn-primary form-submit"
-            disabled={submitting}
-          >
-            {submitting ? '등록 중...' : '메시지 남기기'}
-          </button>
-        </form>
         
         {/* 필터 탭 */}
         <div className="message-filters fade-in">
@@ -151,7 +121,81 @@ const MessageBoard = () => {
             ))
           )}
         </div>
+
+        {/* 작성하기 버튼 */}
+        <div className="message-write-button fade-in">
+          <button 
+            className="btn-write-message text-button-large"
+            onClick={() => setIsFormModalOpen(true)}
+          >
+            메시지 작성하기
+          </button>
+        </div>
       </div>
+
+      {/* 메시지 작성 모달 */}
+      {isFormModalOpen && (
+        <div 
+          className="message-modal-overlay" 
+          onClick={() => setIsFormModalOpen(false)}
+        >
+          <div 
+            className="message-modal-content" 
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              className="message-modal-close" 
+              onClick={() => setIsFormModalOpen(false)}
+            >
+              ✕
+            </button>
+
+            <h2 className="message-modal-title text-heading-large">축하 메시지 작성</h2>
+            
+            <form onSubmit={handleSubmit} className="message-form">
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="이름"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="form-input"
+                />
+              </div>
+              
+              <div className="form-group">
+                <select
+                  value={formData.relationship}
+                  onChange={(e) => setFormData({ ...formData, relationship: e.target.value })}
+                  className="form-select"
+                >
+                  {relationships.filter(r => r !== '전체').map(rel => (
+                    <option key={rel} value={rel}>{rel}</option>
+                  ))}
+                </select>
+              </div>
+              
+              <div className="form-group">
+                <textarea
+                  placeholder="축하 메시지를 남겨주세요"
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="form-textarea"
+                  rows="4"
+                />
+              </div>
+              
+              <button 
+                type="submit" 
+                className="btn-primary form-submit"
+                disabled={submitting}
+              >
+                {submitting ? '등록 중...' : '메시지 남기기'}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

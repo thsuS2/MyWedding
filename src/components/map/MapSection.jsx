@@ -181,34 +181,39 @@ const MapSection = ({ onOpenRSVP }) => {
           </button>
         </div>
         
-        {/* 주소 정보 */}
-        <div className="address-info fade-in">
-          <div className="venue-header">
-            <h3 className="venue-name text-heading-medium">{VENUE.name}</h3>
-            <p className="venue-location text-body-gray">
-              {VENUE.address.split(' ').slice(0, 2).join(' ')}
-            </p>
+        {/* 위치 정보 */}
+        <div className="venue-location-info fade-in">
+          <h3 className="venue-name text-heading-medium">{VENUE.name}</h3>
+          <p className="venue-address text-body-gray">{VENUE.address}</p>
+        </div>
+
+        {/* 네비게이션 설명 */}
+        <div className="navigation-info fade-in">
+          <p className="navigation-text text-body-gray">
+            네이버지도, 카카오네비에서 "{VENUE.name}" 검색
+          </p>
+        </div>
+        
+        {/* 교통수단 정보 */}
+        <div className="transportation-section fade-in">
+          <div className="transport-item">
+            <p className="transport-label text-heading-small">지하철</p>
+            <p className="transport-detail text-body-gray">{VENUE.transportation.subway}</p>
           </div>
-          
-          <div className="transportation-info">
-            <div className="transport-item">
-              <p className="transport-label text-heading-small">지하철</p>
-              <p className="transport-detail text-body-gray">{VENUE.transportation.subway}</p>
-            </div>
-            <div className="transport-item">
-              <p className="transport-label text-heading-small">버스</p>
-              <p className="transport-detail text-body-gray">{VENUE.transportation.bus}</p>
-            </div>
-            <div className="transport-item">
-              <p className="transport-label text-heading-small">주차</p>
-              <p className="transport-detail text-body-gray">{VENUE.transportation.parking}</p>
-            </div>
+          <div className="transport-divider"></div>
+          <div className="transport-item">
+            <p className="transport-label text-heading-small">버스</p>
+            <p className="transport-detail text-body-gray">{VENUE.transportation.bus}</p>
           </div>
-          
-          <div className="venue-address-detail">
-            <p className="text-body-gray">{VENUE.address}</p>
-            <p className="text-body-gray">{VENUE.addressDetail}</p>
-          </div>
+        </div>
+
+        {/* 중간 사진 */}
+        <div className="map-middle-image fade-in">
+          <img 
+            src={mapImage} 
+            alt="웨딩홀 사진" 
+            className="venue-image"
+          />
         </div>
         
         {/* 참석의사 전달하기 버튼 */}
