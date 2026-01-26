@@ -39,7 +39,7 @@ const Toast = ({ message, type = 'info', duration = 3000, onClose }) => {
   return (
     <div className={`toast toast-${type} ${isVisible ? 'toast-visible' : 'toast-hidden'}`}>
       <div className="toast-icon">{icons[type]}</div>
-      <div className="toast-message">{message}</div>
+      <div className="toast-message text-body">{message}</div>
       <button 
         className="toast-close" 
         onClick={() => {

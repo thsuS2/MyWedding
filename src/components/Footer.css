@@ -30,8 +30,6 @@
   color: #000000;
   padding: 1rem 2rem;
   border-radius: 8px;
-  font-weight: 700;
-  font-size: 1.1rem;
   box-shadow: var(--shadow-md);
   transition: all 0.3s ease;
 }
@@ -46,16 +44,11 @@
 }
 
 .footer-text {
-  color: var(--text-gray);
-  line-height: 1.8;
-  font-size: 1rem;
   margin: 0;
 }
 
 .footer-signature {
   font-family: var(--font-title-en);
-  font-size: 1.5rem;
-  color: var(--text-dark);
   margin: var(--spacing-sm) 0;
 }
 
@@ -67,8 +60,6 @@
 }
 
 .footer-copyright p {
-  color: var(--text-light);
-  font-size: 0.85rem;
   margin: 0.25rem 0;
 }
 

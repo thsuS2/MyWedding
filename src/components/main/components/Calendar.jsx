@@ -39,13 +39,13 @@ const Calendar = () => {
   return (
     <div className="calendar">
       <div className="calendar-header">
-        <div className="calendar-month-year">
+        <div className="calendar-month-year text-heading-medium">
           {year}년 {monthNames[month]}
         </div>
       </div>
       <div className="calendar-weekdays">
         {dayNames.map((dayName) => (
-          <div key={dayName} className="calendar-weekday">
+          <div key={dayName} className="calendar-weekday text-caption">
             {dayName}
           </div>
         ))}
@@ -65,7 +65,7 @@ const Calendar = () => {
                       <PiHeartFill size={50} />
                     </span>
                   )}
-                  <span className="calendar-date">{date}</span>
+                  <span className="calendar-date text-body-medium">{date}</span>
                 </>
               )}
             </div>

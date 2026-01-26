@@ -24,9 +24,6 @@
   justify-content: center;
   text-align: center;
   margin-bottom: var(--spacing-md);
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--text-dark);
   gap: 10px;
 }
 
@@ -37,8 +34,6 @@
 
 .main-venue {
   text-align: center;
-  font-size: 1rem;
-  color: var(--text-gray);
   margin-bottom: var(--spacing-md);
 }
 
@@ -64,12 +59,7 @@
 }
 
 .quote-text {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: var(--text-dark);
-  font-style: italic;
   white-space: pre-line;
-  font-weight: 500;
 }
 
 .main-invitation {
@@ -89,9 +79,6 @@
 }
 
 .invitation-text {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: var(--text-gray);
   white-space: pre-line;
 }
 
@@ -110,14 +97,10 @@
 .parent-name {
   display: grid;
   grid-template-columns: 1.3fr 0.6fr 0.4fr;
-  font-size: 1.15rem;
-  color: var(--text-dark);
   white-space: pre-line;
 }
 
 .parent-position {
-  font-size: 1.05rem;
-  color: var(--text-gray);
   white-space: pre-line;
 }
 
@@ -155,11 +138,8 @@
   margin-top: var(--spacing-md);
   padding: 12px 24px;
   background-color: var(--point-pink);
-  color: white;
   border: none;
   border-radius: 25px;
-  font-size: 1rem;
-  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -240,10 +220,7 @@
 
 .parents-modal-title {
   text-align: center;
-  font-size: 1.5rem;
-  color: var(--text-dark);
   padding: 20px 20px 15px;
-  font-weight: 600;
   background-color: var(--bg-ivory);
 }
 
@@ -257,10 +234,7 @@
 }
 
 .parents-side-title {
-  font-size: 1.1rem;
-  color: var(--text-dark);
   margin-bottom: 10px;
-  font-weight: 600;
 }
 
 .parents-contact-item {
@@ -276,9 +250,6 @@
 }
 
 .parents-contact-name {
-  font-size: 1rem;
-  color: var(--text-dark);
-  font-weight: 500;
 }
 
 .parents-contact-buttons {

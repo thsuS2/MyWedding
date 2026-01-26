@@ -105,9 +105,6 @@
 }
 
 .intro-subtitle {
-  font-family: var(--font-title-kr);
-  font-size: 1.5rem;
-  color: var(--text-dark);
   margin-bottom: var(--spacing-sm);
   letter-spacing: 0.05em;
   position: relative;
@@ -115,8 +112,6 @@
 }
 
 .intro-title {
-  font-family: var(--font-title-kr);
-  font-size: 2.5rem;
   margin: var(--spacing-md) 0;
   margin-bottom: var(--spacing-lg);
   display: flex;
@@ -125,7 +120,6 @@
   gap: 1rem;
   flex-wrap: wrap;
   position: relative;
-  color: var(--text-dark);
   transition: color 0.8s ease-in, text-shadow 0.8s ease-in;
 }
 

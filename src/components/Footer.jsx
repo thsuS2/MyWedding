@@ -21,13 +21,13 @@ const Footer = () => {
           />
         </div>
         <div className="footer-content fade-in">
-          <button onClick={shareKakao} className="btn-kakao">
+          <button onClick={shareKakao} className="btn-kakao text-button-large">
             <PiDeviceMobileFill size={20} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
             카카오톡 공유하기
           </button>
           
           <div className="footer-message">
-            <p className="footer-text">
+            <p className="footer-text text-body-gray">
               참석이 어려우신 분들도<br/>
               축하의 마음을 전해주시면<br/>
               큰 기쁨이 되겠습니다 
@@ -35,14 +35,14 @@ const Footer = () => {
           </div>
           
           <div className="footer-signature">
-            <p>
+            <p className="text-heading-medium">
               지수 <PiHeartFill size={18} style={{ verticalAlign: 'middle', margin: '0 4px' }} /> 유신
             </p>
           </div>
           
           <div className="footer-copyright">
-            <p>© 2025 Jisoo Wedding Project</p>
-            <p>
+            <p className="text-caption">© 2025 Jisoo Wedding Project</p>
+            <p className="text-caption">
               개발 by <PiHeartFill size={16} style={{ verticalAlign: 'middle', margin: '0 4px' }} /> 지수
             </p>
           </div>

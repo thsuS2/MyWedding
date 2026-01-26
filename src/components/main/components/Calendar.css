@@ -9,9 +9,6 @@
 }
 
 .calendar-month-year {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--text-dark);
 }
 
 .calendar-weekdays {
@@ -23,9 +20,6 @@
 
 .calendar-weekday {
   text-align: center;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--text-gray);
   padding: 8px 0;
 }
 
@@ -55,9 +49,6 @@
 }
 
 .calendar-date {
-  font-size: 0.95rem;
-  color: var(--text-dark);
-  font-weight: 500;
 }
 
 .calendar-day.wedding-day {
@@ -67,8 +58,6 @@
 
 .calendar-day.wedding-day .calendar-date {
   color: white;
-  font-size: 1.1rem;
-  font-weight: 900;
   z-index: 1;
 }
 
@@ -110,9 +99,6 @@
 }
 
 .wedding-date-text {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-dark);
 }
 
 @media (max-width: 480px) {

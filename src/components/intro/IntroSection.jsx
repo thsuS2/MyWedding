@@ -33,10 +33,10 @@ const IntroSection = () => {
         
         {/* 텍스트 - 처음부터 표시 */}
         <div className={`intro-text ${showImage ? 'fade-out' : ''}`}>
-          <h1 className="intro-title">
+          <h1 className="intro-title text-display">
             <span className="name">{COUPLE.groom.fullName}, {COUPLE.bride.fullName}</span>
           </h1>
-          <p className="intro-subtitle">결혼 합니다</p>
+          <p className="intro-subtitle text-heading-large">결혼 합니다</p>
         </div>
       </div>
     </section>

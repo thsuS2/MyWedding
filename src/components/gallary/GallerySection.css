@@ -7,16 +7,11 @@
   position: relative;
   text-align: center;
   margin-bottom: var(--spacing-sm);
-  color: var(--text-dark);
-  font-size: 1.5rem;
-  font-weight: 700;
 }
 
 .gallery-subtitle {
   text-align: center;
-  color: var(--text-gray);
   margin-bottom: var(--spacing-lg);
-  font-size: 1rem;
 }
 
 .bouquet-decoration {
@@ -70,7 +65,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--point-pink) 0%, var(--point-green) 100%);
+  background: var(--point-pink);
   color: white;
   font-size: 0.9rem;
   opacity: 0.7;
@@ -94,12 +89,9 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, var(--point-pink) 0%, var(--point-green) 100%);
-  color: white;
+  background: var(--point-pink);
   border: none;
   border-radius: 24px;
-  font-size: 1rem;
-  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: var(--shadow-md);
@@ -115,8 +107,6 @@
 }
 
 .gallery-count-text {
-  color: var(--text-gray);
-  font-size: 0.875rem;
   text-align: center;
 }
 
@@ -185,8 +175,6 @@
 }
 
 .modal-counter {
-  color: white;
-  font-size: 1rem;
   margin-top: 1rem;
   text-align: center;
 }

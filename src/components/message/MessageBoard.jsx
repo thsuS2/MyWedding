@@ -51,14 +51,14 @@ const MessageBoard = () => {
   return (
     <section id="message" className="message-section">
       <div className="container">
-        <h2 className="message-title fade-in">
+        <h2 className="message-title text-heading-large fade-in">
           <PiEnvelopeFill size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
           축하 메시지
         </h2>
         
         {/* 에러 메시지 */}
         {error && (
-          <div className="error-message fade-in">
+          <div className="error-message text-error fade-in">
             <PiWarningFill size={20} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
             메시지를 불러오는 중 오류가 발생했습니다.
           </div>
@@ -124,11 +124,11 @@ const MessageBoard = () => {
         <div className="message-list fade-in">
           {loading ? (
             <div className="loading-messages">
-              <p>메시지를 불러오는 중...</p>
+              <p className="text-body-gray">메시지를 불러오는 중...</p>
             </div>
           ) : filteredMessages.length === 0 ? (
             <div className="no-messages">
-              <p>
+              <p className="text-caption">
                 {activeFilter === '전체' 
                   ? (
                     <>
@@ -144,10 +144,10 @@ const MessageBoard = () => {
             filteredMessages.map(msg => (
               <div key={msg.id} className="message-card">
                 <div className="message-header">
-                  <span className="message-name">{msg.name}</span>
-                  <span className="message-relationship">{msg.relationship}</span>
+                  <span className="message-name text-heading-small">{msg.name}</span>
+                  <span className="message-relationship text-caption">{msg.relationship}</span>
                 </div>
-                <p className="message-content">{msg.message}</p>
+                <p className="message-content text-body-gray">{msg.message}</p>
               </div>
             ))
           )}

@@ -46,7 +46,7 @@ const DDayCounter = () => {
 
   return (
     <div className="dday-counter">
-      <div className="dday-label">
+      <div className="dday-label text-heading-small">
         <span className="dday-label-text">
           D-Day
           <PiHeartFill size={20} color={'pink'} />
@@ -54,23 +54,23 @@ const DDayCounter = () => {
       </div>
       <div className="dday-time">
         <div className="dday-unit">
-          <span className="dday-number">{timeLeft.days}</span>
-          <span className="dday-label-small">일</span>
+          <span className="dday-number text-heading-large">{timeLeft.days}</span>
+          <span className="dday-label-small text-caption">일</span>
         </div>
-        <div className="dday-separator">:</div>
+        <div className="dday-separator text-heading-medium">:</div>
         <div className="dday-unit">
-          <span className="dday-number">{String(timeLeft.hours).padStart(2, '0')}</span>
-          <span className="dday-label-small">시</span>
+          <span className="dday-number text-heading-large">{String(timeLeft.hours).padStart(2, '0')}</span>
+          <span className="dday-label-small text-caption">시</span>
         </div>
-        <div className="dday-separator">:</div>
+        <div className="dday-separator text-heading-medium">:</div>
         <div className="dday-unit">
-          <span className="dday-number">{String(timeLeft.minutes).padStart(2, '0')}</span>
-          <span className="dday-label-small">분</span>
+          <span className="dday-number text-heading-large">{String(timeLeft.minutes).padStart(2, '0')}</span>
+          <span className="dday-label-small text-caption">분</span>
         </div>
-        <div className="dday-separator">:</div>
+        <div className="dday-separator text-heading-medium">:</div>
         <div className="dday-unit">
-          <span className="dday-number">{String(timeLeft.seconds).padStart(2, '0')}</span>
-          <span className="dday-label-small">초</span>
+          <span className="dday-number text-heading-large">{String(timeLeft.seconds).padStart(2, '0')}</span>
+          <span className="dday-label-small text-caption">초</span>
         </div>
       </div>
     </div>

@@ -2,17 +2,21 @@
    Botanical Flow Minimal - Global Styles
    ============================================ */
 
+/* 타이포그래피 디자인 시스템 */
+@import './typography.css';
+
 /* 폰트 임포트 */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+KR:wght@400;700&display=swap');
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 @import url('https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css');
 /* CSS 변수 정의 */
 :root {
-  /* 색상 */
+  /* 색상 - pink/white 통일 */
   --bg-white: #FFFFFF;
   --bg-ivory: #F9F5F0;
-  --point-pink: pink;
-  --point-green: #B6C8A9;
+  --point-pink: #FFB6C1;
+  --point-pink-light: #FFE4E1;
+  --point-pink-dark: #FF91A4;
   --text-dark: #333333;
   --text-gray: #666666;
   --text-light: #999999;
@@ -129,8 +133,9 @@ button {
 }
 
 .btn-secondary {
-  background-color: var(--point-green);
-  color: white;
+  background-color: white;
+  color: var(--point-pink);
+  border: 2px solid var(--point-pink);
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   font-weight: 600;
@@ -138,7 +143,8 @@ button {
 }
 
 .btn-secondary:hover {
-  opacity: 0.9;
+  background-color: var(--point-pink);
+  color: white;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -176,7 +182,7 @@ img {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--point-green);
+  background: var(--point-pink-dark);
 }
 
 /* 페이드인 애니메이션 */

@@ -42,8 +42,6 @@
   right: 15px;
   background: none;
   border: none;
-  font-size: 24px;
-  color: var(--text-gray);
   cursor: pointer;
   width: 32px;
   height: 32px;
@@ -52,6 +50,8 @@
   justify-content: center;
   border-radius: 50%;
   transition: all 0.2s;
+  font-size: 24px;
+  color: var(--text-gray);
 }
 
 .rsvp-modal-close:hover {
@@ -104,9 +104,6 @@
 }
 
 .rsvp-couple-names {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--text-dark);
 }
 
 .rsvp-date-info {
@@ -114,10 +111,7 @@
 }
 
 .rsvp-date-info p {
-  font-size: 0.9rem;
-  color: var(--text-gray);
   margin-bottom: 5px;
-  line-height: 1.6;
 }
 
 .rsvp-date-info strong {
@@ -133,7 +127,7 @@
 .rsvp-check-button {
   width: 100%;
   padding: 15px;
-  background: linear-gradient(135deg, var(--point-pink) 0%, var(--point-green) 100%);
+  background: var(--point-pink);
   color: white;
   border: none;
   border-radius: 12px;
@@ -162,9 +156,6 @@
   justify-content: left;
   align-items: center;
   display: flex;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-dark);
 }
 
 .rsvp-form-group input[type="text"],
@@ -174,7 +165,6 @@
   padding: 12px;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
-  font-size: 1rem;
   transition: all 0.2s;
   box-sizing: border-box;
 }
@@ -198,9 +188,6 @@
 }
 
 .companion-unit {
-  font-size: 1rem;
-  color: var(--text-gray);
-  font-weight: 500;
   min-width: 30px;
 }
 
@@ -219,7 +206,6 @@
   border-radius: 8px;
   flex: 1;
   transition: all 0.2s;
-  font-weight: normal;
   margin-bottom: 0;
   position: relative;
 }
@@ -248,8 +234,6 @@
 
 .radio-text {
   flex: 1;
-  font-weight: 500;
-  color: var(--text-dark);
 }
 
 .rsvp-radio-label:has(input:checked) {
@@ -273,26 +257,26 @@
 }
 
 .rsvp-meal-label:has(input:checked) {
-  border-color: var(--point-green);
-  background: rgba(182, 200, 169, 0.1);
+  border-color: var(--point-pink);
+  background: rgba(255, 182, 193, 0.1);
 }
 
 .rsvp-meal-label:has(input:checked) .radio-meal-custom {
-  border-color: var(--point-green);
-  background: rgba(182, 200, 169, 0.2);
+  border-color: var(--point-pink);
+  background: rgba(255, 182, 193, 0.2);
 }
 
 .radio-meal-icon {
-  color: var(--point-green);
+  color: var(--point-pink);
 }
 
 .rsvp-meal-label:hover {
-  border-color: var(--point-green);
-  background: rgba(182, 200, 169, 0.05);
+  border-color: var(--point-pink);
+  background: rgba(255, 182, 193, 0.05);
 }
 
 .rsvp-meal-label:hover .radio-meal-custom {
-  border-color: var(--point-green);
+  border-color: var(--point-pink);
 }
 
 .rsvp-checkbox-label {
@@ -314,12 +298,9 @@
 .rsvp-submit-btn {
   width: 100%;
   padding: 15px;
-  background: linear-gradient(135deg, var(--point-pink) 0%, var(--point-green) 100%);
-  color: white;
+  background: var(--point-pink);
   border: none;
   border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
   margin-top: 20px;

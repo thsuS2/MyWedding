@@ -1,28 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import './MapSection.css';
-import { VENUE, ACCOUNTS } from '../../constants/wedding';
-import { copyAccount } from '../../utils/clipboard';
+import { VENUE } from '../../constants/wedding';
 import { useToastContext } from '../../contexts/ToastContext';
-import { PiMapPinFill, PiGiftFill, PiFlower } from 'react-icons/pi';
+import { PiMapPinFill } from 'react-icons/pi';
 import { SiKakao, SiNaver } from 'react-icons/si';
 import mapImage from '../../assets/images/map.png';
 
 const MapSection = ({ onOpenRSVP }) => {
   const { showError } = useToastContext();
-  const [copiedAccount, setCopiedAccount] = useState('');
   const [mapLoaded, setMapLoaded] = useState(false);
   const mapContainer = useRef(null);
   const mapInstance = useRef(null);
-
-  const handleCopyAccount = async (account) => {
-    const success = await copyAccount(account);
-    if (success) {
-      setCopiedAccount(account.name);
-      setTimeout(() => setCopiedAccount(''), 2000);
-    } else {
-      showError('계좌번호 복사에 실패했습니다. 다시 시도해주세요.');
-    }
-  };
 
   const openMap = (type) => {
     if (type === 'kakao') {
@@ -160,7 +148,7 @@ const MapSection = ({ onOpenRSVP }) => {
   return (
     <section id="map" className="map-section">
       <div className="container">
-        <h2 className="map-title fade-in">
+        <h2 className="map-title text-heading-large fade-in">
           <PiMapPinFill size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
           오시는 길
         </h2>
@@ -177,7 +165,7 @@ const MapSection = ({ onOpenRSVP }) => {
                 className="map-fallback-image"
               />
               <div className="map-placeholder-overlay">
-                <p className="map-placeholder-text">지도를 보려면 클릭하세요</p>
+                <p className="map-placeholder-text text-body text-white">지도를 보려면 클릭하세요</p>
               </div>
             </div>
           )}
@@ -197,50 +185,19 @@ const MapSection = ({ onOpenRSVP }) => {
         
         {/* 주소 정보 */}
         <div className="address-info fade-in">
-          <h3>{VENUE.name}</h3>
-          <p>{VENUE.address}</p>
-          <p>{VENUE.addressDetail}</p>
-          <p className="address-detail">
+          <h3 className="text-heading-small">{VENUE.name}</h3>
+          <p className="text-body-gray">{VENUE.address}</p>
+          <p className="text-body-gray">{VENUE.addressDetail}</p>
+          <p className="address-detail text-body-gray">
             <strong>지하철:</strong> {VENUE.transportation.subway}<br/>
             <strong>버스:</strong> {VENUE.transportation.bus}<br/>
             <strong>주차:</strong> {VENUE.transportation.parking}
           </p>
         </div>
         
-        {/* 계좌번호 */}
-        <div className="account-section fade-in">
-          <h3>
-            <PiGiftFill size={20} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
-            마음 전하실 곳
-          </h3>
-          <div className="account-list">
-            {ACCOUNTS.map((account) => (
-              <div key={account.name} className="account-item">
-                <div className="account-info">
-                  <p className="account-label">{account.name}</p>
-                  <p className="account-detail">
-                    {account.bank} {account.number}
-                  </p>
-                  <p className="account-holder">{account.holder}</p>
-                </div>
-                <button 
-                  onClick={() => handleCopyAccount(account)}
-                  className="btn-copy"
-                >
-                  {copiedAccount === account.name ? (
-                    <>
-                      복사됨 <PiFlower size={16} style={{ verticalAlign: 'middle', marginLeft: '4px' }} />
-                    </>
-                  ) : '복사하기'}
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* 참석의사 전달하기 버튼 */}
         <div className="rsvp-button-section fade-in">
-          <button onClick={onOpenRSVP} className="btn-rsvp">
+          <button onClick={onOpenRSVP} className="btn-rsvp text-button-large">
             <PiFlower size={20} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
             참석의사 전달하기
           </button>

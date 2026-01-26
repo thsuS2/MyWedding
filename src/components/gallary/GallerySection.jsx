@@ -56,7 +56,7 @@ const GallerySection = () => {
   return (
     <section id="gallery" className="gallery-section" onKeyDown={handleKeyDown}>
       <div className="container">
-        <div  className="gallery-title fade-in">
+        <div className="gallery-title text-heading-large fade-in">
           <img 
               src={bouquetImage} 
               alt="부케 장식" 
@@ -69,7 +69,7 @@ const GallerySection = () => {
             />
           Gallery
         </div>
-        <p className="gallery-subtitle fade-in">우리의 소중한 순간들</p>
+        <p className="gallery-subtitle text-body-gray fade-in">우리의 소중한 순간들</p>
         
         <div className="gallery-grid fade-in">
           {displayedImages.map((image, index) => {
@@ -100,7 +100,7 @@ const GallerySection = () => {
         {hasMoreImages && (
           <div className="gallery-toggle-wrapper fade-in">
             <button 
-              className="gallery-toggle-btn"
+              className="gallery-toggle-btn text-button"
               onClick={() => setShowAll(!showAll)}
               aria-label={showAll ? '접기' : '더보기'}
             >
@@ -116,7 +116,7 @@ const GallerySection = () => {
                 </>
               )}
             </button>
-            <p className="gallery-count-text">
+            <p className="gallery-count-text text-caption">
               {showAll 
                 ? `전체 ${images.length}장` 
                 : `${INITIAL_DISPLAY_COUNT}장 / 전체 ${images.length}장`}
@@ -158,7 +158,7 @@ const GallerySection = () => {
                 className="modal-image"
               />
             </div>
-            <div className="modal-counter">
+            <div className="modal-counter text-body text-white">
               {selectedImage + 1} / {images.length}
             </div>
           </div>

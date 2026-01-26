@@ -6,9 +6,6 @@
 }
 
 .dday-label {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--text-dark);
   margin-bottom: 15px;
   letter-spacing: 2px;
 }
@@ -29,24 +26,16 @@
 }
 
 .dday-number {
-  font-size: 2rem;
-  font-weight: 700;
   color: var(--point-pink);
-  line-height: 1.2;
 }
 
 .dday-label-small {
-  font-size: 0.85rem;
-  color: var(--text-gray);
   margin-top: 4px;
 }
 
 .dday-separator {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--point-green);
+  color: var(--point-pink);
   margin: 0 5px;
-  line-height: 1;
 }
 
 .dday-label-text {

@@ -42,14 +42,14 @@ const MainSection = () => {
       <div className="container">
         
         {/* 신랑이름 | 신부이름 */}
-        <div className="main-couple-names fade-in">
+        <div className="main-couple-names text-heading-medium fade-in">
           <span className="bride-name">{COUPLE.bride.fullName}</span>
             <PiHeartFill size={25} color={'pink'}/>
           <span className="groom-name">{COUPLE.groom.fullName}</span>
         </div>
 
         {/* 장소 */}
-        <div className="main-venue fade-in">
+        <div className="main-venue text-body-gray fade-in">
           {VENUE.name} {VENUE.hall}
           <br/>
           {WEDDING.getFormattedDateWithWeekday()}
@@ -66,13 +66,13 @@ const MainSection = () => {
 
         {/* 결혼 관련 문구 인용 */}
         <div className="main-quote fade-in">
-          <p className="quote-text">{weddingQuote}</p>
+          <p className="quote-text text-quote">{weddingQuote}</p>
         </div>
 
         {/* 초대 글 */}
         <div className="main-invitation fade-in">
           <div className="invitation-content">
-            <p className="invitation-text">
+            <p className="invitation-text text-body-gray">
               저희 두 사람 이제 믿음과 사랑으로<br/>
               한 길을 가려 합니다.<br/>
               <br/>
@@ -83,9 +83,9 @@ const MainSection = () => {
 
         <div className="main-parents">
           <div className="parent-name-wrapper">
-            <div className="parent-name">
+            <div className="parent-name text-heading-small">
               {COUPLE.groom.parents.father} ・ {COUPLE.groom.parents.mother}
-              <span className="parent-position">{COUPLE.groom.position}</span>
+              <span className="parent-position text-body-gray">{COUPLE.groom.position}</span>
               {COUPLE.groom.name}
             </div>
             <div className="parent-contact-links">
@@ -107,9 +107,9 @@ const MainSection = () => {
           </div>
 
           <div className="parent-name-wrapper">
-            <div className="parent-name">
+            <div className="parent-name text-heading-small">
               {COUPLE.bride.parents.father} ・ {COUPLE.bride.parents.mother}
-              <span className="parent-position">{COUPLE.bride.position}</span>
+              <span className="parent-position text-body-gray">{COUPLE.bride.position}</span>
               {COUPLE.bride.name}
             </div>
             <div className="parent-contact-links">
@@ -131,7 +131,7 @@ const MainSection = () => {
           </div>
 
           <button 
-            className="contact-parents-btn"
+            className="contact-parents-btn text-button"
             onClick={() => setIsParentsModalOpen(true)}
           >
             혼주에게 연락하기

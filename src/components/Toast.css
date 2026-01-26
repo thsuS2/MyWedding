@@ -39,9 +39,6 @@
 
 .toast-message {
   flex: 1;
-  font-size: 14px;
-  line-height: 1.5;
-  color: #333;
   word-break: keep-all;
 }
 
