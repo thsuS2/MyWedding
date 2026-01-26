@@ -171,7 +171,7 @@ const MapSection = ({ onOpenRSVP }) => {
         
         {/* 지도 버튼 */}
         <div className="map-buttons fade-in">
-          <button onClick={() => openMap('kakao')} className="btn-primary" style={{ backgroundColor: '#3A1D1D' }}>
+          <button onClick={() => openMap('kakao')} className="btn-primary">
             <SiKakao size={20} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
             카카오맵
           </button>

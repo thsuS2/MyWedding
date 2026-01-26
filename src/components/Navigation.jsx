@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Navigation.css';
-import { PiDotsThreeVertical, PiX } from 'react-icons/pi';
+import { PiHeartFill, PiX } from 'react-icons/pi';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,24 +29,16 @@ const Navigation = () => {
     <>
       {/* Floating 버튼 - 우하단 */}
       <button 
-        className="floating-nav-button"
+        className={`floating-nav-button ${isMenuOpen ? 'menu-open' : ''}`}
         onClick={toggleMenu}
         aria-label="메뉴 열기"
       >
         {isMenuOpen ? (
           <PiX size={24} />
         ) : (
-          <PiDotsThreeVertical size={24} />
+          <PiHeartFill size={24} />
         )}
       </button>
-
-      {/* 메뉴 오버레이 */}
-      {isMenuOpen && (
-        <div 
-          className="nav-overlay"
-          onClick={() => setIsMenuOpen(false)}
-        />
-      )}
 
       {/* 네비게이션 메뉴 */}
       <nav className={`navigation-menu ${isMenuOpen ? 'open' : ''}`}>

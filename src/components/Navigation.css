@@ -16,6 +16,26 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.floating-nav-button.menu-open {
+  animation: none;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  10%, 30% {
+    transform: scale(1.1);
+  }
+  20%, 40% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1.15);
+  }
 }
 
 .floating-nav-button:hover {
@@ -27,40 +47,6 @@
   transform: scale(0.95);
 }
 
-/* 메뉴 오버레이 */
-.nav-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  animation: overlayFadeIn 0.3s ease;
-}
-
-.nav-overlay.closing {
-  animation: overlayFadeOut 0.3s ease;
-}
-
-@keyframes overlayFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes overlayFadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
 /* 네비게이션 메뉴 */
 .navigation-menu {
   position: fixed;
@@ -69,15 +55,19 @@
   z-index: 1001;
   min-width: 200px;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(20px) scale(0.95);
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .navigation-menu.open {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   pointer-events: all;
+}
+
+.navigation-menu:not(.open) {
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .nav-menu-content {
@@ -101,7 +91,6 @@
   box-shadow: var(--shadow-sm);
   opacity: 0;
   transform: translateX(20px);
-  animation: menuItemSlideIn 0.3s ease forwards;
 }
 
 .navigation-menu.open .nav-menu-item {
@@ -109,7 +98,7 @@
 }
 
 .navigation-menu:not(.open) .nav-menu-item {
-  animation: menuItemSlideOut 0.2s ease forwards;
+  animation: menuItemSlideOut 0.25s ease forwards;
 }
 
 @keyframes menuItemSlideIn {
