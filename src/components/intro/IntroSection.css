@@ -1,13 +1,15 @@
 .intro-section {
   height: 100vh;
   width: 100%;
+  max-width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding-top: 80px;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .intro-content {

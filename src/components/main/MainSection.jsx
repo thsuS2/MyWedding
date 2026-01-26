@@ -28,7 +28,7 @@ const MainSection = () => {
       <div className="container">
         
         {/* 날짜/시간 */}
-        <div className="main-date-time text-heading-medium fade-in">
+        <div className="main-date-time text-body-gray fade-in">
           {WEDDING.getFormattedDate()} {WEDDING.WEDDING_DATE.weekday}<br/>
           {WEDDING.WEDDING_DATE.time}
         </div>
@@ -49,14 +49,14 @@ const MainSection = () => {
             <p className="couple-parents text-body-gray">
               {COUPLE.groom.parents.father} · {COUPLE.groom.parents.mother}의 {COUPLE.groom.position}
             </p>
-            <p className="couple-name text-heading-large">{COUPLE.groom.name}</p>
+            <p className="couple-name text-body-gray">{COUPLE.groom.name}</p>
           </div>
           <div className="couple-separator">·</div>
           <div className="couple-name-item">
             <p className="couple-parents text-body-gray">
               {COUPLE.bride.parents.father} · {COUPLE.bride.parents.mother}의 {COUPLE.bride.position}
             </p>
-            <p className="couple-name text-heading-large">{COUPLE.bride.name}</p>
+            <p className="couple-name text-body-gray">{COUPLE.bride.name}</p>
           </div>
         </div>
 
