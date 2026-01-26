@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { initKakao, shareKakao } from '../utils/kakaoShare';
 import './Footer.css';
-import { PiDeviceMobileFill, PiHeartFill } from 'react-icons/pi';
+import { PiDeviceMobileFill } from 'react-icons/pi';
 import FlowerImage from '../assets/images/rose-flower.png';
 
 const Footer = () => {
@@ -36,14 +36,14 @@ const Footer = () => {
           
           <div className="footer-signature">
             <p className="text-heading-medium">
-              지수 <PiHeartFill size={18} style={{ verticalAlign: 'middle', margin: '0 4px' }} /> 유신
+              지수 · 유신
             </p>
           </div>
           
           <div className="footer-copyright">
             <p className="text-caption">© 2025 Jisoo Wedding Project</p>
             <p className="text-caption">
-              개발 by <PiHeartFill size={16} style={{ verticalAlign: 'middle', margin: '0 4px' }} /> 지수
+              개발 by 지수
             </p>
           </div>
         </div>

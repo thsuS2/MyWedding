@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { WEDDING_DATE } from '../../../constants/wedding';
 import './DDayCounter.css';
-import { PiHeartFill } from 'react-icons/pi';
 
 const DDayCounter = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -49,7 +48,6 @@ const DDayCounter = () => {
       <div className="dday-label text-heading-small">
         <span className="dday-label-text">
           D-Day
-          <PiHeartFill size={20} color={'pink'} />
         </span>
       </div>
       <div className="dday-time">

@@ -32,6 +32,11 @@
   display: inline-block;
 }
 
+.couple-separator {
+  color: var(--text-gray);
+  margin: 0 0.5rem;
+}
+
 .main-venue {
   text-align: center;
   margin-bottom: var(--spacing-md);

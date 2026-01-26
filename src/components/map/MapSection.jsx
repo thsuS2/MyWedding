@@ -2,8 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import './MapSection.css';
 import { VENUE } from '../../constants/wedding';
 import { useToastContext } from '../../contexts/ToastContext';
-import { PiMapPinFill } from 'react-icons/pi';
-import { GiFlowers } from 'react-icons/gi';
 import { SiKakao, SiNaver } from 'react-icons/si';
 import mapImage from '../../assets/images/map.png';
 
@@ -150,7 +148,6 @@ const MapSection = ({ onOpenRSVP }) => {
     <section id="map" className="map-section">
       <div className="container">
         <h2 className="map-title text-heading-large fade-in">
-          <PiMapPinFill size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
           오시는 길
         </h2>
         
@@ -199,7 +196,6 @@ const MapSection = ({ onOpenRSVP }) => {
         {/* 참석의사 전달하기 버튼 */}
         <div className="rsvp-button-section fade-in">
           <button onClick={onOpenRSVP} className="btn-rsvp text-button-large">
-            <GiFlowers size={20} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
             참석의사 전달하기
           </button>
         </div>

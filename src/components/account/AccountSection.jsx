@@ -3,8 +3,6 @@ import './AccountSection.css';
 import { ACCOUNTS } from '../../constants/wedding';
 import { copyAccount } from '../../utils/clipboard';
 import { useToastContext } from '../../contexts/ToastContext';
-import { PiGiftFill } from 'react-icons/pi';
-import { GiFlowers } from 'react-icons/gi';
 
 const AccountSection = () => {
   const { showError } = useToastContext();
@@ -24,7 +22,6 @@ const AccountSection = () => {
     <section id="account" className="account-section">
       <div className="container">
         <h2 className="account-title text-heading-large fade-in">
-          <PiGiftFill size={24} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
           마음 전하실 곳
         </h2>
         
@@ -42,11 +39,7 @@ const AccountSection = () => {
                 onClick={() => handleCopyAccount(account)}
                 className="btn-copy"
               >
-                {copiedAccount === account.name ? (
-                  <>
-                    복사됨 <GiFlowers size={16} style={{ verticalAlign: 'middle', marginLeft: '4px' }} />
-                  </>
-                ) : '복사하기'}
+                {copiedAccount === account.name ? '복사됨' : '복사하기'}
               </button>
             </div>
           ))}

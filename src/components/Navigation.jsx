@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Navigation.css';
-import { PiList, PiX } from 'react-icons/pi';
+import { PiDotsThreeVertical, PiX } from 'react-icons/pi';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,18 +17,26 @@ const Navigation = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const menuItems = [
+    { id: 'main', label: 'Main' },
+    { id: 'gallery', label: 'Gallery' },
+    { id: 'map', label: '오시는 길' },
+    { id: 'message', label: '축하말' },
+    { id: 'account', label: '마음 전하실 곳' },
+  ];
+
   return (
     <>
       {/* Floating 버튼 - 우하단 */}
       <button 
-        className={`floating-nav-button ${isMenuOpen ? 'active' : ''}`}
+        className="floating-nav-button"
         onClick={toggleMenu}
         aria-label="메뉴 열기"
       >
         {isMenuOpen ? (
           <PiX size={24} />
         ) : (
-          <PiList size={24} />
+          <PiDotsThreeVertical size={24} />
         )}
       </button>
 
@@ -43,36 +51,18 @@ const Navigation = () => {
       {/* 네비게이션 메뉴 */}
       <nav className={`navigation-menu ${isMenuOpen ? 'open' : ''}`}>
         <div className="nav-menu-content">
-          <button 
-            onClick={() => scrollToSection('main')} 
-            className="nav-menu-item"
-          >
-            Main
-          </button>
-          <button 
-            onClick={() => scrollToSection('gallery')} 
-            className="nav-menu-item"
-          >
-            Gallery
-          </button>
-          <button 
-            onClick={() => scrollToSection('map')} 
-            className="nav-menu-item"
-          >
-            오시는 길
-          </button>
-          <button 
-            onClick={() => scrollToSection('message')} 
-            className="nav-menu-item"
-          >
-            축하말
-          </button>
-          <button 
-            onClick={() => scrollToSection('account')} 
-            className="nav-menu-item"
-          >
-            마음 전하실 곳
-          </button>
+          {menuItems.map((item, index) => (
+            <button 
+              key={item.id}
+              onClick={() => scrollToSection(item.id)} 
+              className="nav-menu-item"
+              style={{ 
+                animationDelay: `${index * 0.05}s` 
+              }}
+            >
+              {item.label}
+            </button>
+          ))}
         </div>
       </nav>
     </>

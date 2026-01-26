@@ -4,7 +4,7 @@ import * as WEDDING from '../../constants/wedding';
 const { COUPLE, VENUE } = WEDDING;
 import Calendar from './components/Calendar';
 import DDayCounter from './components/DDayCounter';
-import { PiPhoneFill, PiChatCircleFill , PiHeartFill} from 'react-icons/pi';
+import { PiPhoneFill, PiChatCircleFill } from 'react-icons/pi';
 import leafImage from '../../assets/images/leaf.png';
 import bouquetImage from '../../assets/images/flowers.png';
 
@@ -44,7 +44,7 @@ const MainSection = () => {
         {/* 신랑이름 | 신부이름 */}
         <div className="main-couple-names text-heading-medium fade-in">
           <span className="bride-name">{COUPLE.bride.fullName}</span>
-            <PiHeartFill size={25} color={'pink'}/>
+          <span className="couple-separator">·</span>
           <span className="groom-name">{COUPLE.groom.fullName}</span>
         </div>
 

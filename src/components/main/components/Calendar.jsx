@@ -1,6 +1,5 @@
 import { WEDDING_DATE } from '../../../constants/wedding';
 import './Calendar.css';
-import { PiHeartFill } from 'react-icons/pi';
 
 const Calendar = () => {
   const weddingDate = new Date(
@@ -61,9 +60,7 @@ const Calendar = () => {
               {date !== null && (
                 <>
                   {isWeddingDay && (
-                    <span className="wedding-marker">
-                      <PiHeartFill size={50} />
-                    </span>
+                    <span className="wedding-marker">💍</span>
                   )}
                   <span className="calendar-date text-body-medium">{date}</span>
                 </>
