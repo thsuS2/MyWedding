@@ -107,6 +107,7 @@ p {
   padding: 0 var(--spacing-md);
   width: 100%;
   box-sizing: border-box;
+  overflow: visible;
 }
 
 /* 섹션 공통 스타일 */
