@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { WEDDING_DATE } from '../../../../constants/wedding';
+import { WEDDING_DATE } from '../../../constants/wedding';
 import './DDayCounter.css';
 
 const DDayCounter = () => {

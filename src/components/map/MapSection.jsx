@@ -3,6 +3,7 @@ import './MapSection.css';
 import { VENUE } from '../../constants/wedding';
 import { useToastContext } from '../../contexts/ToastContext';
 import { SiKakao, SiNaver } from 'react-icons/si';
+import { IoBusSharp } from 'react-icons/io5';
 import mapImage from '../../assets/images/map.png';
 
 const MapSection = ({ onOpenRSVP }) => {
@@ -196,7 +197,30 @@ const MapSection = ({ onOpenRSVP }) => {
           <div className="transport-divider"></div>
           <div className="transport-item">
             <p className="transport-label text-heading-small">버스</p>
-            <p className="transport-detail text-body-gray">{VENUE.transportation.bus}</p>
+            <div className="transport-detail text-body-gray">
+              {VENUE.transportation.bus.split('|').map((part, index) => {
+                const trimmedPart = part.trim();
+                if (!trimmedPart) return null;
+                
+                return (
+                  <span key={index} style={{ display: 'block', marginBottom: index === 0 ? '0.5rem' : '0.25rem' }}>
+                    {index > 0 && (
+                      <>
+                        <IoBusSharp 
+                          size={16} 
+                          style={{ 
+                            verticalAlign: 'middle', 
+                            marginRight: '0.5rem',
+                            color: 'var(--point-pink)'
+                          }} 
+                        />
+                      </>
+                    )}
+                    {trimmedPart}
+                  </span>
+                );
+              })}
+            </div>
           </div>
         </div>
 
