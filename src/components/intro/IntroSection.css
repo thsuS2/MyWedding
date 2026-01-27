@@ -107,27 +107,21 @@
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-md);
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
-.intro-text.show {
+.intro-text.fade-in-text {
   opacity: 1;
   transform: translateY(0);
+  animation: textFadeIn 1s ease-out;
 }
 
-.intro-text.fade-out {
-  opacity: 0;
-  transform: translateY(-20px);
-  pointer-events: none;
-}
-
-.intro-text.fade-in-final {
+.intro-text.fade-in-with-image {
   opacity: 1;
   transform: translateY(0);
-  animation: textFinalFadeIn 1s ease-in-out;
+  animation: textWithImageFadeIn 1.5s ease-out;
 }
 
-@keyframes textFinalFadeIn {
+@keyframes textFadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -135,6 +129,21 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes textWithImageFadeIn {
+  0% {
+    opacity: 0.7;
+    transform: translateY(10px) scale(0.98);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(5px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 

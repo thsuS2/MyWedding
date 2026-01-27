@@ -8,6 +8,8 @@ import { GALLERY_IMAGES, getImageUrl } from '../../constants/gallery';
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [prevSlideIndex, setPrevSlideIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   
   // 갤러리 이미지 배열 (동적으로 생성)
   const images = GALLERY_IMAGES.map((filename, index) => ({
@@ -17,8 +19,9 @@ const GallerySection = () => {
     filename: filename,
   }));
 
-  // 큰 슬라이드용 이미지 (첫 번째 이미지)
+  // 큰 슬라이드용 이미지
   const mainImage = images[currentSlideIndex] || images[0];
+  const prevImage = images[prevSlideIndex] || images[0];
   
   // 작은 그리드용 이미지 (나머지 이미지들, 5개씩 표시)
   const gridImages = images;
@@ -42,14 +45,33 @@ const GallerySection = () => {
   };
 
   const navigateSlide = (direction) => {
+    if (isTransitioning) return; // 애니메이션 중에는 무시
+    
     let newIndex = currentSlideIndex + direction;
     if (newIndex < 0) newIndex = images.length - 1;
     if (newIndex >= images.length) newIndex = 0;
+    
+    setPrevSlideIndex(currentSlideIndex);
+    setIsTransitioning(true);
     setCurrentSlideIndex(newIndex);
+    
+    // 2초 후 애니메이션 완료
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 2000);
   };
 
   const handleGridImageClick = (index) => {
+    if (isTransitioning || index === currentSlideIndex) return; // 애니메이션 중이거나 같은 이미지면 무시
+    
+    setPrevSlideIndex(currentSlideIndex);
+    setIsTransitioning(true);
     setCurrentSlideIndex(index);
+    
+    // 2초 후 애니메이션 완료
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 2000);
   };
 
   const handleKeyDown = (e) => {
@@ -74,6 +96,7 @@ const GallerySection = () => {
             className="slide-nav slide-prev"
             onClick={() => navigateSlide(-1)}
             aria-label="이전 이미지"
+            disabled={isTransitioning}
           >
             ‹
           </button>
@@ -81,10 +104,19 @@ const GallerySection = () => {
             className="gallery-main-image"
             onClick={() => openModal(currentSlideIndex)}
           >
+            {/* 이전 이미지 (슬라이드 아웃) */}
+            {isTransitioning && prevSlideIndex !== currentSlideIndex && (
+              <img 
+                src={prevImage.url} 
+                alt={prevImage.title}
+                className="gallery-slide-image slide-out"
+              />
+            )}
+            {/* 현재 이미지 (슬라이드 인) */}
             <LazyImage 
               src={mainImage.url} 
               alt={mainImage.title}
-              className="gallery-slide-image"
+              className={`gallery-slide-image ${isTransitioning ? 'slide-in' : ''}`}
               placeholder={
                 <div className="gallery-image-placeholder">
                   <span>로딩 중...</span>
@@ -96,6 +128,7 @@ const GallerySection = () => {
             className="slide-nav slide-next"
             onClick={() => navigateSlide(1)}
             aria-label="다음 이미지"
+            disabled={isTransitioning}
           >
             ›
           </button>
