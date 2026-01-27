@@ -85,9 +85,9 @@ const GallerySection = () => {
   return (
     <section id="gallery" className="gallery-section" onKeyDown={handleKeyDown}>
       <div className="container">
-        <div className="gallery-title text-heading-large fade-in">
+        <h2 className="gallery-title text-heading-large fade-in">
           Gallery
-        </div>
+        </h2>
         <p className="gallery-subtitle text-body-gray fade-in">우리의 소중한 순간들</p>
         
         {/* 큰 슬라이드 */}

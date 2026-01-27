@@ -36,7 +36,7 @@ const IntroSection = () => {
           <h1 className="intro-title text-display">
             <span className="name">{COUPLE.groom.fullName}, {COUPLE.bride.fullName}</span>
           </h1>
-          <p className="intro-subtitle text-heading-large">결혼 합니다</p>
+          <p className="intro-subtitle text-heading-medium">결혼 합니다</p>
         </div>
       </div>
     </section>
