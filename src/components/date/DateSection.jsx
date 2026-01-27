@@ -1,6 +1,6 @@
 import './DateSection.css';
-import Calendar from '../main/components/Calendar';
-import DDayCounter from '../main/components/DDayCounter';
+import Calendar from './components/Calendar';
+import DDayCounter from './components/DDayCounter';
 
 const DateSection = () => {
   return (

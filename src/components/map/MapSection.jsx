@@ -151,6 +151,12 @@ const MapSection = ({ onOpenRSVP }) => {
           오시는 길
         </h2>
         
+        {/* 위치 정보 */}
+        <div className="venue-location-info fade-in">
+          <h3 className="venue-name text-heading-medium">{VENUE.name}</h3>
+          <p className="venue-address text-body-gray">{VENUE.address}</p>
+        </div>
+        
         {/* 카카오맵 또는 임시 지도 이미지 */}
         <div className="map-container fade-in" onClick={() => !mapLoaded && openMap('naver')}>
           {mapLoaded ? (
@@ -180,20 +186,7 @@ const MapSection = ({ onOpenRSVP }) => {
             네이버지도
           </button>
         </div>
-        
-        {/* 위치 정보 */}
-        <div className="venue-location-info fade-in">
-          <h3 className="venue-name text-heading-medium">{VENUE.name}</h3>
-          <p className="venue-address text-body-gray">{VENUE.address}</p>
-        </div>
 
-        {/* 네비게이션 설명 */}
-        <div className="navigation-info fade-in">
-          <p className="navigation-text text-body-gray">
-            네이버지도 또는 카카오네비에서 "{VENUE.name}" 검색
-          </p>
-        </div>
-        
         {/* 교통수단 정보 */}
         <div className="transportation-section fade-in">
           <div className="transport-item">

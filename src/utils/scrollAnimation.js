@@ -5,8 +5,8 @@
 
 const observerOptions = {
   root: null,
-  rootMargin: '0px',
-  threshold: 0.1, // 요소의 10%가 보이면 트리거
+  rootMargin: '-50px 0px', // 요소가 뷰포트에 50px 들어왔을 때 트리거 (더 일찍 시작)
+  threshold: 0.05, // 요소의 5%가 보이면 트리거 (더 일찍 시작)
 };
 
 export const initScrollAnimation = () => {

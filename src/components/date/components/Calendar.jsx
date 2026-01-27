@@ -1,4 +1,4 @@
-import { WEDDING_DATE } from '../../../constants/wedding';
+import { WEDDING_DATE } from '../../../../constants/wedding';
 import './Calendar.css';
 
 const Calendar = () => {

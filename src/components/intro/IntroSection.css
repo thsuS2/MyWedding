@@ -6,7 +6,6 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding-top: 80px;
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
@@ -25,7 +24,7 @@
   overflow: hidden;
 }
 
-/* 단색 배경 레이어 */
+/* 단색 배경 레이어 - 첫 번째 이미지 */
 .intro-solid-background {
   position: absolute;
   top: 0;
@@ -34,15 +33,17 @@
   bottom: 0;
   background-color: var(--bg-ivory);
   opacity: 1;
-  transition: opacity 0.8s ease-in;
+  transform: translateX(0);
+  transition: opacity 2s ease-in-out, transform 2s ease-in-out;
   z-index: 1;
 }
 
 .intro-solid-background.fade-out {
   opacity: 0;
+  transform: translateX(-100%);
 }
 
-/* 배경 이미지 레이어 */
+/* 배경 이미지 레이어 - 두 번째 이미지 */
 .intro-background {
   position: absolute;
   top: 0;
@@ -54,12 +55,14 @@
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
-  transition: opacity 0.8s ease-in;
+  transform: translateX(100%);
+  transition: opacity 2s ease-in-out, transform 2s ease-in-out;
   z-index: 0;
 }
 
 .intro-background.fade-in {
   opacity: 1;
+  transform: translateX(0);
 }
 
 .flower-frame {
@@ -83,22 +86,6 @@
   opacity: 1;
 }
 
-/* 배경 오버레이 - 텍스트 가독성 향상 */
-.intro-content::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.3) 99%,
-    rgba(0, 0, 0, 0.5) 100%
-  ); */
-  z-index: 1;
-}
 
 .intro-text {
   position: relative;

@@ -27,6 +27,7 @@
 
 .dday-number {
   color: var(--point-pink);
+  font-weight: 600;
 }
 
 .dday-label-small {
