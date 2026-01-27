@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import Navigation from './components/Navigation';
-import PetalAnimation from './components/PetalAnimation';
 import IntroSection from './components/intro/IntroSection';
 import MainSection from './components/main/MainSection';
 import DateSection from './components/date/DateSection';
@@ -34,7 +33,6 @@ function AppContent() {
 
   return (
     <div className="App">
-      <PetalAnimation />
       <Navigation />
       <IntroSection />
       <MainSection />
