@@ -9,6 +9,17 @@
   color: var(--text-dark);
 }
 
+.main-quote {
+  text-align: center;
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md);
+}
+
+.quote-text {
+  white-space: pre-line;
+  line-height: 1.8;
+}
+
 .main-invitation {
   text-align: center;
   margin: var(--spacing-lg) 0;

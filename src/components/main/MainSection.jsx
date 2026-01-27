@@ -23,6 +23,17 @@ const MainSection = () => {
     };
   }, [isContactModalOpen]);
 
+  const weddingQuote = `사랑은 소유가 아니라
+동행임을 아는 두 사람은
+
+잡은 손을 놓지 않되
+함부로 잡아끌지 않을 것이며
+
+서로의 두 눈을 고요히 바라보아
+말하지 않아도 같은 쪽으로 걸어가리라
+
+- 박미라, '아름다운 날에 부치다' 중에서`;
+
   return (
     <section id="main" className="main-section">
       <div className="container">
@@ -31,6 +42,11 @@ const MainSection = () => {
         <div className="main-date-time text-body-gray fade-in">
           {WEDDING.getFormattedDate()} {WEDDING.WEDDING_DATE.weekday}<br/>
           {WEDDING.WEDDING_DATE.time}
+        </div>
+
+        {/* 결혼 관련 문구 인용 */}
+        <div className="main-quote fade-in">
+          <p className="quote-text text-quote">{weddingQuote}</p>
         </div>
 
         {/* 초대 글 */}
