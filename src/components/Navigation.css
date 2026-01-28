@@ -1,8 +1,8 @@
-/* Floating 버튼 - 우하단 */
+/* Floating 버튼 - 우하단 (메시지 바로가기) */
 .floating-nav-button {
   position: fixed;
   bottom: 2rem;
-  right: 2rem;
+  right: clamp(1.5rem, 5vw, calc((100vw - var(--max-width)) / 2 + 1.5rem));
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -17,16 +17,6 @@
   justify-content: center;
   transition: all 0.3s ease;
   animation: heartbeat 1.5s ease-in-out infinite;
-}
-
-@media (min-width: 481px) {
-  .floating-nav-button {
-    right: clamp(2rem, calc((100vw - var(--max-width)) / 2 + 2rem), calc(100vw - 4rem));
-  }
-}
-
-.floating-nav-button.menu-open {
-  animation: none;
 }
 
 @keyframes heartbeat {
@@ -53,100 +43,6 @@
   transform: scale(0.95);
 }
 
-/* 네비게이션 메뉴 */
-.navigation-menu {
-  position: fixed;
-  bottom: 5rem;
-  right: 2rem;
-  z-index: 1001;
-  min-width: 200px;
-  max-width: calc(100vw - 4rem);
-  opacity: 0;
-  transform: translateY(20px) scale(0.95);
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-@media (min-width: 481px) {
-  .navigation-menu {
-    right: clamp(2rem, calc((100vw - var(--max-width)) / 2 + 2rem), calc(100vw - 4rem));
-  }
-}
-
-.navigation-menu.open {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: all;
-}
-
-.navigation-menu:not(.open) {
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.nav-menu-content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.nav-menu-item {
-  padding: 1rem 1.5rem;
-  background: white;
-  border: none;
-  border-radius: 12px;
-  text-align: left;
-  color: var(--text-dark);
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: var(--font-body);
-  box-shadow: var(--shadow-sm);
-  opacity: 0;
-  transform: translateX(20px);
-}
-
-.navigation-menu.open .nav-menu-item {
-  animation: menuItemSlideIn 0.3s ease forwards;
-}
-
-.navigation-menu:not(.open) .nav-menu-item {
-  animation: menuItemSlideOut 0.25s ease forwards;
-}
-
-@keyframes menuItemSlideIn {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes menuItemSlideOut {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-}
-
-.nav-menu-item:hover {
-  background-color: var(--point-pink-light);
-  color: var(--point-pink-dark);
-  transform: translateX(4px);
-  box-shadow: var(--shadow-md);
-}
-
-.nav-menu-item:active {
-  transform: translateX(2px);
-}
-
 /* 모바일 반응형 */
 @media (max-width: 480px) {
   .floating-nav-button {
@@ -154,17 +50,5 @@
     right: 1.5rem;
     width: 52px;
     height: 52px;
-  }
-
-  .navigation-menu {
-    bottom: 4.5rem;
-    right: 1.5rem;
-    min-width: 180px;
-    max-width: calc(100vw - 3rem);
-  }
-
-  .nav-menu-item {
-    padding: 0.875rem 1.25rem;
-    font-size: 0.95rem;
   }
 }

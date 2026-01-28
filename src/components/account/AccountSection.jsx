@@ -56,11 +56,10 @@ const AccountSection = () => {
             <div key={account.name} className="account-item">
               <div className="account-info">
                 <p className="account-label text-heading-small">{account.name}</p>
-                <div className="account-bank-info">
-                  <span className="account-bank text-body-medium">{account.bank}</span>
-                </div>
-                <p className="account-number text-body-medium">{account.number}</p>
-                <p className="account-holder text-caption">예금주: {account.holder}</p>
+                <p className="account-detail text-body-gray">
+                  {account.bank} {account.number}
+                </p>
+                <p className="account-holder text-caption">{account.holder}</p>
               </div>
               <button 
                 onClick={() => handleCopyAccount(account)}
