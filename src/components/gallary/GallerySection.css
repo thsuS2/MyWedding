@@ -1,6 +1,7 @@
 .gallery-section {
   background-color: var(--bg-ivory);
   padding: var(--spacing-xl) 0;
+  overflow: visible !important;
 }
 
 .gallery-title {

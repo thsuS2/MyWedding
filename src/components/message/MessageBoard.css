@@ -1,6 +1,7 @@
 .message-section {
   background-color: var(--bg-ivory);
   padding: var(--spacing-xl) 0;
+  overflow: visible !important;
 }
 
 .message-title {
