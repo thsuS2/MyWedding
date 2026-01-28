@@ -1,7 +1,7 @@
 .account-section {
   background-color: var(--bg-ivory);
   padding: var(--spacing-xl) 0;
-  overflow: visible !important;
+  overflow: hidden;
 }
 
 .account-title {
