@@ -36,16 +36,26 @@ const AccountSection = () => {
         </h2>
         
         {/* 토글 버튼 */}
-        <div className="account-toggle fade-in">
+        <div
+          className={`account-toggle fade-in ${activeSide === '신랑측' ? 'is-groom' : 'is-bride'}`}
+          role="tablist"
+          aria-label="계좌 구분"
+        >
           <button
             className={`toggle-btn ${activeSide === '신랑측' ? 'active' : ''}`}
             onClick={() => setActiveSide('신랑측')}
+            type="button"
+            role="tab"
+            aria-selected={activeSide === '신랑측'}
           >
             신랑측
           </button>
           <button
             className={`toggle-btn ${activeSide === '신부측' ? 'active' : ''}`}
             onClick={() => setActiveSide('신부측')}
+            type="button"
+            role="tab"
+            aria-selected={activeSide === '신부측'}
           >
             신부측
           </button>

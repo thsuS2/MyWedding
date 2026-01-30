@@ -10,34 +10,84 @@
 }
 
 .account-toggle {
+  position: relative;
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0;
   margin-bottom: var(--spacing-lg);
+  background: white;
+  border: 1px solid rgba(255, 182, 193, 0.25);
+  border-radius: 999px;
+  padding: 4px;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.account-toggle::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  background: rgba(255, 228, 225, 0.9); /* 은은한 배경 */
+  border-radius: 999px;
+  transition: transform 0.28s ease;
+}
+
+.account-toggle.is-bride::before {
+  transform: translateX(100%);
 }
 
 .toggle-btn {
-  padding: 0.75rem 2rem;
-  background: white;
+  position: relative;
+  flex: 1;
+  padding: 0.75rem 0;
+  background: transparent;
   color: var(--text-gray);
-  border: 2px solid var(--bg-ivory);
-  border-radius: 8px;
-  font-weight: 500;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color 0.2s ease;
   font-family: var(--font-body);
   font-size: 1rem;
+  z-index: 1; /* 슬라이더 위 */
 }
 
 .toggle-btn:hover {
-  border-color: var(--point-pink);
-  color: var(--point-pink);
+  color: var(--point-pink-dark);
 }
 
 .toggle-btn.active {
+  color: var(--point-pink-dark);
+}
+
+.toggle-btn::after {
+  content: '';
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  bottom: 8px;
+  height: 2px;
+  border-radius: 2px;
   background: var(--point-pink);
-  color: white;
-  border-color: var(--point-pink);
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.toggle-btn.active::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toggle-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 182, 193, 0.25);
 }
 
 .account-list {
