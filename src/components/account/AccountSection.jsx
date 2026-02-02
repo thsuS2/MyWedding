@@ -35,50 +35,54 @@ const AccountSection = () => {
           마음 전하실 곳
         </h2>
         
-        {/* 토글 버튼 */}
-        <div
-          className={`account-toggle fade-in ${activeSide === '신랑측' ? 'is-groom' : 'is-bride'}`}
-          role="tablist"
-          aria-label="계좌 구분"
-        >
-          <button
-            className={`toggle-btn ${activeSide === '신랑측' ? 'active' : ''}`}
-            onClick={() => setActiveSide('신랑측')}
-            type="button"
-            role="tab"
-            aria-selected={activeSide === '신랑측'}
+        {/* 통합 카드 */}
+        <div className="account-card fade-in">
+          {/* 토글 버튼 */}
+          <div
+            className={`account-toggle ${activeSide === '신랑측' ? 'is-groom' : 'is-bride'}`}
+            role="tablist"
+            aria-label="계좌 구분"
           >
-            신랑측
-          </button>
-          <button
-            className={`toggle-btn ${activeSide === '신부측' ? 'active' : ''}`}
-            onClick={() => setActiveSide('신부측')}
-            type="button"
-            role="tab"
-            aria-selected={activeSide === '신부측'}
-          >
-            신부측
-          </button>
-        </div>
-        
-        <div className="account-list fade-in">
-          {filteredAccounts.map((account) => (
-            <div key={account.name} className="account-item">
-              <div className="account-info">
-                <p className="account-label text-heading-small">{account.name}</p>
-                <p className="account-detail text-body-gray">
-                  {account.bank} {account.number}
-                </p>
-                <p className="account-holder text-caption">{account.holder}</p>
+            <button
+              className={`toggle-btn ${activeSide === '신랑측' ? 'active' : ''}`}
+              onClick={() => setActiveSide('신랑측')}
+              type="button"
+              role="tab"
+              aria-selected={activeSide === '신랑측'}
+            >
+              신랑측
+            </button>
+            <button
+              className={`toggle-btn ${activeSide === '신부측' ? 'active' : ''}`}
+              onClick={() => setActiveSide('신부측')}
+              type="button"
+              role="tab"
+              aria-selected={activeSide === '신부측'}
+            >
+              신부측
+            </button>
+          </div>
+          
+          {/* 계좌 리스트 */}
+          <div className="account-list">
+            {filteredAccounts.map((account) => (
+              <div key={account.name} className="account-item">
+                <div className="account-info">
+                  <p className="account-label text-heading-small">{account.name}</p>
+                  <p className="account-detail text-body-gray">
+                    {account.bank} {account.number}
+                  </p>
+                  <p className="account-holder text-caption">{account.holder}</p>
+                </div>
+                <button 
+                  onClick={() => handleCopyAccount(account)}
+                  className={`btn-copy ${copiedAccount === account.name ? 'copied' : ''}`}
+                >
+                  {copiedAccount === account.name ? '복사됨' : '복사하기'}
+                </button>
               </div>
-              <button 
-                onClick={() => handleCopyAccount(account)}
-                className={`btn-copy ${copiedAccount === account.name ? 'copied' : ''}`}
-              >
-                {copiedAccount === account.name ? '복사됨' : '복사하기'}
-              </button>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

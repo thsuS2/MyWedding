@@ -9,13 +9,23 @@
   margin-bottom: var(--spacing-lg);
 }
 
+/* 통합 카드 */
+.account-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-lg);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .account-toggle {
   position: relative;
   display: flex;
   justify-content: center;
   gap: 0;
   margin-bottom: var(--spacing-lg);
-  background: white;
+  background: var(--bg-ivory);
   border: 1px solid rgba(255, 182, 193, 0.25);
   border-radius: 999px;
   padding: 4px;
@@ -66,25 +76,6 @@
   color: var(--point-pink-dark);
 }
 
-.toggle-btn::after {
-  content: '';
-  position: absolute;
-  left: 22%;
-  right: 22%;
-  bottom: 8px;
-  height: 2px;
-  border-radius: 2px;
-  background: var(--point-pink);
-  opacity: 0;
-  transform: translateY(2px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.toggle-btn.active::after {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .toggle-btn:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(255, 182, 193, 0.25);
@@ -93,7 +84,7 @@
 .account-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--spacing-md);
 }
 
 .account-item {
