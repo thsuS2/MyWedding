@@ -43,26 +43,55 @@
   transform: translateX(-100%);
 }
 
-/* 배경 이미지 레이어 - 두 번째 이미지 */
-.intro-background {
+/* 배경 동영상 레이어 */
+.intro-video-wrap {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/images/main.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0;
-  transform: translateX(100%);
-  transition: opacity 2s ease-in-out, transform 2s ease-in-out;
   z-index: 0;
 }
 
-.intro-background.fade-in {
+.intro-video-wrap.fade-in {
   opacity: 1;
   transform: translateX(0);
+}
+
+.intro-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* 상단 고정 음소거 버튼 */
+.intro-mute-btn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.intro-mute-btn:hover {
+  background: transparent;
+  transform: scale(1.05);
+}
+
+.intro-mute-btn:active {
+  transform: scale(0.98);
 }
 
 
@@ -74,6 +103,48 @@
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-md);
+  margin-top: auto;
+  padding-bottom: var(--spacing-xl);
+}
+
+/* 타이포 애니메이션 문구 - 줄 단위 순차 등장 */
+.intro-typo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.intro-typo-line {
+  font-family: var(--font-title-en);
+  font-size: clamp(1.2rem, 4vw, 2.5rem);
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  color: var(--text-white);
+  opacity: 0;
+  transform: translateY(20px);
+  white-space: nowrap;
+}
+
+.intro-text.fade-in-with-image .intro-typo-line-1 {
+  animation: introTypoReveal 1s ease-out 0.2s forwards;
+}
+
+.intro-text.fade-in-with-image .intro-typo-line-2 {
+  animation: introTypoReveal 1s ease-out 0.7s forwards;
+}
+
+@keyframes introTypoReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    letter-spacing: 0.35em;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.2em;
+  }
 }
 
 .intro-text.fade-in-text {
@@ -182,6 +253,11 @@
   .intro-content {
     min-height: 100vh;
     padding-bottom: var(--spacing-lg);
+  }
+  
+  .intro-typo-line {
+    white-space: normal;
+    text-align: center;
   }
   
   .intro-title {

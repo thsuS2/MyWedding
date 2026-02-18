@@ -68,11 +68,11 @@ const AccountSection = () => {
             {filteredAccounts.map((account) => (
               <div key={account.name} className="account-item">
                 <div className="account-info">
-                  <p className="account-label text-heading-small">{account.name}</p>
-                  <p className="account-detail text-body-gray">
+                  <div className="account-label text-heading-small">{account.name}</div>
+                  <div className="account-detail text-body-gray">
                     {account.bank} {account.number}
-                  </p>
-                  <p className="account-holder text-caption">{account.holder}</p>
+                  </div>
+                  <div className="account-holder text-caption">{account.holder}</div>
                 </div>
                 <button 
                   onClick={() => handleCopyAccount(account)}

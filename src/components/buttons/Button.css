@@ -1,0 +1,88 @@
+/* 통일된 그라데이션 버튼 스타일 */
+.btn {
+  background: linear-gradient(135deg, var(--point-pink) 0%, var(--point-green) 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-body);
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(250, 218, 221, 0.4);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 버튼 크기 */
+.btn.small {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 8px;
+}
+
+.btn.medium {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 12px;
+}
+
+.btn.large {
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  border-radius: 12px;
+}
+
+/* 전체 너비 */
+.btn.full-width {
+  width: 100%;
+}
+
+/* 아이콘 스타일 */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+}
+
+/* active 상태 (필터 버튼 등에서 사용) */
+.btn.active {
+  opacity: 1;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 480px) {
+  .btn.small {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .btn.medium {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .btn.large {
+    padding: 15px 20px;
+    font-size: 1rem;
+  }
+}
+

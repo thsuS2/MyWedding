@@ -1,0 +1,189 @@
+.main-parents {
+    text-align: center;
+    margin: var(--spacing-lg) 0;
+    padding: var(--spacing-md);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    justify-content: center;
+}
+
+.parent-name-wrapper {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.parent-name {
+    display: grid;
+    grid-template-columns: 1.3fr 0.6fr 0.4fr;
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    white-space: pre-line;
+}
+
+.parent-position {
+    font-size: 1.05rem;
+    color: var(--text-gray);
+    white-space: pre-line;
+}
+
+.parent-contact-links {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    margin-top: var(--spacing-xs);
+}
+
+.contact-parents-btn {
+    margin-top: var(--spacing-md);
+}
+
+/* 혼주 연락 모달 스타일 */
+.parents-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.parents-modal-content {
+    background: white;
+    border-radius: 20px;
+    max-width: 400px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.parents-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-gray);
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.parents-modal-close:hover {
+    background: var(--bg-ivory);
+    color: var(--text-dark);
+}
+
+.parents-modal-title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    padding: 20px 20px 15px;
+    font-weight: 600;
+    background-color: var(--bg-ivory);
+}
+
+.parents-side-section {
+    padding: 20px 30px;
+}
+
+.parents-side-section:last-child {
+    border-bottom: none;
+}
+
+.parents-side-title {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.parents-contact-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+}
+
+.parents-contact-item:last-child {
+    border-bottom: none;
+}
+
+.parents-contact-name {
+    font-size: 1rem;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.parents-contact-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* 모바일 반응형 */
+@media (max-width: 480px) {
+    .parent-contact-links {
+        gap: 8px;
+    }
+
+    .contact-parents-btn {
+        font-size: 0.95rem;
+        padding: 10px 20px;
+    }
+
+    .parents-modal-content {
+        max-width: 90%;
+        padding: 0;
+    }
+
+    .parents-modal-title {
+        font-size: 1.3rem;
+        margin: 25px 15px 15px;
+    }
+
+    .parents-side-section {
+        padding: 15px;
+    }
+
+    .parents-contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .parents-contact-buttons {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}

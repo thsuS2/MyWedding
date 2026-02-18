@@ -1,0 +1,35 @@
+/* 전화/메시지 연락 버튼 스타일 */
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: white;
+  color: var(--point-pink);
+  border: 1px solid var(--point-pink);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.contact-btn:hover {
+  background-color: var(--point-pink);
+  color: white;
+  transform: scale(1.05);
+}
+
+.contact-btn:active {
+  transform: scale(0.95);
+}
+
+/* 모바일 반응형 */
+@media (max-width: 480px) {
+  .contact-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
+

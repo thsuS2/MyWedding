@@ -37,6 +37,12 @@ const MainSection = () => {
   return (
     <section id="main" className="main-section">
       <div className="container">
+
+        <div className="main-couple-names fade-in">
+          <div className="couple-name text-body-large">
+            {COUPLE.groom.fullName} · {COUPLE.bride.fullName}
+          </div>
+        </div>
         
         {/* 날짜/시간 */}
         <div className="main-date-time text-body-gray fade-in">
@@ -46,34 +52,30 @@ const MainSection = () => {
 
         {/* 결혼 관련 문구 인용 */}
         <div className="main-quote fade-in">
-          <p className="quote-text text-quote">{weddingQuote}</p>
+          <div className="quote-text text-quote">{weddingQuote}</div>
         </div>
 
         {/* 초대 글 */}
         <div className="main-invitation fade-in">
-          <p className="invitation-text text-body-gray">
+          <div className="invitation-title">INVITATION</div>
+          <div className="invitation-text text-body-gray">
             저희 두 사람 이제 믿음과 사랑으로<br/>
             한 길을 가려 합니다.<br/>
             <br/>
             그 시작의 한 걸음,<br/>함께 축복해 주시면 감사하겠습니다.
-          </p>
+          </div>
         </div>
 
         {/* 커플 이름 (부모님 포함) */}
         <div className="main-couple-names fade-in">
-          <div className="couple-name-item">
-            <p className="couple-parents text-body-gray">
-              {COUPLE.groom.parents.father} · {COUPLE.groom.parents.mother}의 {COUPLE.groom.position}
-            </p>
-            <p className="couple-name text-body-gray">{COUPLE.groom.name}</p>
-          </div>
-          <div className="couple-separator">·</div>
-          <div className="couple-name-item">
-            <p className="couple-parents text-body-gray">
-              {COUPLE.bride.parents.father} · {COUPLE.bride.parents.mother}의 {COUPLE.bride.position}
-            </p>
-            <p className="couple-name text-body-gray">{COUPLE.bride.name}</p>
-          </div>
+            <div className="couple-parents text-body-gray">
+              {COUPLE.groom.parents.father} · {COUPLE.groom.parents.mother} 의 {COUPLE.groom.position}
+            </div>
+            <div className="couple-name text-body-gray">{COUPLE.groom.name}</div>
+            <div className="couple-parents text-body-gray">
+              {COUPLE.bride.parents.father} · {COUPLE.bride.parents.mother} 의 {COUPLE.bride.position}
+            </div>
+            <div className="couple-name text-body-gray">{COUPLE.bride.name}</div>
         </div>
 
         {/* 연락하기 버튼 */}
@@ -110,7 +112,7 @@ const MainSection = () => {
             <div className="contact-couple-section">
               <div className="contact-item">
                 <div className="contact-info">
-                  <p className="contact-name text-heading-small">신랑 {COUPLE.groom.fullName}</p>
+                  <div className="contact-name text-heading-small">신랑 {COUPLE.groom.fullName}</div>
                 </div>
                 <div className="contact-buttons">
                   <a 
@@ -132,7 +134,7 @@ const MainSection = () => {
 
               <div className="contact-item">
                 <div className="contact-info">
-                  <p className="contact-name text-heading-small">신부 {COUPLE.bride.fullName}</p>
+                  <div className="contact-name text-heading-small">신부 {COUPLE.bride.fullName}</div>
                 </div>
                 <div className="contact-buttons">
                   <a 
@@ -159,7 +161,7 @@ const MainSection = () => {
               
               <div className="contact-item">
                 <div className="contact-info">
-                  <p className="contact-name text-body-medium">{COUPLE.groom.parents.mother}</p>
+                  <div className="contact-name text-body-medium">{COUPLE.groom.parents.mother}</div>
                 </div>
                 <div className="contact-buttons">
                   <a 
@@ -181,7 +183,7 @@ const MainSection = () => {
 
               <div className="contact-item">
                 <div className="contact-info">
-                  <p className="contact-name text-body-medium">{COUPLE.groom.parents.father}</p>
+                  <div className="contact-name text-body-medium">{COUPLE.groom.parents.father}</div>
                 </div>
                 <div className="contact-buttons">
                   <a 
@@ -208,7 +210,7 @@ const MainSection = () => {
               
               <div className="contact-item">
                 <div className="contact-info">
-                  <p className="contact-name text-body-medium">{COUPLE.bride.parents.mother}</p>
+                  <div className="contact-name text-body-medium">{COUPLE.bride.parents.mother}</div>
                 </div>
                 <div className="contact-buttons">
                   <a 
@@ -230,7 +232,7 @@ const MainSection = () => {
 
               <div className="contact-item">
                 <div className="contact-info">
-                  <p className="contact-name text-body-medium">{COUPLE.bride.parents.father}</p>
+                  <div className="contact-name text-body-medium">{COUPLE.bride.parents.father}</div>
                 </div>
                 <div className="contact-buttons">
                   <a 

@@ -155,7 +155,7 @@ const MapSection = ({ onOpenRSVP }) => {
         {/* 위치 정보 */}
         <div className="venue-location-info fade-in">
           <h3 className="venue-name text-heading-medium">{VENUE.name}</h3>
-          <p className="venue-address text-body-gray">{VENUE.address}</p>
+          <div className="venue-address text-body-gray">{VENUE.address}</div>
         </div>
         
         {/* 카카오맵 또는 임시 지도 이미지 */}
@@ -170,7 +170,7 @@ const MapSection = ({ onOpenRSVP }) => {
                 className="map-fallback-image"
               />
               <div className="map-placeholder-overlay">
-                <p className="map-placeholder-text text-body text-white">지도를 보려면 클릭하세요</p>
+                <div className="map-placeholder-text text-body text-white">지도를 보려면 클릭하세요</div>
               </div>
             </div>
           )}
@@ -191,12 +191,12 @@ const MapSection = ({ onOpenRSVP }) => {
         {/* 교통수단 정보 */}
         <div className="transportation-section fade-in">
           <div className="transport-item">
-            <p className="transport-label text-heading-small">지하철</p>
-            <p className="transport-detail text-body-gray">{VENUE.transportation.subway}</p>
+            <div className="transport-label text-heading-small">지하철</div>
+            <div className="transport-detail text-body-gray">{VENUE.transportation.subway}</div>
           </div>
           <div className="transport-divider"></div>
           <div className="transport-item">
-            <p className="transport-label text-heading-small">버스</p>
+            <div className="transport-label text-heading-small">버스</div>
             <div className="transport-detail text-body-gray">
               {VENUE.transportation.bus.split('|').map((part, index) => {
                 const trimmedPart = part.trim();

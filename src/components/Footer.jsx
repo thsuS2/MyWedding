@@ -25,11 +25,11 @@ const Footer = () => {
         <div className="footer-content fade-in">
           {/* 좋은 문구 */}
           <div className="footer-message">
-            <p className="footer-text text-body-gray">
+            <div className="footer-text text-body-gray">
               참석이 어려우신 분들도<br/>
               축하의 마음을 전해주시면<br/>
               큰 기쁨이 되겠습니다 
-            </p>
+            </div>
           </div>
           
           {/* 카카오톡 공유하기 */}

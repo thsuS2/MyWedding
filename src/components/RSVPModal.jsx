@@ -92,21 +92,21 @@ const RSVPModal = ({ isOpen, onClose }) => {
               <h2 className="text-heading-large">
                 참석여부 체크하기
               </h2>
-              <p className="rsvp-modal-intro text-body-gray">
+              <div className="rsvp-modal-intro text-body-gray">
                 귀한 시간 내어 참석해 주시는 분들께<br/>
                 정성스럽게 준비하겠습니다.
-              </p>
+              </div>
             </div>
 
             <div className="rsvp-modal-info">
               <div className="rsvp-couple-info">
-                <p className="rsvp-couple-names text-heading-small">
+                <div className="rsvp-couple-names text-heading-small">
                   {COUPLE.groom.fullName} · {COUPLE.bride.fullName}
-                </p>
+                </div>
               </div>
               <div className="rsvp-date-info">
-                <p className="text-caption"><strong className="text-body-medium">일정:</strong> {WEDDING_DATE.year}년 {WEDDING_DATE.month}월 {WEDDING_DATE.day}일 ({WEDDING_DATE.weekday.substring(0,1)}) {WEDDING_DATE.time}</p>
-                <p className="text-caption"><strong className="text-body-medium">위치:</strong> {VENUE.name} {VENUE.hall}</p>
+                <div className="text-caption"><strong className="text-body-medium">일정:</strong> {WEDDING_DATE.year}년 {WEDDING_DATE.month}월 {WEDDING_DATE.day}일 ({WEDDING_DATE.weekday.substring(0,1)}) {WEDDING_DATE.time}</div>
+                <div className="text-caption"><strong className="text-body-medium">위치:</strong> {VENUE.name} {VENUE.hall}</div>
               </div>
             </div>
 

@@ -35,24 +35,17 @@
 }
 
 .main-couple-names {
-  display: flex;
+  display: grid;
   align-items: center;
+  grid-template-columns: auto auto;
   justify-content: center;
   text-align: center;
   margin: var(--spacing-lg) 0;
   gap: var(--spacing-md);
-  flex-wrap: wrap;
-}
-
-.couple-name-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-xs);
+  justify-items: start;
 }
 
 .couple-parents {
-  margin-bottom: 0.25rem;
 }
 
 .couple-name {

@@ -88,7 +88,7 @@ const GallerySection = () => {
         <h2 className="gallery-title text-heading-large fade-in">
           Gallery
         </h2>
-        <p className="gallery-subtitle text-body-gray fade-in">우리의 소중한 순간들</p>
+        <div className="gallery-subtitle text-body-gray fade-in">우리의 소중한 순간들</div>
         
         {/* 큰 슬라이드 */}
         <div className="gallery-slide fade-in">

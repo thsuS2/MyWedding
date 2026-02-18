@@ -93,11 +93,11 @@ const MessageBoard = () => {
         <div className="message-list fade-in">
           {loading ? (
             <div className="loading-messages">
-              <p className="text-body-gray">메시지를 불러오는 중...</p>
+              <div className="text-body-gray">메시지를 불러오는 중...</div>
             </div>
           ) : filteredMessages.length === 0 ? (
             <div className="no-messages">
-              <p className="text-caption">
+              <div className="text-caption">
                 {activeFilter === '전체' 
                   ? (
                     <>
@@ -107,7 +107,7 @@ const MessageBoard = () => {
                   )
                   : `${activeFilter} 관계로 작성된 메시지가 없습니다.`
                 }
-              </p>
+              </div>
             </div>
           ) : (
             filteredMessages.map(msg => (
@@ -116,7 +116,7 @@ const MessageBoard = () => {
                   <span className="message-name text-heading-small">{msg.name}</span>
                   <span className="message-relationship text-caption">{msg.relationship}</span>
                 </div>
-                <p className="message-content text-body-gray">{msg.message}</p>
+                <div className="message-content text-body-gray">{msg.message}</div>
               </div>
             ))
           )}
