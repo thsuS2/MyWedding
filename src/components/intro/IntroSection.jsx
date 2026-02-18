@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './IntroSection.css';
 import PetalAnimation from '../PetalAnimation';
-import { PiSpeakerHigh, PiSpeakerSlash } from 'react-icons/pi';
 
 const IntroSection = () => {
   const [showImage, setShowImage] = useState(false);
@@ -80,22 +79,23 @@ const IntroSection = () => {
       {showImage && (
         <button
           type="button"
-          className="intro-mute-btn"
+          className={`intro-sound-btn ${isMuted ? 'muted' : ''}`}
           onClick={toggleMute}
           aria-label={isMuted ? '동영상 소리 켜기' : '동영상 음소거'}
         >
-          {isMuted ? (
-            <PiSpeakerSlash size={20} aria-hidden />
-          ) : (
-            <PiSpeakerHigh size={20} aria-hidden />
-          )}
+          <div className="sound-bars" aria-hidden>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </button>
       )}
 
       <div className="intro-content">
 
         {/* 배경 동영상 레이어 */}
-        <div className={`intro-video-wrap`}>
+        <div className="intro-video-wrap">
           <video
             ref={videoRef}
             className="intro-video"
@@ -105,13 +105,14 @@ const IntroSection = () => {
             playsInline
             aria-label="인트로 배경 영상"
           />
+          <div className="intro-video-gradient" aria-hidden />
         </div>
 
         <div className={`intro-text ${showImage ? 'fade-in-with-image' : 'fade-in-text'}`}>
           <div className="intro-typo">
             <div className="intro-typo-line intro-typo-line-1">On a beautiful day,</div>
             <div className="intro-typo-line intro-typo-line-2">We're getting married</div>
-            <div className="intro-typo-line intro-typo-line-3">May 18, 2026</div>
+            <div className="intro-typo-line intro-typo-line-3">May 30, 2026</div>
           </div>
         </div>
       </div>

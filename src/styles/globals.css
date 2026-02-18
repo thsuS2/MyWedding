@@ -30,6 +30,7 @@
   --text-dark: #333333;
   --text-gray: #666666;
   --text-light: #999999;
+  --text-lightest: #e0dada;
   
 /*
 font-family: 'MaruBuriExtraLight';
@@ -50,6 +51,7 @@ font-family: 'MaruBuriSemiBold';
   --spacing-md: 2rem;
   --spacing-lg: 3rem;
   --spacing-xl: 4rem;
+  --spacing-xxl: 5rem;
   
   /* 반응형 */
   --max-width: 480px;
@@ -129,46 +131,7 @@ section {
   box-sizing: border-box;
 }
 
-/* 버튼 공통 스타일 */
-button {
-  font-family: var(--font-body);
-  cursor: pointer;
-  border: none;
-  outline: none;
-  transition: all 0.3s ease;
-}
 
-.btn-primary {
-  background-color: var(--point-pink);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  box-shadow: var(--shadow-sm);
-}
-
-.btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-secondary {
-  background-color: white;
-  color: var(--point-pink);
-  border: 2px solid var(--point-pink);
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  box-shadow: var(--shadow-sm);
-}
-
-.btn-secondary:hover {
-  background-color: var(--point-pink);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
 
 /* 링크 */
 a {

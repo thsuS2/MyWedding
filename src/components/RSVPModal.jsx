@@ -6,6 +6,7 @@ import './RSVPModal.css';
 import { PiHeartFill, PiCheckCircleFill } from 'react-icons/pi';
 import bouquetImage from '../assets/images/flowers.png';
 import { useLockBodyScroll } from '../hooks/useLockBodyScroll';
+import Button from './common/Button';
 
 const RSVPModal = ({ isOpen, onClose }) => {
   const { showError, showSuccess } = useToastContext();
@@ -73,7 +74,13 @@ const RSVPModal = ({ isOpen, onClose }) => {
   return (
     <div className="rsvp-modal-overlay" onClick={onClose}>
       <div className="rsvp-modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="rsvp-modal-close" onClick={onClose}>✕</button>
+        <Button
+          variant="close"
+          onClick={onClose}
+          aria-label="닫기"
+        >
+          ✕
+        </Button>
         
         {/* 부케 장식 - 항상 표시 */}
         <div className="rsvp-header-bouquet">
@@ -111,12 +118,14 @@ const RSVPModal = ({ isOpen, onClose }) => {
 
             {/* 참석여부 체크하기 버튼 */}
             <div className="rsvp-check-button-wrapper">
-              <button 
+              <Button
+                variant="primary"
+                size="large"
                 onClick={() => setShowForm(true)}
-                className="rsvp-check-button text-button-large"
+                className="btn-full-width"
               >
                 참석여부 체크하기
-              </button>
+              </Button>
             </div>
           </>
         )}
@@ -223,13 +232,18 @@ const RSVPModal = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-            <button 
-              type="submit" 
-              className="rsvp-submit-btn text-button-large"
+          <div className="rsvp-form-group">
+            <Button
+              type="submit"
+              variant="primary"
+              size="large"
               disabled={submitting}
+              className="btn-full-width"
             >
               {submitting ? '전달 중...' : '참석의사 전달하기'}
-            </button>
+            </Button>
+          </div>
+
           </form>
         )}
       </div>

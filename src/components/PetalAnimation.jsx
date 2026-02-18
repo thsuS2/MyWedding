@@ -33,7 +33,7 @@ const PetalAnimation = () => {
         this.frequency = 0.01 + Math.random() * 0.02;
         this.rotation = Math.random() * Math.PI * 2;
         this.rotationSpeed = (Math.random() - 0.5) * 0.05;
-        this.size = 5 + Math.random() * 5;
+        this.size = 3 + Math.random() * 3;
         this.opacity = 0.3 + Math.random() * 0.4;
         this.offset = Math.random() * Math.PI * 2;
       }
@@ -83,8 +83,11 @@ const PetalAnimation = () => {
       }
     }
 
-    // 꽃잎 객체들 생성
+    // 꽃잎 객체들 생성 후 초기 y를 화면 높이에 분산 (한꺼번에 떨어지는 느낌 방지)
     const petals = Array.from({ length: 20 }, () => new Petal());
+    petals.forEach((petal) => {
+      petal.y = -30 + Math.random() * (canvas.height + 60);
+    });
 
     // 애니메이션 루프
     const animate = () => {

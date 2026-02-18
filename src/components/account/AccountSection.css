@@ -11,10 +11,7 @@
 
 /* 통합 카드 */
 .account-card {
-  background: white;
-  border-radius: 20px;
-  box-shadow: var(--shadow-md);
-  padding: var(--spacing-lg);
+  padding: var(--spacing-lg) 0;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -27,42 +24,14 @@
   flex-wrap: wrap;
 }
 
-.toggle-btn {
-  padding: 0.75rem 2rem;
-  background: white;
-  color: var(--text-gray);
-  border: 2px solid var(--bg-ivory);
-  border-radius: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: var(--font-body);
-  font-size: 1rem;
-  box-shadow: var(--shadow-sm);
+.account-toggle .btn-toggle {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  /* 상하 패딩은 기본값(.btn) 유지 */
   min-width: 120px;
 }
 
-.toggle-btn:hover {
-  background: var(--point-pink-light);
-  color: var(--point-pink-dark);
-  border-color: var(--point-pink);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.toggle-btn.active {
-  background: var(--point-pink);
-  color: white;
-  border-color: var(--point-pink);
-  box-shadow: var(--shadow-md);
-}
-
-.toggle-btn.active:hover {
-  background: var(--point-pink-dark);
-  border-color: var(--point-pink-dark);
-}
-
-.toggle-btn:focus-visible {
+.account-toggle .btn-toggle:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(255, 182, 193, 0.25);
 }
@@ -70,7 +39,7 @@
 .account-list {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
 }
 
 .account-item {
@@ -78,16 +47,13 @@
   justify-content: space-between;
   align-items: center;
   padding: var(--spacing-md);
-  background: white;
-  border-radius: 16px;
-  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   gap: 1rem;
   transition: all 0.3s ease;
 }
 
-.account-item:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+.account-item:last-child {
+  border-bottom: none;
 }
 
 .account-info {
@@ -109,26 +75,6 @@
   color: var(--text-gray);
 }
 
-.btn-copy {
-  background-color: var(--point-pink);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  box-shadow: var(--shadow-sm);
-}
-
-.btn-copy:hover {
-  background-color: var(--point-pink-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-copy.copied {
-  background-color: var(--text-gray);
-}
 
 @media (max-width: 480px) {
   .account-item {
@@ -136,8 +82,5 @@
     align-items: flex-start;
   }
   
-  .btn-copy {
-    width: 100%;
-  }
 }
 

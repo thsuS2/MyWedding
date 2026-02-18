@@ -5,6 +5,7 @@ import LazyImage from './components/LazyImage';
 import bouquetImage from '../../assets/images/flower-rose.png';
 import { GALLERY_IMAGES, getImageUrl } from '../../constants/gallery';
 import SectionTitle from '../common/SectionTitle';
+import Button from '../common/Button';
 
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -90,14 +91,15 @@ const GallerySection = () => {
         
         {/* 큰 슬라이드 */}
         <div className="gallery-slide fade-in">
-          <button 
-            className="slide-nav slide-prev"
+          <Button
+            variant="icon-variant"
             onClick={() => navigateSlide(-1)}
             aria-label="이전 이미지"
             disabled={isTransitioning}
+            className="slide-nav slide-prev"
           >
             ‹
-          </button>
+          </Button>
           <div 
             className="gallery-main-image"
             onClick={() => openModal(currentSlideIndex)}
@@ -122,14 +124,15 @@ const GallerySection = () => {
               }
             />
           </div>
-          <button 
-            className="slide-nav slide-next"
+          <Button
+            variant="icon-variant"
             onClick={() => navigateSlide(1)}
             aria-label="다음 이미지"
             disabled={isTransitioning}
+            className="slide-nav slide-next"
           >
             ›
-          </button>
+          </Button>
           <div className="slide-counter text-caption">
             {currentSlideIndex + 1} / {images.length}
           </div>
@@ -149,7 +152,7 @@ const GallerySection = () => {
                 className="gallery-image"
                 placeholder={
                   <div className="gallery-image-placeholder">
-                    <span>로딩 중...</span>
+                    <span>💍</span>
                   </div>
                 }
               />
@@ -161,24 +164,26 @@ const GallerySection = () => {
       {/* 전체화면 모달 */}
       {selectedImage !== null && (
         <div className="gallery-modal" onClick={closeModal}>
-          <button 
-            className="modal-close"
+          <Button
+            variant="close"
             onClick={closeModal}
             aria-label="닫기"
+            className="gallery-modal-close"
           >
             ✕
-          </button>
+          </Button>
           
-          <button 
-            className="modal-nav modal-prev"
+          <Button
+            variant="icon-variant"
             onClick={(e) => {
               e.stopPropagation();
               navigateImage(-1);
             }}
             aria-label="이전 이미지"
+            className="modal-nav modal-prev"
           >
             ‹
-          </button>
+          </Button>
           
           <div 
             className="modal-content"
@@ -196,16 +201,17 @@ const GallerySection = () => {
             </div>
           </div>
           
-          <button 
-            className="modal-nav modal-next"
+          <Button
+            variant="icon-variant"
             onClick={(e) => {
               e.stopPropagation();
               navigateImage(1);
             }}
             aria-label="다음 이미지"
+            className="modal-nav modal-next"
           >
             ›
-          </button>
+          </Button>
         </div>
       )}
     </section>

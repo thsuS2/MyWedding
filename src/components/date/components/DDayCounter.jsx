@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { WEDDING_DATE } from '../../../constants/wedding';
+import { WEDDING_DATE , COUPLE } from '../../../constants/wedding';
 import './DDayCounter.css';
 
 const DDayCounter = () => {
@@ -47,27 +47,27 @@ const DDayCounter = () => {
     <div className="dday-counter">
       <div className="dday-label text-heading-small">
         <span className="dday-label-text">
-          D-Day
+          {COUPLE.groom.name}, {COUPLE.bride.name}의 결혼식이 {timeLeft.days}일 남았습니다.
         </span>
       </div>
       <div className="dday-time">
         <div className="dday-unit">
-          <span className="dday-number text-heading-medium">{timeLeft.days}</span>
+          <span className="text-heading-medium dday-number ">{timeLeft.days}</span>
           <span className="dday-label-small text-caption">일</span>
         </div>
         <div className="dday-separator text-body-gray">:</div>
         <div className="dday-unit">
-          <span className="dday-number text-heading-medium">{String(timeLeft.hours).padStart(2, '0')}</span>
+          <span className="text-heading-medium dday-number ">{String(timeLeft.hours).padStart(2, '0')}</span>
           <span className="dday-label-small text-caption">시</span>
         </div>
         <div className="dday-separator text-body-gray">:</div>
         <div className="dday-unit">
-          <span className="dday-number text-heading-medium">{String(timeLeft.minutes).padStart(2, '0')}</span>
+          <span className="text-heading-medium dday-number ">{String(timeLeft.minutes).padStart(2, '0')}</span>
           <span className="dday-label-small text-caption">분</span>
         </div>
         <div className="dday-separator text-body-gray">:</div>
         <div className="dday-unit">
-          <span className="dday-number text-heading-medium">{String(timeLeft.seconds).padStart(2, '0')}</span>
+          <span className="text-heading-medium dday-number ">{String(timeLeft.seconds).padStart(2, '0')}</span>
           <span className="dday-label-small text-caption">초</span>
         </div>
       </div>

@@ -8,7 +8,8 @@ const DateSection = () => {
   return (
     <section id="date" className="date-section">
       <div className="container">
-        <SectionTitle en="WEDDING DATE" kr={WEDDING.getFormattedDateWithWeekday()} />
+        <SectionTitle en="WEDDING DATE" kr="결혼식 일정" />
+        
         <div className="date-calendar fade-in">
           <Calendar />
         </div>

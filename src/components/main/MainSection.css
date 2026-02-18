@@ -81,26 +81,6 @@
   margin-top: var(--spacing-lg);
 }
 
-.btn-contact {
-  background-color: var(--point-pink);
-  color: white;
-  padding: 1rem 2rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow-md);
-}
-
-.btn-contact:hover {
-  background-color: var(--point-pink-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-}
-
-.btn-contact:active {
-  transform: translateY(0);
-}
 
 /* 연락하기 하단 토글 패널 스타일 */
 .contact-toggle-panel {
@@ -209,8 +189,8 @@
 .contact-btn {
   padding: 8px;
   background-color: white;
-  color: var(--point-pink);
-  border: 1px solid var(--point-pink);
+  color: var(--text-lightest);
+  border: 1px solid var(--text-lightest);
   border-radius: 50%;
   text-decoration: none;
   transition: all 0.2s;
@@ -249,10 +229,6 @@
     font-size: 1.1rem;
   }
 
-  .btn-contact {
-    padding: 0.875rem 1.75rem;
-    font-size: 1rem;
-  }
 
   .contact-toggle-panel {
     max-height: 90vh;

@@ -25,19 +25,6 @@
   gap: var(--spacing-lg);
 }
 
-.btn-kakao {
-  background: var(--point-pink);
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  box-shadow: var(--shadow-md);
-  transition: all 0.3s ease;
-}
-
-.btn-kakao:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-}
 
 .footer-message {
   padding: var(--spacing-md) 0;
@@ -64,11 +51,6 @@
 }
 
 @media (max-width: 480px) {
-  .btn-kakao {
-    padding: 0.875rem 1.75rem;
-    font-size: 1rem;
-  }
-  
   .footer-text {
     font-size: 0.95rem;
   }

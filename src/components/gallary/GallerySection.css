@@ -96,31 +96,13 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.8);
-  color: var(--text-dark);
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
   z-index: 10;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
   opacity: 0.5;
-  justify-content: center;
+  transition: opacity 0.2s ease, background 0.2s ease;
 }
 
 .slide-nav:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 1);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.slide-nav:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  opacity: 1;
 }
 
 .slide-prev {
@@ -183,7 +165,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--point-pink);
+  background: var(--bg-white);
   color: white;
   font-size: 0.9rem;
   opacity: 0.7;
@@ -243,30 +225,6 @@
   animation: fadeIn 0.3s ease;
 }
 
-.modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: none;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
-  z-index: 10001;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-close:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: rotate(90deg);
-}
 
 .modal-content {
   max-width: 90vw;
@@ -301,25 +259,19 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: none;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  font-size: 3rem;
-  line-height: 1;
-  cursor: pointer;
   z-index: 10000;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 48px !important;
+  height: 48px !important;
+  font-size: 2rem !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, background 0.2s ease;
 }
 
-.modal-nav:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-50%) scale(1.1);
+.modal-nav:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.25) !important;
+  opacity: 1;
 }
 
 .modal-prev {
@@ -330,12 +282,33 @@
   right: 1rem;
 }
 
+/* 갤러리 모달 닫기 버튼 */
+.gallery-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: unset !important;
+  font-size: 1.5rem !important;
+  z-index: 10001;
+  opacity: 0.7;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.gallery-modal-close:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  opacity: 1;
+}
+
 
 
 /* 모바일 최적화 */
 @media (max-width: 480px) {
   .gallery-slide {
-    height: 300px;
+    height: 30rem;
   }
 
   .slide-nav {
@@ -362,9 +335,9 @@
   }
   
   .modal-nav {
-    width: 48px;
-    height: 48px;
-    font-size: 2rem;
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1.75rem !important;
   }
   
   .modal-prev {
@@ -375,10 +348,10 @@
     right: 0.5rem;
   }
   
-  .modal-close {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
+  .gallery-modal-close {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 1.25rem !important;
   }
   
   .modal-image {

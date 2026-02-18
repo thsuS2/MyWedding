@@ -4,6 +4,7 @@ import { ACCOUNTS, COUPLE } from '../../constants/wedding';
 import { copyAccount } from '../../utils/clipboard';
 import { useToastContext } from '../../contexts/ToastContext';
 import SectionTitle from '../common/SectionTitle';
+import Button from '../common/Button';
 
 const AccountSection = () => {
   const { showError } = useToastContext();
@@ -42,24 +43,26 @@ const AccountSection = () => {
             role="tablist"
             aria-label="계좌 구분"
           >
-            <button
-              className={`toggle-btn ${activeSide === '신랑측' ? 'active' : ''}`}
+            <Button
+              variant="toggle"
               onClick={() => setActiveSide('신랑측')}
+              active={activeSide === '신랑측'}
               type="button"
               role="tab"
               aria-selected={activeSide === '신랑측'}
             >
               신랑측
-            </button>
-            <button
-              className={`toggle-btn ${activeSide === '신부측' ? 'active' : ''}`}
+            </Button>
+            <Button
+              variant="toggle"
               onClick={() => setActiveSide('신부측')}
+              active={activeSide === '신부측'}
               type="button"
               role="tab"
               aria-selected={activeSide === '신부측'}
             >
               신부측
-            </button>
+            </Button>
           </div>
           
           {/* 계좌 리스트 */}
@@ -73,12 +76,14 @@ const AccountSection = () => {
                   </div>
                   <div className="account-holder text-caption">{account.holder}</div>
                 </div>
-                <button 
+                <Button
+                  variant="primary"
+                  size="small"
                   onClick={() => handleCopyAccount(account)}
-                  className={`btn-copy ${copiedAccount === account.name ? 'copied' : ''}`}
+                  className={copiedAccount === account.name ? 'btn-copied' : ''}
                 >
                   {copiedAccount === account.name ? '복사됨' : '복사하기'}
-                </button>
+                </Button>
               </div>
             ))}
           </div>

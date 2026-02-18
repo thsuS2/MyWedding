@@ -1,13 +1,12 @@
 .dday-counter {
   text-align: center;
-  padding: 20px;
-  border-radius: 16px;
-  margin: 20px 0;
+  color: var(--point-pink);
 }
 
 .dday-label {
   margin-bottom: 15px;
   letter-spacing: 2px;
+  color: var(--point-pink);
 }
 
 .dday-time {
@@ -44,11 +43,14 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
 @media (max-width: 480px) {
   .dday-counter {
-    padding: 15px;
   }
 
   .dday-number {

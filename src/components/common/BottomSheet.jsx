@@ -1,4 +1,5 @@
 import './BottomSheet.css';
+import Button from './Button';
 
 /**
  * 하단에서 올라오는 토글 패널 컴포넌트
@@ -13,13 +14,13 @@ const BottomSheet = ({ open, onClose, title, children }) => {
     <div className={`bottom-sheet-panel ${open ? 'open' : ''}`}>
       <div className="bottom-sheet-header">
         <div className="bottom-sheet-title text-heading-medium">{title}</div>
-        <button 
-          className="bottom-sheet-close" 
+        <Button
+          variant="close"
           onClick={onClose}
           aria-label="닫기"
         >
           ✕
-        </button>
+        </Button>
       </div>
       
       <div className="bottom-sheet-content">

@@ -3,6 +3,7 @@ import { initKakao, shareKakao } from '../utils/kakaoShare';
 import './Footer.css';
 import { PiDeviceMobileFill } from 'react-icons/pi';
 import FlowerImage from '../assets/images/rose-flower.png';
+import Button from './common/Button';
 
 const Footer = () => {
   useEffect(() => {
@@ -33,10 +34,14 @@ const Footer = () => {
           </div>
           
           {/* 카카오톡 공유하기 */}
-          <button onClick={shareKakao} className="btn-kakao text-button-large">
-            <PiDeviceMobileFill size={20} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <Button
+            variant="primary"
+            size="large"
+            onClick={shareKakao}
+            icon={<PiDeviceMobileFill size={20} />}
+          >
             카카오톡 공유하기
-          </button>
+          </Button>
         </div>
       </div>
     </footer>

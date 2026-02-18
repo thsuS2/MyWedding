@@ -17,7 +17,6 @@
   width: 100%;
   height: 300px;
   margin-bottom: var(--spacing-md);
-  border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--shadow-md);
   position: relative;
@@ -70,9 +69,10 @@
   gap: 1rem;
   justify-content: center;
   margin-bottom: var(--spacing-lg);
+  padding: 0 1em;
 }
 
-.map-buttons button {
+.map-buttons .btn {
   flex: 1;
   max-width: 200px;
 }
@@ -155,23 +155,6 @@
   text-align: center;
 }
 
-.btn-rsvp {
-  background: var(--point-pink);
-  color: white;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: var(--shadow-md);
-}
-
-.btn-rsvp:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(250, 218, 221, 0.4);
-}
 
 @media (max-width: 480px) {
   .account-item {
@@ -179,14 +162,5 @@
     align-items: flex-start;
   }
   
-  .btn-copy {
-    width: 100%;
-  }
-
-  .btn-rsvp {
-    width: 100%;
-    padding: 15px 20px;
-    font-size: 1rem;
-  }
 }
 

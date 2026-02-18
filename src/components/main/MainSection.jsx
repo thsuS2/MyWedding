@@ -7,6 +7,7 @@ import SectionTitle from '../common/SectionTitle';
 import { formatPhoneForLink } from '../../utils/formatPhone';
 import BottomSheet from '../common/BottomSheet';
 import { useBottomPanel } from '../../hooks/useBottomPanel';
+import Button from '../common/Button';
 
 const MainSection = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -16,7 +17,7 @@ const MainSection = () => {
     isContactModalOpen,
     () => setIsContactModalOpen(false),
     '.bottom-sheet-panel',
-    '.btn-contact'
+    '.btn'
   );
 
   const weddingQuote = `사랑은 소유가 아니라
@@ -79,12 +80,13 @@ const MainSection = () => {
 
         {/* 연락하기 버튼 */}
         <div className="main-contact-button fade-in">
-          <button 
-            className="btn-contact text-button-large"
+          <Button
+            variant="primary"
+            size="large"
             onClick={() => setIsContactModalOpen(true)}
           >
             연락하기
-          </button>
+          </Button>
         </div>
       </div>
 

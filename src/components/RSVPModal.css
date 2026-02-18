@@ -36,27 +36,10 @@
   }
 }
 
-.rsvp-modal-close {
+.rsvp-modal-content .btn-close {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: all 0.2s;
-  font-size: 24px;
-  color: var(--text-gray);
-}
-
-.rsvp-modal-close:hover {
-  background: var(--bg-ivory);
-  color: var(--text-dark);
 }
 
 .rsvp-header-bouquet {
@@ -124,24 +107,6 @@
   text-align: center;
 }
 
-.rsvp-check-button {
-  width: 100%;
-  padding: 15px;
-  background: var(--point-pink);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: 0 4px 12px rgba(250, 218, 221, 0.3);
-}
-
-.rsvp-check-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(250, 218, 221, 0.4);
-}
 
 .rsvp-form {
   padding: 0px 20px 20px;
@@ -201,8 +166,8 @@
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  padding: 8px 10px;
-  border: 2px solid #e0e0e0;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #e0e0e0;
   border-radius: 8px;
   flex: 1;
   transition: all 0.2s;
@@ -294,26 +259,6 @@
   height: 18px;
 }
 
-.rsvp-submit-btn {
-  width: 100%;
-  padding: 15px;
-  background: var(--point-pink);
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s;
-  margin-top: 20px;
-}
-
-.rsvp-submit-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(250, 218, 221, 0.4);
-}
-
-.rsvp-submit-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
 
 @media (max-width: 480px) {
   .rsvp-modal-content {

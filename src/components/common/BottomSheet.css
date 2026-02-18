@@ -38,26 +38,6 @@
   margin: 0;
 }
 
-.bottom-sheet-close {
-  background: none;
-  border: none;
-  font-size: 24px;
-  color: var(--text-gray);
-  cursor: pointer;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: all 0.2s;
-  padding: 0;
-}
-
-.bottom-sheet-close:hover {
-  background: var(--bg-ivory);
-  color: var(--text-dark);
-}
 
 .bottom-sheet-content {
   padding-bottom: env(safe-area-inset-bottom, 20px);

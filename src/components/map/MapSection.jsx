@@ -6,6 +6,7 @@ import { SiKakao, SiNaver } from 'react-icons/si';
 import { IoBusSharp, IoCarSharp, IoSubwaySharp } from 'react-icons/io5';
 import mapImage from '../../assets/images/map.png';
 import SectionTitle from '../common/SectionTitle';
+import Button from '../common/Button';
 
 const MapSection = ({ onOpenRSVP }) => {
   const { showError } = useToastContext();
@@ -208,14 +209,22 @@ const MapSection = ({ onOpenRSVP }) => {
         
         {/* 지도 버튼 */}
         <div className="map-buttons fade-in">
-          <button onClick={() => openMap('kakao')} className="btn-primary">
-            <SiKakao size={20} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          <Button
+            variant="primary"
+            size="default"
+            onClick={() => openMap('kakao')}
+            icon={<SiKakao size={20} />}
+          >
             카카오맵
-          </button>
-          <button onClick={() => openMap('naver')} className="btn-secondary">
-            <SiNaver size={15} style={{ verticalAlign: 'middle', marginRight: '8px' }} />
+          </Button>
+          <Button
+            variant="secondary"
+            size="default"
+            onClick={() => openMap('naver')}
+            icon={<SiNaver size={15} />}
+          >
             네이버지도
-          </button>
+          </Button>
         </div>
 
         {/* 교통수단 정보 */}
@@ -228,7 +237,7 @@ const MapSection = ({ onOpenRSVP }) => {
                 style={{ 
                   verticalAlign: 'middle', 
                   marginRight: '0.5rem',
-                  color: 'var(--point-pink)'
+                  color: 'var(--text-lightest)'
                 }} 
               />
               {VENUE.transportation.subway}
@@ -251,7 +260,7 @@ const MapSection = ({ onOpenRSVP }) => {
                           style={{ 
                             verticalAlign: 'middle', 
                             marginRight: '0.5rem',
-                            color: 'var(--point-pink)'
+                            color: 'var(--text-lightest)'
                           }} 
                         />
                       </>
@@ -271,7 +280,7 @@ const MapSection = ({ onOpenRSVP }) => {
                 style={{ 
                   verticalAlign: 'middle', 
                   marginRight: '0.5rem',
-                  color: 'var(--point-pink)'
+                  color: 'var(--text-lightest)'
                 }} 
               />
               {VENUE.transportation.car}
@@ -282,9 +291,13 @@ const MapSection = ({ onOpenRSVP }) => {
         
         {/* 참석의사 전달하기 버튼 */}
         <div className="rsvp-button-section">
-          <button onClick={onOpenRSVP} className="btn-rsvp text-button-large">
+          <Button
+            variant="primary"
+            size="large"
+            onClick={onOpenRSVP}
+          >
             참석의사 전달하기
-          </button>
+          </Button>
         </div>
       </div>
     </section>
