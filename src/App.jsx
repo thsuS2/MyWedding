@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import Navigation from './components/Navigation';
 import IntroSection from './components/intro/IntroSection';
 import MainSection from './components/main/MainSection';
 import DateSection from './components/date/DateSection';
@@ -33,7 +32,6 @@ function AppContent() {
 
   return (
     <div className="App">
-      {/* <Navigation /> */}
       <IntroSection />
       <MainSection />
       <DateSection />

@@ -22,7 +22,7 @@
 :root {
   /* 색상 - pink/white 통일 */
   --bg-white: #FFFFFF;
-  --bg-ivory: #F9F5F0;
+  --bg-ivory: #fffffe;
   --point-pink: #FFB6C1;
   --point-pink-light: #FFE4E1;
   --point-pink-dark: #FF91A4;
@@ -114,7 +114,6 @@ p {
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
   width: 100%;
   box-sizing: border-box;
   overflow: hidden;

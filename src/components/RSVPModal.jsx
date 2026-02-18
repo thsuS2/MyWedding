@@ -5,6 +5,7 @@ import { useToastContext } from '../contexts/ToastContext';
 import './RSVPModal.css';
 import { PiHeartFill, PiCheckCircleFill } from 'react-icons/pi';
 import bouquetImage from '../assets/images/flowers.png';
+import { useLockBodyScroll } from '../hooks/useLockBodyScroll';
 
 const RSVPModal = ({ isOpen, onClose }) => {
   const { showError, showSuccess } = useToastContext();
@@ -17,19 +18,17 @@ const RSVPModal = ({ isOpen, onClose }) => {
   });
   const [submitting, setSubmitting] = useState(false);
 
+  // body 스크롤 잠금
+  useLockBodyScroll(isOpen);
+
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
       // 모달이 열릴 때마다 폼 상태 초기화
       setShowForm(false);
     } else {
-      document.body.style.overflow = 'unset';
       // 모달이 닫힐 때 폼 상태 초기화
       setShowForm(false);
     }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
   }, [isOpen]);
 
   const handleSubmit = async (e) => {

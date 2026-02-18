@@ -1,28 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './MainSection.css';
 import * as WEDDING from '../../constants/wedding';
-const { COUPLE, VENUE } = WEDDING;
+const { COUPLE } = WEDDING;
 import { PiPhoneFill, PiChatCircleFill } from 'react-icons/pi';
 import SectionTitle from '../common/SectionTitle';
+import { formatPhoneForLink } from '../../utils/formatPhone';
+import BottomSheet from '../common/BottomSheet';
+import { useBottomPanel } from '../../hooks/useBottomPanel';
 
 const MainSection = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
-  // 전화번호를 tel: 및 sms: 링크 형식으로 변환하는 헬퍼 함수
-  const formatPhoneForLink = (phone) => {
-    return phone.replace(/-/g, '');
-  };
-
-  useEffect(() => {
-    if (isContactModalOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isContactModalOpen]);
+  // 하단 패널 관리 (스크롤 잠금 + 외부 클릭 닫기)
+  useBottomPanel(
+    isContactModalOpen,
+    () => setIsContactModalOpen(false),
+    '.bottom-sheet-panel',
+    '.btn-contact'
+  );
 
   const weddingQuote = `사랑은 소유가 아니라
 동행임을 아는 두 사람은
@@ -40,13 +35,13 @@ const MainSection = () => {
       <div className="container">
 
         <div className="fade-in">
-          <div className="couple-name text-body-large">
+          <div className="main-date-time  text-body-large">
             {COUPLE.groom.fullName} · {COUPLE.bride.fullName}
           </div>
         </div>
         
         {/* 날짜/시간 */}
-        <div className="main-date-time text-body-gray fade-in">
+        <div className="main-date-time text-body-gray fade-in ">
           {WEDDING.getFormattedDate()} {WEDDING.WEDDING_DATE.weekday}<br/>
           {WEDDING.WEDDING_DATE.time}
         </div>
@@ -93,172 +88,157 @@ const MainSection = () => {
         </div>
       </div>
 
-      {/* 연락하기 모달 */}
-      {isContactModalOpen && (
-        <div 
-          className="contact-modal-overlay" 
-          onClick={() => setIsContactModalOpen(false)}
-        >
-          <div 
-            className="contact-modal-content" 
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button 
-              className="contact-modal-close" 
-              onClick={() => setIsContactModalOpen(false)}
-            >
-              ✕
-            </button>
-
-            <h2 className="contact-modal-title text-heading-large">연락하기</h2>
-
-            {/* 신랑/신부 */}
-            <div className="contact-couple-section">
-              <div className="contact-item">
-                <div className="contact-info">
-                  <div className="contact-name text-heading-small">신랑 {COUPLE.groom.fullName}</div>
-                </div>
-                <div className="contact-buttons">
-                  <a 
-                    href={`tel:${formatPhoneForLink(COUPLE.groom.phone)}`}
-                    className="contact-btn"
-                    aria-label="전화"
-                  >
-                    <PiPhoneFill size={20} />
-                  </a>
-                  <a 
-                    href={`sms:${formatPhoneForLink(COUPLE.groom.phone)}`}
-                    className="contact-btn"
-                    aria-label="문자"
-                  >
-                    <PiChatCircleFill size={20} />
-                  </a>
-                </div>
+      {/* 연락하기 하단 토글 패널 */}
+      <BottomSheet
+        open={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+        title="연락하기"
+      >
+          {/* 신랑/신부 */}
+          <div className="contact-couple-section">
+            <div className="contact-item">
+              <div className="contact-info">
+                <div className="contact-name text-heading-small">신랑 {COUPLE.groom.fullName}</div>
               </div>
-
-              <div className="contact-item">
-                <div className="contact-info">
-                  <div className="contact-name text-heading-small">신부 {COUPLE.bride.fullName}</div>
-                </div>
-                <div className="contact-buttons">
-                  <a 
-                    href={`tel:${formatPhoneForLink(COUPLE.bride.phone)}`}
-                    className="contact-btn"
-                    aria-label="전화"
-                  >
-                    <PiPhoneFill size={20} />
-                  </a>
-                  <a 
-                    href={`sms:${formatPhoneForLink(COUPLE.bride.phone)}`}
-                    className="contact-btn"
-                    aria-label="문자"
-                  >
-                    <PiChatCircleFill size={20} />
-                  </a>
-                </div>
+              <div className="contact-buttons">
+                <a 
+                  href={`tel:${formatPhoneForLink(COUPLE.groom.phone)}`}
+                  className="contact-btn"
+                  aria-label="전화"
+                >
+                  <PiPhoneFill size={20} />
+                </a>
+                <a 
+                  href={`sms:${formatPhoneForLink(COUPLE.groom.phone)}`}
+                  className="contact-btn"
+                  aria-label="문자"
+                >
+                  <PiChatCircleFill size={20} />
+                </a>
               </div>
             </div>
 
-            {/* 신랑측 혼주 */}
-            <div className="contact-parents-section">
-              <h3 className="contact-section-title text-heading-small">신랑측 혼주</h3>
-              
-              <div className="contact-item">
-                <div className="contact-info">
-                  <div className="contact-name text-body-medium">{COUPLE.groom.parents.mother}</div>
-                </div>
-                <div className="contact-buttons">
-                  <a 
-                    href={`tel:${formatPhoneForLink(COUPLE.groom.parents.motherPhone)}`}
-                    className="contact-btn"
-                    aria-label="전화"
-                  >
-                    <PiPhoneFill size={20} />
-                  </a>
-                  <a 
-                    href={`sms:${formatPhoneForLink(COUPLE.groom.parents.motherPhone)}`}
-                    className="contact-btn"
-                    aria-label="문자"
-                  >
-                    <PiChatCircleFill size={20} />
-                  </a>
-                </div>
+            <div className="contact-item">
+              <div className="contact-info">
+                <div className="contact-name text-heading-small">신부 {COUPLE.bride.fullName}</div>
               </div>
-
-              <div className="contact-item">
-                <div className="contact-info">
-                  <div className="contact-name text-body-medium">{COUPLE.groom.parents.father}</div>
-                </div>
-                <div className="contact-buttons">
-                  <a 
-                    href={`tel:${formatPhoneForLink(COUPLE.groom.parents.fatherPhone)}`}
-                    className="contact-btn"
-                    aria-label="전화"
-                  >
-                    <PiPhoneFill size={20} />
-                  </a>
-                  <a 
-                    href={`sms:${formatPhoneForLink(COUPLE.groom.parents.fatherPhone)}`}
-                    className="contact-btn"
-                    aria-label="문자"
-                  >
-                    <PiChatCircleFill size={20} />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* 신부측 혼주 */}
-            <div className="contact-parents-section">
-              <h3 className="contact-section-title text-heading-small">신부측 혼주</h3>
-              
-              <div className="contact-item">
-                <div className="contact-info">
-                  <div className="contact-name text-body-medium">{COUPLE.bride.parents.mother}</div>
-                </div>
-                <div className="contact-buttons">
-                  <a 
-                    href={`tel:${formatPhoneForLink(COUPLE.bride.parents.motherPhone)}`}
-                    className="contact-btn"
-                    aria-label="전화"
-                  >
-                    <PiPhoneFill size={20} />
-                  </a>
-                  <a 
-                    href={`sms:${formatPhoneForLink(COUPLE.bride.parents.motherPhone)}`}
-                    className="contact-btn"
-                    aria-label="문자"
-                  >
-                    <PiChatCircleFill size={20} />
-                  </a>
-                </div>
-              </div>
-
-              <div className="contact-item">
-                <div className="contact-info">
-                  <div className="contact-name text-body-medium">{COUPLE.bride.parents.father}</div>
-                </div>
-                <div className="contact-buttons">
-                  <a 
-                    href={`tel:${formatPhoneForLink(COUPLE.bride.parents.fatherPhone)}`}
-                    className="contact-btn"
-                    aria-label="전화"
-                  >
-                    <PiPhoneFill size={20} />
-                  </a>
-                  <a 
-                    href={`sms:${formatPhoneForLink(COUPLE.bride.parents.fatherPhone)}`}
-                    className="contact-btn"
-                    aria-label="문자"
-                  >
-                    <PiChatCircleFill size={20} />
-                  </a>
-                </div>
+              <div className="contact-buttons">
+                <a 
+                  href={`tel:${formatPhoneForLink(COUPLE.bride.phone)}`}
+                  className="contact-btn"
+                  aria-label="전화"
+                >
+                  <PiPhoneFill size={20} />
+                </a>
+                <a 
+                  href={`sms:${formatPhoneForLink(COUPLE.bride.phone)}`}
+                  className="contact-btn"
+                  aria-label="문자"
+                >
+                  <PiChatCircleFill size={20} />
+                </a>
               </div>
             </div>
           </div>
-        </div>
-      )}
+
+          {/* 신랑측 혼주 */}
+          <div className="contact-parents-section">
+            <div className="contact-section-title text-heading-small">신랑측 혼주</div>
+            
+            <div className="contact-item">
+              <div className="contact-info">
+                <div className="contact-name text-body-medium">{COUPLE.groom.parents.mother}</div>
+              </div>
+              <div className="contact-buttons">
+                <a 
+                  href={`tel:${formatPhoneForLink(COUPLE.groom.parents.motherPhone)}`}
+                  className="contact-btn"
+                  aria-label="전화"
+                >
+                  <PiPhoneFill size={20} />
+                </a>
+                <a 
+                  href={`sms:${formatPhoneForLink(COUPLE.groom.parents.motherPhone)}`}
+                  className="contact-btn"
+                  aria-label="문자"
+                >
+                  <PiChatCircleFill size={20} />
+                </a>
+              </div>
+            </div>
+
+            <div className="contact-item">
+              <div className="contact-info">
+                <div className="contact-name text-body-medium">{COUPLE.groom.parents.father}</div>
+              </div>
+              <div className="contact-buttons">
+                <a 
+                  href={`tel:${formatPhoneForLink(COUPLE.groom.parents.fatherPhone)}`}
+                  className="contact-btn"
+                  aria-label="전화"
+                >
+                  <PiPhoneFill size={20} />
+                </a>
+                <a 
+                  href={`sms:${formatPhoneForLink(COUPLE.groom.parents.fatherPhone)}`}
+                  className="contact-btn"
+                  aria-label="문자"
+                >
+                  <PiChatCircleFill size={20} />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* 신부측 혼주 */}
+          <div className="contact-parents-section">
+            <div className="contact-section-title text-heading-small">신부측 혼주</div>
+            
+            <div className="contact-item">
+              <div className="contact-info">
+                <div className="contact-name text-body-medium">{COUPLE.bride.parents.mother}</div>
+              </div>
+              <div className="contact-buttons">
+                <a 
+                  href={`tel:${formatPhoneForLink(COUPLE.bride.parents.motherPhone)}`}
+                  className="contact-btn"
+                  aria-label="전화"
+                >
+                  <PiPhoneFill size={20} />
+                </a>
+                <a 
+                  href={`sms:${formatPhoneForLink(COUPLE.bride.parents.motherPhone)}`}
+                  className="contact-btn"
+                  aria-label="문자"
+                >
+                  <PiChatCircleFill size={20} />
+                </a>
+              </div>
+            </div>
+
+            <div className="contact-item">
+              <div className="contact-info">
+                <div className="contact-name text-body-medium">{COUPLE.bride.parents.father}</div>
+              </div>
+              <div className="contact-buttons">
+                <a 
+                  href={`tel:${formatPhoneForLink(COUPLE.bride.parents.fatherPhone)}`}
+                  className="contact-btn"
+                  aria-label="전화"
+                >
+                  <PiPhoneFill size={20} />
+                </a>
+                <a 
+                  href={`sms:${formatPhoneForLink(COUPLE.bride.parents.fatherPhone)}`}
+                  className="contact-btn"
+                  aria-label="문자"
+                >
+                  <PiChatCircleFill size={20} />
+                </a>
+              </div>
+            </div>
+          </div>
+      </BottomSheet>
     </section>
   );
 };

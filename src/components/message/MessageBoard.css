@@ -35,49 +35,45 @@
   transform: translateY(0);
 }
 
-/* 메시지 작성 모달 */
-.message-modal-overlay {
+/* 메시지 작성 하단 토글 패널 스타일 */
+.message-toggle-panel {
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 20px;
-  backdrop-filter: blur(4px);
-}
-
-.message-modal-content {
   background: white;
-  border-radius: 20px;
-  max-width: 480px;
-  width: 100%;
-  max-height: 90vh;
+  border-radius: 24px 24px 0 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  max-height: 85vh;
   overflow-y: auto;
-  position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  animation: modalFadeIn 0.3s ease-out;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-out;
 }
 
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9) translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+.message-toggle-panel.open {
+  transform: translateY(0);
 }
 
-.message-modal-close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
+.message-toggle-header {
+  position: sticky;
+  top: 0;
+  background: white;
+  border-bottom: 1px solid var(--bg-ivory);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  border-radius: 24px 24px 0 0;
+}
+
+.message-toggle-title {
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.message-toggle-close {
   background: none;
   border: none;
   font-size: 24px;
@@ -90,17 +86,17 @@
   justify-content: center;
   border-radius: 50%;
   transition: all 0.2s;
-  z-index: 10;
+  padding: 0;
 }
 
-.message-modal-close:hover {
+.message-toggle-close:hover {
   background: var(--bg-ivory);
   color: var(--text-dark);
 }
 
-.message-modal-title {
-  text-align: center;
-  padding: 20px 20px 15px;
+.message-toggle-content {
+  padding: 20px;
+  padding-bottom: env(safe-area-inset-bottom, 20px);
 }
 
 .error-message {
@@ -123,9 +119,9 @@
   margin-bottom: var(--spacing-lg);
 }
 
-.message-modal-content .message-form {
+.message-toggle-content .message-form {
   background: transparent;
-  padding: 20px;
+  padding: 0;
   box-shadow: none;
   margin-bottom: 0;
 }

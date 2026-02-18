@@ -38,7 +38,7 @@ const AccountSection = () => {
         <div className="account-card fade-in">
           {/* 토글 버튼 */}
           <div
-            className={`account-toggle ${activeSide === '신랑측' ? 'is-groom' : 'is-bride'}`}
+            className="account-toggle"
             role="tablist"
             aria-label="계좌 구분"
           >
