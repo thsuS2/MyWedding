@@ -3,6 +3,7 @@ import { useMessages } from '../../hooks/useSupabase';
 import { useToastContext } from '../../contexts/ToastContext';
 import './MessageBoard.css';
 import { PiWarningFill } from 'react-icons/pi';
+import SectionTitle from '../common/SectionTitle';
 
 const MessageBoard = () => {
   const { messages, loading, error, addMessage } = useMessages();
@@ -64,9 +65,7 @@ const MessageBoard = () => {
   return (
     <section id="message" className="message-section">
       <div className="container">
-        <h2 className="message-title text-heading-large fade-in">
-          축하 메시지
-        </h2>
+        <SectionTitle en="MESSAGE" kr="축하 메시지" />
         
         {/* 에러 메시지 */}
         {error && (

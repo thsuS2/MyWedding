@@ -129,16 +129,16 @@
    ============================================ */
 .text-caption {
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   font-weight: 400;
   line-height: 1.6;
-  color: var(--text-gray);
+  color: var(--text-light);
 }
 
 /* Caption 변형: 더 작은 텍스트 */
 .text-caption-small {
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 400;
   line-height: 1.5;
   color: var(--text-light);
@@ -146,7 +146,7 @@
 
 @media (max-width: 480px) {
   .text-caption {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   
   .text-caption-small {
@@ -177,7 +177,7 @@
 
 @media (max-width: 480px) {
   .text-button {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
   
   .text-button-large {
@@ -188,16 +188,16 @@
 /* 인용문/이탤릭 */
 .text-quote {
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   font-style: italic !important;
   line-height: 1.8;
-  color: var(--text-dark);
+  color: var(--text-light);
 }
 
 @media (max-width: 480px) {
   .text-quote {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-style: italic !important;
   }
 }

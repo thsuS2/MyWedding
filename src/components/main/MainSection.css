@@ -1,6 +1,6 @@
 .main-section {
   background-color: var(--bg-ivory);
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-md) 0;
   overflow: hidden;
 }
 
@@ -27,6 +27,24 @@
   text-align: center;
   margin: var(--spacing-lg) 0;
   padding: var(--spacing-md);
+}
+
+.title-container {
+  text-align: center;
+  margin: var(--spacing-lg) 0;
+  padding-bottom: var(--spacing-md);
+  font-size: var(--font-size-md);
+  color: var(--text-dark);
+}
+
+.title {
+  line-height: 1.8;
+  color: var(--text-dark);
+}
+
+.invitation-title {
+  line-height: 1.8;
+  color: var(--text-dark);
 }
 
 .invitation-text {

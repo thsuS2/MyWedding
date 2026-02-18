@@ -4,6 +4,7 @@ import { PiArrowDown, PiArrowUp } from 'react-icons/pi';
 import LazyImage from './components/LazyImage';
 import bouquetImage from '../../assets/images/flower-rose.png';
 import { GALLERY_IMAGES, getImageUrl } from '../../constants/gallery';
+import SectionTitle from '../common/SectionTitle';
 
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -85,10 +86,7 @@ const GallerySection = () => {
   return (
     <section id="gallery" className="gallery-section" onKeyDown={handleKeyDown}>
       <div className="container">
-        <h2 className="gallery-title text-heading-large fade-in">
-          Gallery
-        </h2>
-        <div className="gallery-subtitle text-body-gray fade-in">우리의 소중한 순간들</div>
+        <SectionTitle en="GALLERY" kr="웨딩 갤러리" />
         
         {/* 큰 슬라이드 */}
         <div className="gallery-slide fade-in">

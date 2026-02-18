@@ -1,53 +1,45 @@
 /**
  * 갤러리 이미지 목록
  * 
- * 사용 방법:
- * 1. images/ 폴더에 이미지 파일 추가
- * 2. 아래 배열에 파일명 추가
- * 3. public/images/ 폴더에도 동일한 파일 복사 (또는 심볼릭 링크)
+ * 이 파일은 scripts/generate-gallery-list.js에 의해 자동 생성됩니다.
+ * public/images/ 폴더의 모든 이미지 파일을 자동으로 포함합니다.
  * 
- * 파일명 형식은 자유롭게 사용 가능합니다.
+ * 빌드 전에 자동으로 업데이트됩니다.
  */
 
 export const GALLERY_IMAGES = [
-  // 기존 이미지
-  'KakaoTalk_Photo_2025-12-11-20-03-34 001.jpeg',
-  'KakaoTalk_Photo_2025-12-11-20-03-34 002.jpeg',
-  'KakaoTalk_Photo_2025-12-11-20-03-34 003.jpeg',
-  'KakaoTalk_Photo_2025-12-11-20-03-34 004.jpeg',
-  'KakaoTalk_Photo_2025-12-11-20-03-35 005.jpeg',
-  'KakaoTalk_Photo_2025-12-11-20-03-35 006.jpeg',
-  'KakaoTalk_Photo_2025-12-11-20-03-35 007.jpeg',
-  'KakaoTalk_Photo_2025-12-11-20-03-35 008.jpeg',
-  'KakaoTalk_Photo_2025-12-11-20-03-35 009.jpeg',
-  'KakaoTalk_Photo_2025-12-11-20-03-35 010.jpeg',
-  'KakaoTalk_Photo_2025-12-11-20-03-35 011.jpeg',
-  'KakaoTalk_Photo_2025-12-11-20-03-35 012.jpeg',
-  'KakaoTalk_Photo_2025-12-11-20-03-35 013.jpeg',
-  'KakaoTalk_Photo_2025-12-11-20-03-35 014.jpeg',
-  // 새로 추가된 이미지
-  'KakaoTalk_Photo_2025-12-18-19-18-41-1.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-2.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-3.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-4.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-5.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-6.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-7.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-8.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-9.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-10.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-11.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-12.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-13.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-14.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-15.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-16.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-17.png',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-18.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-19.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-20.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-21.jpeg',
-  'KakaoTalk_Photo_2025-12-18-19-18-41-22.jpeg',
+  'SNOW_20260218_163818_845.jpg',
+  '1770552131596.jpg',
+  '1770552413980.jpg',
+  '1770552415526.jpg',
+  '1770553347174.jpg',
+  '1770553869924.jpg',
+  '1770594606876.jpg',
+  '1770594606957.jpg',
+  '1770594735855.jpg',
+  '20260208_132622.jpg',
+  '20260208_132723.jpg',
+  '20260208_132959.jpg',
+  '20260208_133411.jpg',
+  '20260208_134220.jpg',
+  '20260208_134543.jpg',
+  '20260208_135408.jpg',
+  '20260208_141323.jpg',
+  '20260208_143529.jpg',
+  '20260208_153953.jpg',
+  '20260208_154032.jpg',
+  '20260208_155113.jpg',
+  '20260208_155356.jpg',
+  '20260208_160113.jpg',
+  '20260208_165717.jpg',
+  '20260208_171024.jpg',
+  '20260208_172850.jpg',
+  '20260208_173442.jpg',
+  '20260208_180339.jpg',
+  '20260208_181838.jpg',
+  'SNOW_20260212_111436_529.jpg',
+  'SNOW_20260218_163007_282.jpg',
+  'SNOW_20260218_163426_150.jpg'
 ];
 
 /**
@@ -58,4 +50,3 @@ export const GALLERY_IMAGES = [
 export const getImageUrl = (filename) => {
   return `/images/${filename}`;
 };
-

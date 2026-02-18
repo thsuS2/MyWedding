@@ -4,8 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "npm run generate-gallery && vite",
+    "build": "npm run generate-gallery && vite build",
+    "generate-gallery": "node scripts/generate-gallery-list.js",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",

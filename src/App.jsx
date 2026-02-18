@@ -33,7 +33,7 @@ function AppContent() {
 
   return (
     <div className="App">
-      <Navigation />
+      {/* <Navigation /> */}
       <IntroSection />
       <MainSection />
       <DateSection />

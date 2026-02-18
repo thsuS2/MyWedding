@@ -5,6 +5,7 @@ import { useToastContext } from '../../contexts/ToastContext';
 import { SiKakao, SiNaver } from 'react-icons/si';
 import { IoBusSharp } from 'react-icons/io5';
 import mapImage from '../../assets/images/map.png';
+import SectionTitle from '../common/SectionTitle';
 
 const MapSection = ({ onOpenRSVP }) => {
   const { showError } = useToastContext();
@@ -147,19 +148,17 @@ const MapSection = ({ onOpenRSVP }) => {
 
   return (
     <section id="map" className="map-section">
-      <div className="container">
-        <h2 className="map-title text-heading-large fade-in">
-          오시는 길
-        </h2>
+      <div className="container fade-in">
+        <SectionTitle en="LOCATION" kr="오시는 길" />
         
         {/* 위치 정보 */}
-        <div className="venue-location-info fade-in">
+        <div className="venue-location-info">
           <h3 className="venue-name text-heading-medium">{VENUE.name}</h3>
           <div className="venue-address text-body-gray">{VENUE.address}</div>
         </div>
         
         {/* 카카오맵 또는 임시 지도 이미지 */}
-        <div className="map-container fade-in" onClick={() => !mapLoaded && openMap('naver')}>
+        <div className="map-container" onClick={() => !mapLoaded && openMap('naver')}>
           {mapLoaded ? (
             <div ref={mapContainer} className="kakao-map"></div>
           ) : (
@@ -224,17 +223,9 @@ const MapSection = ({ onOpenRSVP }) => {
           </div>
         </div>
 
-        {/* 중간 사진 */}
-        <div className="map-middle-image fade-in">
-          <img 
-            src={mapImage} 
-            alt="웨딩홀 사진" 
-            className="venue-image"
-          />
-        </div>
         
         {/* 참석의사 전달하기 버튼 */}
-        <div className="rsvp-button-section fade-in">
+        <div className="rsvp-button-section">
           <button onClick={onOpenRSVP} className="btn-rsvp text-button-large">
             참석의사 전달하기
           </button>

@@ -3,6 +3,7 @@ import './AccountSection.css';
 import { ACCOUNTS, COUPLE } from '../../constants/wedding';
 import { copyAccount } from '../../utils/clipboard';
 import { useToastContext } from '../../contexts/ToastContext';
+import SectionTitle from '../common/SectionTitle';
 
 const AccountSection = () => {
   const { showError } = useToastContext();
@@ -31,9 +32,7 @@ const AccountSection = () => {
   return (
     <section id="account" className="account-section">
       <div className="container">
-        <h2 className="account-title text-heading-large fade-in">
-          마음 전하실 곳
-        </h2>
+        <SectionTitle en="ACCOUNT" kr="마음 전하실 곳" />
         
         {/* 통합 카드 */}
         <div className="account-card fade-in">

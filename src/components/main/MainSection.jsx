@@ -3,6 +3,7 @@ import './MainSection.css';
 import * as WEDDING from '../../constants/wedding';
 const { COUPLE, VENUE } = WEDDING;
 import { PiPhoneFill, PiChatCircleFill } from 'react-icons/pi';
+import SectionTitle from '../common/SectionTitle';
 
 const MainSection = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -38,7 +39,7 @@ const MainSection = () => {
     <section id="main" className="main-section">
       <div className="container">
 
-        <div className="main-couple-names fade-in">
+        <div className="fade-in">
           <div className="couple-name text-body-large">
             {COUPLE.groom.fullName} · {COUPLE.bride.fullName}
           </div>
@@ -50,15 +51,18 @@ const MainSection = () => {
           {WEDDING.WEDDING_DATE.time}
         </div>
 
+
         {/* 결혼 관련 문구 인용 */}
         <div className="main-quote fade-in">
           <div className="quote-text text-quote">{weddingQuote}</div>
         </div>
 
         {/* 초대 글 */}
-        <div className="main-invitation fade-in">
-          <div className="invitation-title">INVITATION</div>
-          <div className="invitation-text text-body-gray">
+        <div className="main-invitation ">
+
+          <SectionTitle en="INVITATION" kr="초대합니다" />
+
+          <div className="invitation-text text-body-gray fade-in">
             저희 두 사람 이제 믿음과 사랑으로<br/>
             한 길을 가려 합니다.<br/>
             <br/>

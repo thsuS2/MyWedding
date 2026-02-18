@@ -9,6 +9,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+KR:wght@400;700&display=swap');
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 @import url('https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css');
+
+/* 커스텀 영어 폰트 */
+@font-face {
+  font-family: 'Blacksword';
+  src: url('/fonts/Blacksword.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 /* CSS 변수 정의 */
 :root {
   /* 색상 - pink/white 통일 */
@@ -31,7 +40,7 @@ font-family: 'MaruBuriSemiBold';
 */
 
   /* 폰트 */
-  --font-title-en: 'Playfair Display', serif;
+  --font-title-en: 'Blacksword', 'Playfair Display', serif;
   --font-title-kr: 'MaruBuri', 'Pretendard', 'Noto Sans KR', sans-serif;
   --font-body: 'MaruBuri', 'Pretendard', 'Noto Sans KR', sans-serif;
   

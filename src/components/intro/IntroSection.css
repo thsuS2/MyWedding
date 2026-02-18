@@ -72,21 +72,27 @@
   top: 16px;
   right: 16px;
   z-index: 100;
-  width: 44px;
-  height: 44px;
+  width: 30px;
+  height: 30px;
   border: none;
   border-radius: 50%;
-  background: transparent;
-  color: var(--text-white);
+  background: white;
+  color: var(--text-dark);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s;
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: var(--shadow-md);
+  opacity: 0.5;
+}
+
+.intro-mute-btn svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .intro-mute-btn:hover {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.95);
   transform: scale(1.05);
 }
 
@@ -104,7 +110,9 @@
   align-items: center;
   gap: var(--spacing-md);
   margin-top: auto;
-  padding-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+  width: 100%;
+  overflow: visible;
 }
 
 /* 타이포 애니메이션 문구 - 줄 단위 순차 등장 */
@@ -112,18 +120,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4em;
+  gap: 0.2em;
+  width: fit-content;
+  max-width: 100%;
+  overflow: visible;
 }
 
 .intro-typo-line {
   font-family: var(--font-title-en);
-  font-size: clamp(1.2rem, 4vw, 2.5rem);
-  font-weight: bold;
-  letter-spacing: 0.2em;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  letter-spacing: 0.3em;
   color: var(--text-white);
   opacity: 0;
   transform: translateY(20px);
   white-space: nowrap;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  width: fit-content;
+  min-width: max-content;
+  box-sizing: border-box;
+}
+
+.intro-typo-line.intro-typo-line-3 {
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  padding-top: 3em;
+  font-weight: bold;
 }
 
 .intro-text.fade-in-with-image .intro-typo-line-1 {
@@ -134,16 +155,22 @@
   animation: introTypoReveal 1s ease-out 0.7s forwards;
 }
 
+.intro-text.fade-in-with-image .intro-typo-line-3 {
+  animation: introTypoReveal 1s ease-out 1.2s forwards;
+}
+
 @keyframes introTypoReveal {
   from {
     opacity: 0;
     transform: translateY(20px);
-    letter-spacing: 0.35em;
+    letter-spacing: 0.3em;
+    white-space: nowrap;
   }
   to {
     opacity: 1;
     transform: translateY(0);
-    letter-spacing: 0.2em;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
   }
 }
 
