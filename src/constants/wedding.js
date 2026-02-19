@@ -2,6 +2,9 @@
  * 결혼식 정보 상수
  */
 
+// 인트로 동영상: 로드 후 이 시간(ms) 뒤에 소리 켜기 시도 (브라우저가 막을 수 있음)
+export const INTRO_VIDEO_SOUND_DELAY_MS = 3000;
+
 // 결혼식 기본 정보
 export const WEDDING_DATE = {
   year: 2026,
@@ -87,12 +90,12 @@ export const ACCOUNTS = [
   },
 ];
 
-// 카카오톡 공유 정보
+// 카카오톡 공유하기용 (버튼 클릭 시 피드 카드 이미지)
 const SITE_URL = 'https://jisooyusinwedding.vercel.app';
 export const KAKAO_SHARE = {
   title: '박지수 ❤ 김유신 결혼합니다.',
   description: '5월 30일(토) 오후 5시 30분, 보타닉파크웨딩 카라홀',
-  imageUrl: `${SITE_URL}/images/kakao.jpg`,
+  imageUrl: `${SITE_URL}/images/kakao.jpg`, // 카카오 공유하기 = kakao.jpg
   linkUrl: SITE_URL,
 };
 

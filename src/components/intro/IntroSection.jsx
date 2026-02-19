@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import './IntroSection.css';
 import PetalAnimation from '../PetalAnimation';
+import { INTRO_VIDEO_SOUND_DELAY_MS } from '../../constants/wedding';
 
 const IntroSection = () => {
   const [showImage, setShowImage] = useState(false);
@@ -55,6 +56,19 @@ const IntroSection = () => {
       cancelled = true;
     };
   }, [showImage]); // intentionally not depending on isMuted
+
+  // 지정한 ms 후 동영상 소리 켜기 시도 (브라우저가 막으면 무음 유지)
+  useEffect(() => {
+    if (!showImage) return;
+    const timer = setTimeout(() => {
+      const video = videoRef.current;
+      if (!video) return;
+      video.muted = false;
+      setIsMuted(false);
+      video.play().catch(() => {});
+    }, INTRO_VIDEO_SOUND_DELAY_MS);
+    return () => clearTimeout(timer);
+  }, [showImage]);
 
   const toggleMute = () => {
     setIsMuted((prev) => {

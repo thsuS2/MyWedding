@@ -18,7 +18,6 @@ function AppContent() {
   const { toasts, removeToast } = useToastContext();
 
   useEffect(() => {
-    // 스크롤 애니메이션 초기화
     initScrollAnimation();
   }, []);
 
