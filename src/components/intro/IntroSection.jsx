@@ -56,40 +56,6 @@ const IntroSection = () => {
     };
   }, [showImage]); // intentionally not depending on isMuted
 
-  // 첫 클릭(터치) 시 소리 켜기, 이후 클릭으로 토글 (브라우저 정책: 사용자 제스처 후 재생 허용)
-  useEffect(() => {
-    if (!showImage) return;
-    const video = videoRef.current;
-    if (!video) return;
-
-    let isFirstClick = true;
-
-    const handleInteraction = () => {
-      if (isFirstClick) {
-        // 첫 클릭: 소리 켜기
-        if (video.muted) {
-          video.muted = false;
-          setIsMuted(false);
-        }
-        isFirstClick = false;
-      } else {
-        // 이후 클릭: 소리 토글
-        setIsMuted((prev) => {
-          const next = !prev;
-          video.muted = next;
-          return next;
-        });
-      }
-    };
-
-    document.addEventListener('click', handleInteraction);
-    document.addEventListener('touchstart', handleInteraction);
-    return () => {
-      document.removeEventListener('click', handleInteraction);
-      document.removeEventListener('touchstart', handleInteraction);
-    };
-  }, [showImage]);
-
   const toggleMute = () => {
     setIsMuted((prev) => {
       const next = !prev;
