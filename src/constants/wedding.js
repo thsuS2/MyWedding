@@ -92,7 +92,8 @@ const SITE_URL = 'https://jisooyusinwedding.vercel.app';
 export const KAKAO_SHARE = {
   title: '박지수 ❤ 김유신 결혼합니다.',
   description: '5월 30일(토) 오후 5시 30분, 보타닉파크웨딩 카라홀',
-  imageUrl: `${SITE_URL}/images/kakao.jpg`, // 카카오 공유하기 = kakao.jpg
+  // 이미지 URL에 버전 파라미터 추가하여 카카오톡 캐시 무효화
+  imageUrl: `${SITE_URL}/images/kakao.jpg?v=2`, // 카카오 공유하기 = kakao.jpg
   linkUrl: SITE_URL,
 };
 
