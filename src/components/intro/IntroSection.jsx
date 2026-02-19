@@ -7,6 +7,7 @@ const IntroSection = () => {
   const [isMuted, setIsMuted] = useState(false);
   const sectionRef = useRef(null);
   const videoRef = useRef(null);
+  const hasTriggeredRef = useRef(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -56,23 +57,27 @@ const IntroSection = () => {
     };
   }, [showImage]); // intentionally not depending on isMuted
 
-  // 최초 터치/스크롤 시 동영상 소리 켜기
+  // 최초 터치/스크롤 시 동영상 소리 켜기 (버튼 클릭 제외)
+  // 한 번만 실행되도록 ref로 관리
   useEffect(() => {
-    let hasTriggered = false;
+    if (hasTriggeredRef.current) return;
 
-    const handleFirstInteraction = () => {
-      if (hasTriggered) return;
-      hasTriggered = true;
+    const handleFirstInteraction = (e) => {
+      if (hasTriggeredRef.current) return;
+      // 음소거 버튼 클릭은 제외
+      if (e.target?.closest('.intro-sound-btn')) return;
+      
+      hasTriggeredRef.current = true;
 
       const video = videoRef.current;
-      if (video && isMuted) {
+      if (video && video.muted) {
         video.muted = false;
         setIsMuted(false);
       }
 
       document.removeEventListener('touchstart', handleFirstInteraction);
       document.removeEventListener('click', handleFirstInteraction);
-      window.removeEventListener('scroll', handleFirstInteraction, { passive: true });
+      window.removeEventListener('scroll', handleFirstInteraction);
     };
 
     document.addEventListener('touchstart', handleFirstInteraction, { once: true });
@@ -84,7 +89,7 @@ const IntroSection = () => {
       document.removeEventListener('click', handleFirstInteraction);
       window.removeEventListener('scroll', handleFirstInteraction);
     };
-  }, [isMuted]);
+  }, []); // 최초 한 번만 실행
 
   const toggleMute = () => {
     setIsMuted((prev) => {
@@ -92,8 +97,8 @@ const IntroSection = () => {
       const video = videoRef.current;
       if (video) {
         video.muted = next;
-        // 사용자 클릭(gesture)에서 소리 ON 재생은 대부분 허용됨
-        if (!next) {
+        // 재생 중이 아니고 소리를 켤 때만 play() 호출
+        if (!next && video.paused) {
           video.play().catch(() => {});
         }
       }
