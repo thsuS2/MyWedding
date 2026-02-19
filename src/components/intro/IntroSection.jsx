@@ -63,9 +63,16 @@ const IntroSection = () => {
     const timer = setTimeout(() => {
       const video = videoRef.current;
       if (!video) return;
-      video.muted = false;
-      setIsMuted(false);
-      video.play().catch(() => {});
+      // 이미 재생 중이면 play() 다시 호출하지 않음 (중단 방지)
+      if (!video.paused) {
+        video.muted = false;
+        setIsMuted(false);
+      } else {
+        // 일시정지 상태면 재생 시도
+        video.muted = false;
+        setIsMuted(false);
+        video.play().catch(() => {});
+      }
     }, INTRO_VIDEO_SOUND_DELAY_MS);
     return () => clearTimeout(timer);
   }, [showImage]);
