@@ -110,7 +110,7 @@
   background: transparent;
   color: var(--text-gray);
   border: 1px solid var(--text-lightest);
-  border-radius: 12px;
+  border-radius: 8px;
   font-weight: 600;
   box-shadow: none;
   /* 상하 패딩은 기본값(.btn) 유지, 좌우만 조정 */

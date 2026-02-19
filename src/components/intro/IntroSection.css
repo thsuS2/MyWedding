@@ -109,17 +109,20 @@
 
 .sound-bars {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 3px;
   height: 15px;
 }
 
 .sound-bars span {
-  width: 2.5px;
+  width: 3px;
+  min-width: 3px;
+  max-width: 3px;
   height: 4px;
   background: var(--text-light);
-  border-radius: 2px;
+  border-radius: 1.5px;
   animation: soundBounce 0.8s infinite ease-in-out;
+  flex-shrink: 0;
 }
 
 .sound-bars span:nth-child(1) { animation-delay: 0.05s; }
@@ -133,6 +136,7 @@
 }
 
 /* 음소거 상태: 바가 낮게 고정 */
+
 .intro-sound-btn.muted .sound-bars span {
   animation: none;
   height: 4px;
@@ -147,9 +151,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-md);
-  margin-top: auto;
-  padding-bottom: var(--spacing-lg);
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: var(--spacing-lg) 0;
   width: 100%;
   overflow: visible;
 }
@@ -163,6 +167,8 @@
   width: fit-content;
   max-width: 100%;
   overflow: visible;
+  flex: 1;
+  justify-content: flex-start;
 }
 
 .intro-typo-line {
@@ -182,8 +188,9 @@
 
 .intro-typo-line.intro-typo-line-3 {
   font-size: clamp(1.1rem, 4vw, 1.5rem);
-  padding-top: 1.3em;
   font-weight: bold;
+  margin-top: auto;
+  margin-bottom: 10vh;
 }
 
 .intro-text.fade-in-with-image .intro-typo-line-1 {
