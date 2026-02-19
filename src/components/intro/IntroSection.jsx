@@ -5,6 +5,7 @@ import PetalAnimation from '../PetalAnimation';
 const IntroSection = () => {
   const [showImage, setShowImage] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const sectionRef = useRef(null);
   const videoRef = useRef(null);
   const hasTriggeredRef = useRef(false);
@@ -131,13 +132,26 @@ const IntroSection = () => {
 
         {/* 배경 동영상 레이어 */}
         <div className="intro-video-wrap">
+          {/* 동영상 로딩 전 배경 이미지 */}
+          {!videoLoaded && (
+            <div className="intro-video-poster" aria-hidden>
+              <img 
+                src="/images/wedding_intro.jpg" 
+                alt="" 
+                className="intro-video-poster-image"
+              />
+            </div>
+          )}
           <video
             ref={videoRef}
-            className="intro-video"
+            className={`intro-video ${videoLoaded ? 'loaded' : ''}`}
             src="/images/Wedding_video1.mp4"
+            poster="/images/wedding_intro.jpg"
             autoPlay
             loop
             playsInline
+            onLoadedData={() => setVideoLoaded(true)}
+            onCanPlay={() => setVideoLoaded(true)}
             aria-label="인트로 배경 영상"
           />
           <div className="intro-video-gradient" aria-hidden />
