@@ -190,7 +190,7 @@
   font-size: clamp(1.1rem, 4vw, 1.5rem);
   font-weight: bold;
   margin-top: auto;
-  margin-bottom: 5vh;
+  margin-bottom: 10vh;
 }
 
 .intro-text.fade-in-with-image .intro-typo-line-1 {
