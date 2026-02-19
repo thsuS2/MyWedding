@@ -2,13 +2,21 @@
  * 갤러리 이미지 목록
  * 
  * 이 파일은 scripts/generate-gallery-list.js에 의해 자동 생성됩니다.
- * public/images/ 폴더의 모든 이미지 파일을 자동으로 포함합니다.
+ * public/images/gallery/ 폴더의 이미지 파일만 자동으로 포함합니다.
  * 
  * 빌드 전에 자동으로 업데이트됩니다.
  */
 
 export const GALLERY_IMAGES = [
   '1.jpg',
+  '2.jpg',
+  '3.jpg',
+  '4.jpg',
+  '5.jpg',
+  '6.jpg',
+  '7.jpg',
+  '8.jpg',
+  '9.jpg',
   '10.jpg',
   '11.jpg',
   '12.jpg',
@@ -19,7 +27,6 @@ export const GALLERY_IMAGES = [
   '17.jpg',
   '18.jpg',
   '19.jpg',
-  '2.jpg',
   '20.jpg',
   '21.jpg',
   '22.jpg',
@@ -30,7 +37,6 @@ export const GALLERY_IMAGES = [
   '27.jpg',
   '28.jpg',
   '29.jpg',
-  '3.jpg',
   '30.jpg',
   '31.jpg',
   '32.jpg',
@@ -41,13 +47,7 @@ export const GALLERY_IMAGES = [
   '37.jpg',
   '38.jpg',
   '39.jpg',
-  '4.jpg',
-  '40.jpg',
-  '5.jpg',
-  '6.jpg',
-  '7.jpg',
-  '8.jpg',
-  '9.jpg',
+  '40.jpg'
 ];
 
 /**
@@ -56,5 +56,5 @@ export const GALLERY_IMAGES = [
  * @returns {string} 이미지 URL
  */
 export const getImageUrl = (filename) => {
-  return `/images/${filename}`;
+  return `/images/gallery/${filename}`;
 };
