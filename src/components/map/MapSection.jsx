@@ -54,7 +54,7 @@ const MapSection = ({ onOpenRSVP }) => {
         }
 
         const script = document.createElement('script');
-        script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_MAP_API_KEY}&autoload=false`;
+        script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_MAP_API_KEY}&autoload=false`;
         script.async = true;
         script.onload = () => {
           if (window.kakao && window.kakao.maps) {
@@ -68,9 +68,11 @@ const MapSection = ({ onOpenRSVP }) => {
           }
         };
         script.onerror = () => {
-          console.error('카카오맵 스크립트 로드 실패 - API 키를 확인해주세요.');
+          console.error(
+            '카카오맵 스크립트 로드 실패. 확인사항: 1) VITE_KAKAO_MAP_API_KEY(JavaScript 키) 사용 2) Kakao Developers 콘솔에서 현재 도메인(localhost 또는 배포 URL) 허용'
+          );
           setMapLoaded(false);
-          showError('지도를 불러오는데 실패했습니다. API 키를 확인해주세요.');
+          showError('지도를 불러오는데 실패했습니다. API 키와 도메인 설정을 확인해주세요.');
         };
         document.head.appendChild(script);
         return;
@@ -189,12 +191,15 @@ const MapSection = ({ onOpenRSVP }) => {
           <div className="venue-address text-body-gray">{VENUE.address} {VENUE.floor}</div>
         </div>
         
-        {/* 카카오맵 또는 임시 지도 이미지 */}
-        <div className="map-container" onClick={() => !mapLoaded && openMap('naver')}>
-          {mapLoaded ? (
-            <div ref={mapContainer} className="kakao-map"></div>
-          ) : (
-            <div className="map-placeholder">
+        {/* 카카오맵 컨테이너는 항상 DOM에 두어 ref 사용 가능. 로드 전에는 플레이스홀더만 위에 표시 */}
+        <div className="map-container">
+          <div 
+            ref={mapContainer} 
+            className="kakao-map" 
+            style={{ visibility: mapLoaded ? 'visible' : 'hidden', position: mapLoaded ? 'relative' : 'absolute' }}
+          />
+          {!mapLoaded && (
+            <div className="map-placeholder" onClick={() => openMap('naver')}>
               <img 
                 src={mapImage} 
                 alt="지도" 
