@@ -109,17 +109,20 @@
 
 .sound-bars {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 3px;
   height: 15px;
 }
 
 .sound-bars span {
-  width: 2.5px;
+  width: 3px;
+  min-width: 3px;
+  max-width: 3px;
   height: 4px;
   background: var(--text-light);
-  border-radius: 2px;
+  border-radius: 1.5px;
   animation: soundBounce 0.8s infinite ease-in-out;
+  flex-shrink: 0;
 }
 
 .sound-bars span:nth-child(1) { animation-delay: 0.05s; }
@@ -133,6 +136,7 @@
 }
 
 /* 음소거 상태: 바가 낮게 고정 */
+
 .intro-sound-btn.muted .sound-bars span {
   animation: none;
   height: 4px;
@@ -186,7 +190,7 @@
   font-size: clamp(1.1rem, 4vw, 1.5rem);
   font-weight: bold;
   margin-top: auto;
-  margin-bottom: 15vh;
+  margin-bottom: 5vh;
 }
 
 .intro-text.fade-in-with-image .intro-typo-line-1 {

@@ -56,6 +56,36 @@ const IntroSection = () => {
     };
   }, [showImage]); // intentionally not depending on isMuted
 
+  // 최초 터치/스크롤 시 동영상 소리 켜기
+  useEffect(() => {
+    let hasTriggered = false;
+
+    const handleFirstInteraction = () => {
+      if (hasTriggered) return;
+      hasTriggered = true;
+
+      const video = videoRef.current;
+      if (video && isMuted) {
+        video.muted = false;
+        setIsMuted(false);
+      }
+
+      document.removeEventListener('touchstart', handleFirstInteraction);
+      document.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('scroll', handleFirstInteraction, { passive: true });
+    };
+
+    document.addEventListener('touchstart', handleFirstInteraction, { once: true });
+    document.addEventListener('click', handleFirstInteraction, { once: true });
+    window.addEventListener('scroll', handleFirstInteraction, { once: true, passive: true });
+
+    return () => {
+      document.removeEventListener('touchstart', handleFirstInteraction);
+      document.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('scroll', handleFirstInteraction);
+    };
+  }, [isMuted]);
+
   const toggleMute = () => {
     setIsMuted((prev) => {
       const next = !prev;
