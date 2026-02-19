@@ -42,6 +42,7 @@ export const shareKakao = () => {
   }
 
   try {
+    const linkUrl = KAKAO_SHARE.linkUrl || window.location.origin;
     window.Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
@@ -49,16 +50,16 @@ export const shareKakao = () => {
         description: KAKAO_SHARE.description,
         imageUrl: KAKAO_SHARE.imageUrl,
         link: {
-          mobileWebUrl: window.location.href,
-          webUrl: window.location.href,
+          mobileWebUrl: linkUrl,
+          webUrl: linkUrl,
         },
       },
       buttons: [
         {
           title: '청첩장 보기',
           link: {
-            mobileWebUrl: window.location.href,
-            webUrl: window.location.href,
+            mobileWebUrl: linkUrl,
+            webUrl: linkUrl,
           },
         },
       ],

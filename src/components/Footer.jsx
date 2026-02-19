@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { initKakao, shareKakao } from '../utils/kakaoShare';
 import './Footer.css';
-import { PiDeviceMobileFill } from 'react-icons/pi';
+import { SiKakao } from 'react-icons/si';
 import FlowerImage from '../assets/images/rose-flower.png';
 import Button from './common/Button';
 
@@ -38,7 +38,7 @@ const Footer = () => {
             variant="primary"
             size="large"
             onClick={shareKakao}
-            icon={<PiDeviceMobileFill size={20} />}
+            icon={<SiKakao size={20} />}
           >
             카카오톡 공유하기
           </Button>

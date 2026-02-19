@@ -59,6 +59,10 @@ export const VENUE = {
   hall: '카라홀',
   address: '서울시 강서구 마곡중앙5로 6',
   addressDetail: '보타닉 푸르지오시티 로비층',
+  lat: 37.5622,
+  lng: 126.8265,
+  /** 지도 인포윈도우에 넣을 이미지 URL (없으면 null). 예: '/images/venue-thumb.jpg' */
+  infoWindowImage: '/images/1.jpg',
   transportation: {
     subway: '9호선 · 공항철도 마곡나루역 1, 2번 출구 \n진입통로 연결',
     bus: '마곡나루역 정류장 하차\n | 간선버스 N64 \n | 지선버스 6642, 6645, 6648 \n | 마을버스 강서05-1, 강서07',
@@ -84,12 +88,12 @@ export const ACCOUNTS = [
 ];
 
 // 카카오톡 공유 정보
+const SITE_URL = 'https://jisooyusinwedding.vercel.app';
 export const KAKAO_SHARE = {
-  title: `${COUPLE.bride.name} 🫶 ${COUPLE.groom.name} 결혼합니다`,
-  description: `${getFormattedDateTime()}\n봄날의 정원 속, 우리의 약속`,
-  imageUrl: typeof window !== 'undefined' 
-    ? `${window.location.origin}/images/main.png`
-    : '/images/main.png',
+  title: '박지수 ❤ 김유신 결혼합니다.',
+  description: '5월 30일(토) 오후 5시 30분, 보타닉파크웨딩 카라홀',
+  imageUrl: `${SITE_URL}/images/kakao.jpg`,
+  linkUrl: SITE_URL,
 };
 
 // 메타 정보

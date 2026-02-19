@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './MapSection.css';
-import { VENUE } from '../../constants/wedding';
+import { VENUE, getFormattedDate, WEDDING_DATE } from '../../constants/wedding';
 import { useToastContext } from '../../contexts/ToastContext';
 import { SiKakao, SiNaver } from 'react-icons/si';
 import { IoBusSharp, IoCarSharp, IoSubwaySharp } from 'react-icons/io5';
@@ -26,12 +26,13 @@ const MapSection = ({ onOpenRSVP }) => {
     const initMap = () => {
       if (!mapContainer.current) return;
 
-      // 카카오맵 API 키 (환경 변수)
-      const KAKAO_MAP_API_KEY = import.meta.env.VITE_KAKAO_MAP_API_KEY;
+      // 카카오맵 API 키: 전용 키 우선, 없으면 공유용 앱 키 사용 (같은 앱에서 JavaScript 키 공용)
+      const KAKAO_MAP_API_KEY =
+        import.meta.env.VITE_KAKAO_MAP_API_KEY ||
+        import.meta.env.VITE_KAKAO_APP_KEY;
 
-      // API 키가 없으면 지도를 로드하지 않음
-      if (!KAKAO_MAP_API_KEY || KAKAO_MAP_API_KEY === 'YOUR_KAKAO_MAP_API_KEY') {
-        console.warn('⚠️ 카카오맵 API 키가 설정되지 않았습니다. 환경 변수를 확인해주세요.');
+      if (!KAKAO_MAP_API_KEY || KAKAO_MAP_API_KEY === 'YOUR_KAKAO_MAP_API_KEY' || KAKAO_MAP_API_KEY === 'YOUR_KAKAO_JAVASCRIPT_KEY') {
+        console.warn('⚠️ 카카오맵 API 키가 설정되지 않았습니다. .env에 VITE_KAKAO_MAP_API_KEY 또는 VITE_KAKAO_APP_KEY를 넣어주세요.');
         setMapLoaded(false);
         return;
       }
@@ -41,36 +42,31 @@ const MapSection = ({ onOpenRSVP }) => {
         // 스크립트 동적 로드
         const existingScript = document.querySelector('script[src*="dapi.kakao.com/v2/maps/sdk.js"]');
         if (existingScript) {
-          // 이미 스크립트가 있으면 로드 완료를 기다림
           const checkKakao = setInterval(() => {
-            if (window.kakao && window.kakao.maps) {
+            if (window.kakao?.maps?.load) {
               clearInterval(checkKakao);
-              window.kakao.maps.load(() => {
-                createMap();
-              });
+              window.kakao.maps.load(() => createMap());
             }
           }, 100);
           return;
         }
 
         const script = document.createElement('script');
-        script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_MAP_API_KEY}&autoload=false`;
-        script.async = true;
+        script.type = 'text/javascript';
+        script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_MAP_API_KEY}&autoload=false`;
         script.onload = () => {
-          if (window.kakao && window.kakao.maps) {
-            window.kakao.maps.load(() => {
-              createMap();
-            });
+          if (window.kakao?.maps?.load) {
+            window.kakao.maps.load(() => createMap());
           } else {
             console.error('카카오맵 SDK 로드 실패');
             setMapLoaded(false);
             showError('지도를 불러오는데 실패했습니다.');
           }
         };
-        script.onerror = () => {
-          console.error('카카오맵 스크립트 로드 실패 - API 키를 확인해주세요.');
+        script.onerror = (e) => {
+          console.error('카카오맵 스크립트 로드 실패', e.target?.src ?? script.src, e);
           setMapLoaded(false);
-          showError('지도를 불러오는데 실패했습니다. API 키를 확인해주세요.');
+          showError('지도를 불러오는데 실패했습니다.');
         };
         document.head.appendChild(script);
         return;
@@ -78,9 +74,7 @@ const MapSection = ({ onOpenRSVP }) => {
 
       // 이미 로드된 경우
       if (window.kakao.maps.load) {
-        window.kakao.maps.load(() => {
-          createMap();
-        });
+        window.kakao.maps.load(() => createMap());
       } else {
         createMap();
       }
@@ -88,83 +82,47 @@ const MapSection = ({ onOpenRSVP }) => {
 
     const createMap = () => {
       if (!mapContainer.current || mapInstance.current) return;
+      if (!window.kakao?.maps?.LatLng) return;
 
       // 컨테이너가 DOM에 마운트되었는지 확인
       if (!mapContainer.current.offsetParent && mapContainer.current.offsetWidth === 0) {
-        // 아직 렌더링되지 않았으면 약간 지연 후 재시도
-        setTimeout(() => {
-          createMap();
-        }, 100);
+        setTimeout(createMap, 100);
         return;
       }
 
-      // 주소로 좌표 검색
-      const geocoder = new window.kakao.maps.services.Geocoder();
-      
-      geocoder.addressSearch(VENUE.address, (result, status) => {
-        if (status === window.kakao.maps.services.Status.OK) {
-          const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
+      try {
+        const coords = new window.kakao.maps.LatLng(VENUE.lat, VENUE.lng);
+        const options = {
+          center: coords,
+          level: 3,
+        };
 
-          try {
-            // 지도 생성
-            const options = {
-              center: coords,
-              level: 3, // 확대 레벨
-            };
+        mapInstance.current = new window.kakao.maps.Map(mapContainer.current, options);
 
-            mapInstance.current = new window.kakao.maps.Map(mapContainer.current, options);
+        setTimeout(() => {
+          if (mapInstance.current) mapInstance.current.relayout();
+        }, 100);
 
-            // 지도 생성 후 relayout 호출 (컨테이너 크기 변경 대응)
-            setTimeout(() => {
-              if (mapInstance.current) {
-                mapInstance.current.relayout();
-              }
-            }, 100);
+        const marker = new window.kakao.maps.Marker({
+          position: coords,
+          map: mapInstance.current,
+        });
 
-            // 마커 생성
-            const marker = new window.kakao.maps.Marker({
-              position: coords,
-              map: mapInstance.current,
-            });
+        const imgHtml = VENUE.infoWindowImage
+          ? `<img src="${VENUE.infoWindowImage}" alt="" style="display:block;width:75px;height:100px;object-fit:cover;border-radius:6px;flex-shrink:0;" />`
+          : '';
+        const textHtml = `<div style="font-size:12px;text-align:center;line-height:1.5;flex:1;">${VENUE.name}<br/>${VENUE.hall}<br/><span style="color:#666;font-size:11px;">${getFormattedDate()}<br/>${WEDDING_DATE.time}</span></div>`;
+        const infowindow = new window.kakao.maps.InfoWindow({
+          content: `<div style="padding:10px;display:flex;align-items:center;justify-content:center;gap:10px;min-width:200px;">${imgHtml}${textHtml}</div>`,
+        });
+        infowindow.open(mapInstance.current, marker);
 
-            // 인포윈도우 생성
-            const infowindow = new window.kakao.maps.InfoWindow({
-              content: `<div style="padding:10px;font-size:12px;text-align:center;">${VENUE.name}<br/>${VENUE.hall}</div>`,
-            });
-            infowindow.open(mapInstance.current, marker);
-            
-            setMapLoaded(true);
-          } catch (error) {
-            console.error('카카오맵 생성 실패:', error);
-            setMapLoaded(false);
-            showError('지도를 생성하는데 실패했습니다.');
-          }
-        } else {
-          // 주소 검색 실패 시 기본 위치 (서울시청)
-          try {
-            const defaultCoords = new window.kakao.maps.LatLng(37.5665, 126.9780);
-            mapInstance.current = new window.kakao.maps.Map(mapContainer.current, {
-              center: defaultCoords,
-              level: 3,
-            });
-
-            // 지도 생성 후 relayout 호출
-            setTimeout(() => {
-              if (mapInstance.current) {
-                mapInstance.current.relayout();
-              }
-            }, 100);
-
-            setMapLoaded(true);
-            console.warn('주소 검색 실패, 기본 위치로 표시');
-            showError('주소를 찾을 수 없어 기본 위치로 표시합니다.');
-          } catch (error) {
-            console.error('카카오맵 생성 실패:', error);
-            setMapLoaded(false);
-            showError('지도를 생성하는데 실패했습니다.');
-          }
-        }
-      });
+        setMapLoaded(true);
+      } catch (error) {
+        console.error('카카오맵 생성 실패:', error);
+        setMapLoaded(false);
+        showError('지도를 불러오는데 실패했습니다.');
+      }
     };
 
     // 지도 초기화
@@ -189,15 +147,14 @@ const MapSection = ({ onOpenRSVP }) => {
           <div className="venue-address text-body-gray">{VENUE.address} {VENUE.floor}</div>
         </div>
         
-        {/* 카카오맵 또는 임시 지도 이미지 */}
+        {/* 카카오맵: ref가 걸린 div는 항상 DOM에 있어야 createMap에서 사용 가능 */}
         <div className="map-container" onClick={() => !mapLoaded && openMap('naver')}>
-          {mapLoaded ? (
-            <div ref={mapContainer} className="kakao-map"></div>
-          ) : (
-            <div className="map-placeholder">
-              <img 
-                src={mapImage} 
-                alt="지도" 
+          <div ref={mapContainer} className="kakao-map" aria-hidden={!mapLoaded} />
+          {!mapLoaded && (
+            <div className="map-placeholder map-placeholder--overlay">
+              <img
+                src={mapImage}
+                alt="지도"
                 className="map-fallback-image"
               />
               <div className="map-placeholder-overlay">
