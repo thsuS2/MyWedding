@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './IntroSection.css';
 import PetalAnimation from '../PetalAnimation';
-import { INTRO_VIDEO_SOUND_DELAY_MS } from '../../constants/wedding';
 
 const IntroSection = () => {
   const [showImage, setShowImage] = useState(false);
@@ -57,24 +56,27 @@ const IntroSection = () => {
     };
   }, [showImage]); // intentionally not depending on isMuted
 
-  // 지정한 ms 후 동영상 소리 켜기 시도 (브라우저가 막으면 무음 유지)
+  // 첫 클릭(터치) 시 소리 켜기 (브라우저 정책: 사용자 제스처 후 재생 허용)
   useEffect(() => {
     if (!showImage) return;
-    const timer = setTimeout(() => {
-      const video = videoRef.current;
-      if (!video) return;
-      // 이미 재생 중이면 play() 다시 호출하지 않음 (중단 방지)
-      if (!video.paused) {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleFirstInteraction = () => {
+      if (video.muted) {
         video.muted = false;
         setIsMuted(false);
-      } else {
-        // 일시정지 상태면 재생 시도
-        video.muted = false;
-        setIsMuted(false);
-        video.play().catch(() => {});
       }
-    }, INTRO_VIDEO_SOUND_DELAY_MS);
-    return () => clearTimeout(timer);
+      document.removeEventListener('click', handleFirstInteraction);
+      document.removeEventListener('touchstart', handleFirstInteraction);
+    };
+
+    document.addEventListener('click', handleFirstInteraction, { once: true });
+    document.addEventListener('touchstart', handleFirstInteraction, { once: true });
+    return () => {
+      document.removeEventListener('click', handleFirstInteraction);
+      document.removeEventListener('touchstart', handleFirstInteraction);
+    };
   }, [showImage]);
 
   const toggleMute = () => {

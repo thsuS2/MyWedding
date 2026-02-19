@@ -2,9 +2,6 @@
  * 결혼식 정보 상수
  */
 
-// 인트로 동영상: 로드 후 이 시간(ms) 뒤에 소리 켜기 시도 (브라우저가 막을 수 있음)
-export const INTRO_VIDEO_SOUND_DELAY_MS = 3000;
-
 // 결혼식 기본 정보
 export const WEDDING_DATE = {
   year: 2026,
