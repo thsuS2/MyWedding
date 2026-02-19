@@ -60,7 +60,7 @@ const Calendar = () => {
               {date !== null && (
                 <>
                   {isWeddingDay && (
-                    <span className="wedding-marker">💍</span>
+                    <img src="/images/weddingring.png" alt="" className="wedding-marker" />
                   )}
                   <span className="calendar-date text-body-medium">{date}</span>
                 </>

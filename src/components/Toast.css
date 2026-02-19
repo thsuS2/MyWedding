@@ -1,17 +1,19 @@
 .toast {
   position: fixed;
-  top: 20px;
+  bottom: 24px;
   left: 50%;
-  transform: translateX(-50%) translateY(-100px);
-  background: white;
+  transform: translateX(-50%) translateY(80px);
+  background: #f5f5f5;
+  color: #333;
+  border: 1px solid #e5e5e5;
   border-radius: 12px;
-  padding: 16px 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 14px 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   display: flex;
   align-items: center;
-  gap: 12px;
-  min-width: 280px;
-  max-width: 90%;
+  gap: 10px;
+  min-width: 260px;
+  max-width: calc(100vw - 32px);
   z-index: 10000;
   opacity: 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -26,7 +28,7 @@
 
 .toast-hidden {
   opacity: 0;
-  transform: translateX(-50%) translateY(-100px);
+  transform: translateX(-50%) translateY(80px);
   pointer-events: none;
 }
 
@@ -35,18 +37,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #666;
 }
 
 .toast-message {
   flex: 1;
   word-break: keep-all;
+  color: #333;
 }
 
 .toast-close {
   flex-shrink: 0;
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1;
   color: #999;
   cursor: pointer;
@@ -60,49 +64,28 @@
 }
 
 .toast-close:hover {
-  color: #333;
+  color: #555;
 }
 
-/* 타입별 스타일 */
-.toast-success {
-  border-left: 4px solid #10b981;
-}
+/* 타입별 무채색 구분 */
+.toast-success .toast-icon { color: #555; }
+.toast-success { border-left: 3px solid #888; }
 
-.toast-success .toast-icon {
-  color: #10b981;
-}
+.toast-error .toast-icon { color: #444; }
+.toast-error { border-left: 3px solid #666; }
 
-.toast-error {
-  border-left: 4px solid #ef4444;
-}
+.toast-info .toast-icon { color: #555; }
+.toast-info { border-left: 3px solid #888; }
 
-.toast-error .toast-icon {
-  color: #ef4444;
-}
+.toast-warning .toast-icon { color: #555; }
+.toast-warning { border-left: 3px solid #777; }
 
-.toast-info {
-  border-left: 4px solid #3b82f6;
-}
-
-.toast-info .toast-icon {
-  color: #3b82f6;
-}
-
-.toast-warning {
-  border-left: 4px solid #f59e0b;
-}
-
-.toast-warning .toast-icon {
-  color: #f59e0b;
-}
-
-/* 모바일 반응형 */
 @media (max-width: 768px) {
   .toast {
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    transform: translateY(-100px);
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    transform: translateY(80px);
     min-width: auto;
     max-width: none;
   }
@@ -112,7 +95,7 @@
   }
 
   .toast-hidden {
-    transform: translateY(-100px);
+    transform: translateY(80px);
   }
 }
 

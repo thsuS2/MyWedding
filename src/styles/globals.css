@@ -87,6 +87,10 @@ body {
   width: 100%;
   max-width: 100vw;
   position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* 타이포그래피 */
