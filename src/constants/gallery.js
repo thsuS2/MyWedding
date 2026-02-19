@@ -48,7 +48,6 @@ export const GALLERY_IMAGES = [
   '7.jpg',
   '8.jpg',
   '9.jpg',
-  'kakao.jpg'
 ];
 
 /**
