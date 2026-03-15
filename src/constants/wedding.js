@@ -59,8 +59,9 @@ export const VENUE = {
   hall: '카라홀',
   address: '서울시 강서구 마곡중앙5로 6',
   addressDetail: '보타닉 푸르지오시티 로비층',
-  lat: 37.5622,
-  lng: 126.8265,
+  /* 마곡중앙5로 6 (마곡나루역보타닉푸르지오시티) 기준 */
+  lat: 37.567099,
+  lng: 126.827017,
   /** 지도 인포윈도우에 넣을 이미지 URL (없으면 null). 예: '/images/venue-thumb.jpg' */
   infoWindowImage: '/images/1.jpg',
   transportation: {
