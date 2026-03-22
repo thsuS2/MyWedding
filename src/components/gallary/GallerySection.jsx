@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import './GallerySection.css';
-import { PiArrowDown, PiArrowUp } from 'react-icons/pi';
+import { PiArrowDown, PiArrowUp, PiCaretLeft, PiCaretRight } from 'react-icons/pi';
 import LazyImage from './components/LazyImage';
 import bouquetImage from '../../assets/images/flower-rose.png';
 import { GALLERY_IMAGES, getImageUrl } from '../../constants/gallery';
@@ -225,6 +225,31 @@ const GallerySection = () => {
           >
             ✕
           </Button>
+
+          <button
+            type="button"
+            className="gallery-modal-nav-desktop modal-nav modal-prev"
+            onClick={(e) => {
+              e.stopPropagation();
+              navigateImage(-1);
+            }}
+            disabled={isModalTransitioning}
+            aria-label="이전 사진"
+          >
+            <PiCaretLeft aria-hidden />
+          </button>
+          <button
+            type="button"
+            className="gallery-modal-nav-desktop modal-nav modal-next"
+            onClick={(e) => {
+              e.stopPropagation();
+              navigateImage(1);
+            }}
+            disabled={isModalTransitioning}
+            aria-label="다음 사진"
+          >
+            <PiCaretRight aria-hidden />
+          </button>
           
           <div 
             className="modal-content"
