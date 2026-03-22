@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './AccountSection.css';
-import { ACCOUNTS, COUPLE } from '../../constants/wedding';
+import { ACCOUNTS } from '../../constants/wedding';
 import { copyAccount } from '../../utils/clipboard';
 import { useToastContext } from '../../contexts/ToastContext';
 import SectionTitle from '../common/SectionTitle';
@@ -21,14 +21,9 @@ const AccountSection = () => {
     }
   };
 
-  // 신랑측/신부측 계좌 필터링
-  const filteredAccounts = ACCOUNTS.filter(account => {
-    if (activeSide === '신랑측') {
-      return account.name.includes('신랑');
-    } else {
-      return account.name.includes('신부');
-    }
-  });
+  const filteredAccounts = ACCOUNTS.filter((account) =>
+    activeSide === '신랑측' ? account.side === 'groom' : account.side === 'bride',
+  );
 
   return (
     <section id="account" className="account-section">
@@ -68,7 +63,7 @@ const AccountSection = () => {
           {/* 계좌 리스트 */}
           <div className="account-list">
             {filteredAccounts.map((account) => (
-              <div key={account.name} className="account-item">
+              <div key={`${account.side}-${account.number}`} className="account-item">
                 <div className="account-info">
                   <div className="account-label text-heading-small">{account.name}</div>
                   <div className="account-detail text-body-gray">
