@@ -72,19 +72,31 @@ export const VENUE = {
   },
 };
 
-// 계좌번호 정보
+// 계좌번호 정보 (AccountSection: name에 '신랑' / '신부' 포함 시 탭별 표시)
 export const ACCOUNTS = [
   {
-    name: '신랑 김유신',
-    bank: '기업은행',
-    number: '050-108445-02-012',
-    holder: COUPLE.groom.fullName,
+    name: '신랑측 김남수',
+    bank: '농협은행',
+    number: '356-1493-9032-33',
+    holder: '김남수',
   },
   {
-    name: '신부 박지수',
+    name: '신랑측 유영래',
+    bank: '농협은행',
+    number: '1152-12-085236',
+    holder: '유영래',
+  },
+  {
+    name: '신부측 김성옥',
+    bank: '하나은행',
+    number: '2409-1026-679607',
+    holder: '김성옥',
+  },
+  {
+    name: '신부측 박태규',
     bank: '기업은행',
-    number: '692-001160-01-013',
-    holder: COUPLE.bride.fullName,
+    number: '011-726-5886',
+    holder: '박태규',
   },
 ];
 
