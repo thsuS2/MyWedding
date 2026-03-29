@@ -15,68 +15,12 @@
 }
 
 
-/* 메시지 작성 하단 토글 패널 스타일 */
-.message-toggle-panel {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: white;
-  border-radius: 24px 24px 0 0;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-  max-height: 85vh;
-  overflow-y: auto;
-  transform: translateY(100%);
-  transition: transform 0.3s ease-out;
-}
-
-.message-toggle-panel.open {
-  transform: translateY(0);
-}
-
-.message-toggle-header {
-  position: sticky;
-  top: 0;
-  background: white;
-  border-bottom: 1px solid var(--bg-ivory);
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 10;
-  border-radius: 24px 24px 0 0;
-}
-
-.message-toggle-title {
-  color: var(--text-dark);
-  margin: 0;
-}
-
-.message-toggle-close {
-  background: none;
-  border: none;
-  font-size: 24px;
-  color: var(--text-gray);
-  cursor: pointer;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: all 0.2s;
+/* BottomSheet 내부: 패널이 이미 카드처럼 감싸므로 폼은 플랫하게 */
+.bottom-sheet-content .message-form {
+  background: transparent;
   padding: 0;
-}
-
-.message-toggle-close:hover {
-  background: var(--bg-ivory);
-  color: var(--text-dark);
-}
-
-.message-toggle-content {
-  padding: 20px;
-  padding-bottom: env(safe-area-inset-bottom, 20px);
+  box-shadow: none;
+  margin-bottom: 0;
 }
 
 .error-message {
@@ -99,13 +43,6 @@
   margin-bottom: var(--spacing-lg);
 }
 
-.message-toggle-content .message-form {
-  background: transparent;
-  padding: 0;
-  box-shadow: none;
-  margin-bottom: 0;
-}
-
 .form-group {
   margin-bottom: var(--spacing-sm);
 }
@@ -115,7 +52,7 @@
 .form-textarea {
   width: 100%;
   padding: 0.875rem 1.125rem;
-  border: 2px solid var(--bg-ivory);
+  border: 1px solid var(--text-lightest);
   border-radius: 10px;
   font-family: var(--font-body);
   font-size: 1rem;

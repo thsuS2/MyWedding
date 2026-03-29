@@ -12,14 +12,12 @@ const MessageBoard = () => {
   const { messages, loading, error, addMessage } = useMessages();
   const { showError, showSuccess } = useToastContext();
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+  /** UI에는 관계 필드 없음 — API 스키마용 고정값 */
   const [formData, setFormData] = useState({
     name: '',
-    relationship: '친구',
-    message: ''
+    message: '',
   });
   const [submitting, setSubmitting] = useState(false);
-  
-  const relationships = ['가족', '친구', '동료', '기타'];
 
   // 하단 패널 관리 (스크롤 잠금 + 외부 클릭 닫기)
   useBottomPanel(
@@ -42,11 +40,11 @@ const MessageBoard = () => {
     try {
       await addMessage({
         name: formData.name.trim(),
-        relationship: formData.relationship,
-        message: formData.message.trim()
+        relationship: '친구',
+        message: formData.message.trim(),
       });
-      
-      setFormData({ name: '', relationship: '친구', message: '' });
+
+      setFormData({ name: '', message: '' });
       setIsFormModalOpen(false);
       showSuccess('축하 메시지가 등록되었습니다!');
     } catch (err) {
@@ -124,19 +122,7 @@ const MessageBoard = () => {
                 className="form-input"
               />
             </div>
-            
-            <div className="form-group">
-              <select
-                value={formData.relationship}
-                onChange={(e) => setFormData({ ...formData, relationship: e.target.value })}
-                className="form-select"
-              >
-                {relationships.map(rel => (
-                  <option key={rel} value={rel}>{rel}</option>
-                ))}
-              </select>
-            </div>
-            
+
             <div className="form-group">
               <textarea
                 placeholder="축하 메시지를 남겨주세요"
