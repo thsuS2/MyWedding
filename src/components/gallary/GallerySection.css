@@ -333,47 +333,41 @@
   text-align: center;
 }
 
-/* 상세(모달) 좌우 이동 — PC 너비에서만 표시 (모바일은 스와이프·키보드) */
-.gallery-modal-nav-desktop {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  cursor: pointer;
-  border-radius: 50%;
-  padding: 0;
-}
-
-@media (min-width: 769px) {
-  .gallery-modal-nav-desktop {
-    display: flex;
-  }
-}
-
-.modal-nav {
+/* 상세(모달) 좌우 이동 — 공통 Button(icon) + 모달 전용 오버레이 스타일 (모든 뷰포트) */
+.gallery-modal .btn.gallery-modal-nav {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10000;
-  width: 48px !important;
-  height: 48px !important;
-  min-width: 48px;
-  font-size: 2rem !important;
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  opacity: 0.9;
+  font-size: 1.35rem !important;
   line-height: 1;
-  background: rgba(255, 255, 255, 0.15) !important;
-  color: white !important;
-  opacity: 0.6;
-  transition: opacity 0.2s ease, background 0.2s ease;
+  transition: opacity 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 
-.modal-nav:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.25) !important;
+.gallery-modal .btn.gallery-modal-nav:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.3) !important;
   opacity: 1;
+  transform: translateY(-50%) scale(1.05);
 }
 
-.modal-nav:disabled {
-  opacity: 0.3;
+.gallery-modal .btn.gallery-modal-nav:disabled {
+  opacity: 0.35;
   cursor: not-allowed;
+  transform: translateY(-50%);
+}
+
+.gallery-modal .btn.gallery-modal-nav .btn-icon {
+  color: #fff;
 }
 
 .modal-prev {
