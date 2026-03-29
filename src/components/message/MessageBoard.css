@@ -11,14 +11,14 @@
 
 .message-write-button {
   text-align: center;
-  margin-top: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
 }
 
 
 /* BottomSheet 내부: 패널이 이미 카드처럼 감싸므로 폼은 플랫하게 */
 .bottom-sheet-content .message-form {
   background: transparent;
-  padding: 0;
+  padding: var(--spacing-sm);
   box-shadow: none;
   margin-bottom: 0;
 }
@@ -91,12 +91,11 @@
 
 
 .message-list {
-  display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
   max-width: 700px;
   margin: 0 auto;
-  padding: 0 var(--spacing-sm);
+  padding: 0 var(--spacing-sm) 20px;
 }
 
 .loading-messages,
@@ -112,13 +111,18 @@
 }
 
 .message-card {
-  padding: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
 }
 
-.message-card:last-child {
+/* 더보기 줄이 없을 때만 마지막 카드 하단선 제거 */
+.message-list > .message-card:last-child {
+  border-bottom: none;
+}
+
+.message-list:has(> .message-list-toggle-wrap) > .message-card:nth-last-child(2) {
   border-bottom: none;
 }
 
@@ -126,9 +130,43 @@
   margin-bottom: var(--spacing-xs);
 }
 
+.message-header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.65rem;
+}
+
 .message-name {
   color: var(--text-dark);
   font-weight: 600;
+}
+
+.message-meta {
+  font-size: max(0.7rem, 0.8125rem);
+  font-weight: 400;
+  color: var(--text-light);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.message-list-toggle-wrap {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-sm) 0 var(--spacing-xs);
+}
+
+/* 공통 Button(secondary/small) — 리스트 안에서만 내용 너비 */
+.message-section .message-list-toggle.btn {
+  /* width: auto;
+  min-width: unset; */
+}
+
+@media (max-width: 480px) {
+  .message-section .message-list-toggle.btn-small {
+    width: auto;
+    min-width: unset !important;
+  }
 }
 
 .message-content {
