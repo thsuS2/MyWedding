@@ -345,8 +345,8 @@
   padding: 0 !important;
   border: none !important;
   border-radius: 50% !important;
-  background: rgba(255, 255, 255, 0.18) !important;
-  color: #fff !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+  color: #1a1a1a !important;
   box-shadow: none !important;
   opacity: 0.9;
   font-size: 1.35rem !important;
@@ -367,7 +367,7 @@
 }
 
 .gallery-modal .btn.gallery-modal-nav .btn-icon {
-  color: #fff;
+  color: #1a1a1a;
 }
 
 .modal-prev {
