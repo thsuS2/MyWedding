@@ -20,6 +20,9 @@
 }
 /* CSS 변수 정의 */
 :root {
+  /* 다크모드 강제/UA 스타일 영향 최소화 (라이트 고정) */
+  color-scheme: light;
+
   /* 색상 - pink/white 통일 */
   --bg-white: #FFFFFF;
   --bg-ivory: #fffffe;
@@ -74,6 +77,8 @@ html {
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
+  background-color: var(--bg-ivory);
+  color: var(--text-dark);
 }
 
 body {
@@ -91,6 +96,19 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+/* OS가 다크를 선호해도 라이트 컬러 유지 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: light;
+  }
+
+  html,
+  body {
+    background-color: var(--bg-ivory);
+    color: var(--text-dark);
+  }
 }
 
 /* 타이포그래피 */

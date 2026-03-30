@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './MainSection.css';
 import * as WEDDING from '../../constants/wedding';
-const { COUPLE } = WEDDING;
+const { COUPLE, VENUE } = WEDDING;
 import { PiPhoneFill, PiChatCircleFill } from 'react-icons/pi';
 import SectionTitle from '../common/SectionTitle';
 import { formatPhoneForLink } from '../../utils/formatPhone';
@@ -36,13 +36,14 @@ const MainSection = () => {
       <div className="container">
 
         <div className="fade-in">
-          <div className="main-date-time  text-body-large">
+          <div className="main-date-time  text-heading-small">
             {COUPLE.groom.fullName} · {COUPLE.bride.fullName}
           </div>
         </div>
         
         {/* 날짜/시간 */}
-        <div className="main-date-time text-body-gray fade-in ">
+        <div className="main-date-time text-body-medium text-body-gray fade-in ">
+          {VENUE.name}<br/>
           {WEDDING.getFormattedDate()} {WEDDING.WEDDING_DATE.weekday}<br/>
           {WEDDING.WEDDING_DATE.time}
         </div>

@@ -8,9 +8,9 @@ import Button from '../common/Button';
 import { PiCaretDown, PiCopy } from 'react-icons/pi';
 
 const INTRO_LINES = [
-  '참석이 어려우신 분들을 위해',
-  '계좌번호를 안내해 드립니다.',
-  '너그러운 마음으로 양해 부탁드립니다.',
+  '참석이 어려우신 분들도',
+  '축하의 마음을 전해주시면',
+  '큰 기쁨이 되겠습니다',
 ];
 
 const AccountSection = () => {

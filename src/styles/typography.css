@@ -42,14 +42,14 @@
 .text-heading-large {
   font-family: var(--font-title-kr);
   font-size: 1.5rem;
-  font-weight: 700;
+  /* font-weight: 700; */
   line-height: 1.4;
   color: var(--text-dark);
 }
 
 @media (max-width: 480px) {
   .text-heading-large {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -76,14 +76,14 @@
 .text-heading-small {
   font-family: var(--font-body);
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.5;
   color: var(--text-dark);
 }
 
 @media (max-width: 480px) {
   .text-heading-small {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -120,7 +120,7 @@
   .text-body,
   .text-body-gray,
   .text-body-medium {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 }
 
@@ -197,7 +197,7 @@
 
 @media (max-width: 480px) {
   .text-quote {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-style: italic !important;
   }
 }

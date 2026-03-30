@@ -38,13 +38,14 @@ const Footer = () => {
         </div>
         
         <div className="footer-content fade-in">
-          <div className="footer-message">
+          
+          {/* <div className="footer-message">
             <div className="footer-text text-body-gray">
               참석이 어려우신 분들도<br/>
               축하의 마음을 전해주시면<br/>
               큰 기쁨이 되겠습니다 
             </div>
-          </div>
+          </div> */}
           
           <section className="footer-share-section">
             <div className="footer-share-icons">
