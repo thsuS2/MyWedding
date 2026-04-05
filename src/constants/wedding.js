@@ -105,8 +105,8 @@ export const ACCOUNTS = [
   {
     side: 'bride',
     name: '김성옥',
-    bank: '하나은행',
-    number: '2409-1026-679607',
+    bank: '국민은행',
+    number: '801-21-0444957',
     holder: '김성옥',
   },
   {
